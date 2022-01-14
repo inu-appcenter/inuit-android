@@ -12,7 +12,7 @@ class PagerAdapter(fa : FragmentActivity) : FragmentStateAdapter(fa){
         return when(position){
             0 -> AllClubListFragment()
             1 -> MainClubListFragment()
-            2 -> MajorClubListFragment()
+            2 -> TempClubListFragment()
             3 -> SmallClubListFragment()
             else -> AllClubListFragment()
         }
