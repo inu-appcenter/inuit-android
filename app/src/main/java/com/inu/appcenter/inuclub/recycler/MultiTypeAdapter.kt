@@ -102,4 +102,18 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private const val TYPE_CLUB = 1
     }
 
+    fun setSampleData() {
+        addItems(TitleItem("모집 중"))
+        addItems(ClubItem("인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItems(ClubItem("인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItems(ClubItem("퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItems(TitleItem("모집 마감"))
+        addItems(ClubItem("인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItems(ClubItem("인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItems(ClubItem("퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItems(ClubItem("인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItems(ClubItem("인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItems(ClubItem("퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+    }
+
 }
