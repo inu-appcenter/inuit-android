@@ -25,6 +25,7 @@ class AllClubListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_all_club_list, container, false)
 
         recycler_all_club_list = view.findViewById(R.id.recycler_all_club_list)
+        recycler_all_club_list.layoutManager = LinearLayoutManager(context)
         adapter = MultiTypeAdapter()
         recycler_all_club_list.adapter = adapter
         setSampleData()
@@ -38,5 +39,11 @@ class AllClubListFragment : Fragment() {
         adapter.addItems(ClubItem("인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
         adapter.addItems(ClubItem("퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
         adapter.addItems(TitleItem("모집 마감"))
+        adapter.addItems(ClubItem("인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        adapter.addItems(ClubItem("인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        adapter.addItems(ClubItem("퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        adapter.addItems(ClubItem("인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        adapter.addItems(ClubItem("인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        adapter.addItems(ClubItem("퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
     }
 }

@@ -40,6 +40,18 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int  = items.size
 
+    override fun getItemViewType(position: Int) = when(items[position]){
+        is TitleItem -> {
+            TYPE_TITLE
+        }
+        is ClubItem -> {
+            TYPE_CLUB
+        }
+        else ->{
+            throw java.lang.IllegalStateException("Not Found ViewHolder Type")
+        }
+    }
+
     class TitleHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val tv_title = itemView.findViewById(R.id.tv_recycler_item_title) as TextView
