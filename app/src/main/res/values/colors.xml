@@ -7,5 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="tab_text_color">#9C9C9C</color>
+    <!-- custom color -->
+    <color name="font_color_black">#191919</color>
+    <color name="font_color_gray">#767676</color>
+    <color name="font_color_white">#FFFFFF</color>
+    <color name="line_color_gray">#c4c4c4</color>
 </resources>

@@ -15,9 +15,11 @@
             android:id="@+id/tl_mainTopTap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/view_under_line"
+            app:tabTextColor="@color/font_color_gray"
             app:tabIndicatorHeight="1dp"
-            app:tabIndicatorColor="@color/black"
-            app:tabSelectedTextColor="@color/black" />
+            app:tabIndicatorColor="@color/font_color_black"
+            app:tabSelectedTextColor="@color/font_color_black"/>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_mainViewPager"
