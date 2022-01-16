@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="13dp"
+    android:layout_marginHorizontal="18dp"
+    android:layout_marginVertical="15dp"
     android:orientation="vertical">
 
     <TextView
@@ -10,9 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/font_color_black"
-        android:textStyle="bold"
-        android:textSize="20sp"
+        android:fontFamily="@font/spoqahansansneo"
+        android:textSize="21sp"
         android:text="모집 중"/>
-
 
 </LinearLayout>
