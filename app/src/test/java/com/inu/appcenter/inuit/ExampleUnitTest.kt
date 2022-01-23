@@ -1,4 +1,4 @@
-package com.inu.appcenter.inuclub
+package com.inu.appcenter.inuit
 
 import org.junit.Test
 

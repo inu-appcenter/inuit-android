@@ -13,12 +13,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:background="@drawable/view_under_line"
-            app:tabPaddingBottom="5dp"
-            app:tabPaddingEnd="15dp"
-            app:tabTextAppearance="@style/tab_text"
             app:tabIndicatorColor="@color/font_color_black"
             app:tabIndicatorHeight="1dp"
+            app:tabPaddingBottom="3dp"
             app:tabSelectedTextColor="@color/font_color_black"
+            app:tabTextAppearance="@style/tab_text"
             app:tabTextColor="@color/font_color_gray" />
 
         <androidx.viewpager2.widget.ViewPager2

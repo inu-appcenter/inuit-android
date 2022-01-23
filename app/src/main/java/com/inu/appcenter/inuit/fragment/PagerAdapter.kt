@@ -1,4 +1,4 @@
-package com.inu.appcenter.inuclub.fragment
+package com.inu.appcenter.inuit.fragment
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

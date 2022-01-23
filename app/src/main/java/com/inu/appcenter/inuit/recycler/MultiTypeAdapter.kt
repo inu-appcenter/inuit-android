@@ -1,4 +1,4 @@
-package com.inu.appcenter.inuclub.recycler
+package com.inu.appcenter.inuit.recycler
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.inu.appcenter.inuclub.R
-import com.inu.appcenter.inuclub.recycler.item.ClubItem
-import com.inu.appcenter.inuclub.recycler.item.Item
-import com.inu.appcenter.inuclub.recycler.item.TitleItem
+import com.inu.appcenter.inuit.R
+import com.inu.appcenter.inuit.recycler.item.ClubItem
+import com.inu.appcenter.inuit.recycler.item.Item
+import com.inu.appcenter.inuit.recycler.item.TitleItem
 
 class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

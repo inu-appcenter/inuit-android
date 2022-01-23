@@ -1,4 +1,4 @@
-package com.inu.appcenter.inuclub
+package com.inu.appcenter.inuit
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

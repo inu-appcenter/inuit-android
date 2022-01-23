@@ -8,7 +8,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.inu.appcenter.inuclub.fragment.ClubListFrameFragment"
+        android:name="com.inu.appcenter.inuit.fragment.ClubListFrameFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="64dp"

@@ -1,4 +1,4 @@
-package com.inu.appcenter.inuclub.fragment
+package com.inu.appcenter.inuit.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.inu.appcenter.inuclub.R
-import com.inu.appcenter.inuclub.recycler.MultiTypeAdapter
+import com.inu.appcenter.inuit.R
+import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
 
 
 class MainClubListFragment : Fragment() {

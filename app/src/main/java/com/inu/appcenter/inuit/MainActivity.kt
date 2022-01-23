@@ -1,11 +1,9 @@
-package com.inu.appcenter.inuclub
+package com.inu.appcenter.inuit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
 import androidx.fragment.app.FragmentContainerView
-import com.inu.appcenter.inuclub.fragment.AllClubListFragment
-import com.inu.appcenter.inuclub.fragment.ClubListFrameFragment
+import com.inu.appcenter.inuit.fragment.ClubListFrameFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var currentFragment = findViewById(R.id.fragmentContainerView) as FragmentContainerView
+        var currentFragment = findViewById<FragmentContainerView>(R.id.fragmentContainerView)
 
         if(currentFragment == null){
             val fragment = ClubListFrameFragment()
@@ -24,6 +22,4 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-
 }

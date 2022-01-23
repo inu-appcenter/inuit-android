@@ -1,4 +1,4 @@
-package com.inu.appcenter.inuclub.fragment
+package com.inu.appcenter.inuit.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.inu.appcenter.inuclub.R
+import com.inu.appcenter.inuit.R
 
 class ClubListFrameFragment : Fragment() {
 
