@@ -8,8 +8,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <!-- custom color -->
+
+    <!-- font color -->
     <color name="font_color_black">#191919</color>
     <color name="font_color_gray">#767676</color>
     <color name="font_color_white">#FFFFFF</color>
+
+    <!-- line color -->
     <color name="line_color_gray">#c4c4c4</color>
+    <color name="line_color_black">#191919</color>
+    <color name="line_color_sky_blue">#BFDEFA</color>
+    <color name="line_color_white_gray">#F1F1F5</color>
+
 </resources>

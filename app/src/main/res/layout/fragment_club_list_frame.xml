@@ -7,11 +7,55 @@
     android:orientation="vertical"
     tools:context=".fragment.ClubListFrameFragment">
 
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_search"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="20dp"
+            >
+
+                <!-- INPUT -->
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:inputType="textMultiLine|textNoSuggestions"
+                    android:paddingHorizontal="10dp"
+                    android:textCursorDrawable="@color/line_color_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/username_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- ICON -->
+                <ImageView
+                    android:id="@+id/username_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="3dp"
+                    android:src="@drawable/ic_search"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tl_mainTopTap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+
             android:background="@drawable/view_under_line"
             app:tabIndicatorColor="@color/font_color_black"
             app:tabIndicatorHeight="1dp"
