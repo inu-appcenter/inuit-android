@@ -20,4 +20,9 @@
     <color name="line_color_sky_blue">#BFDEFA</color>
     <color name="line_color_white_gray">#F1F1F5</color>
 
+    <!-- brand color -->
+    <color name="brand_color_blue">#3677FF</color>
+    <color name="brand_color_sky_blue">#76BEFF</color>
+    <color name="brand_color_yellow">#FFD26F</color>
+
 </resources>

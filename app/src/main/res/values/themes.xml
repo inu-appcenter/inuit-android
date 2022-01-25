@@ -17,8 +17,15 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!-- TapLayout 설정 -->
     <style name="tab_text" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">15sp</item>
+    </style>
+
+    <!-- checkBox 설정 -->
+    <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
+        <item name="colorAccent">@color/brand_color_sky_blue</item>
+        <item name="android:textColorSecondary">@color/brand_color_sky_blue</item>
     </style>
 
 </resources>

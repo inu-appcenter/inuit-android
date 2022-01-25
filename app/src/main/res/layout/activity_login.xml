@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/edittext_inner_shadow"
+        android:cursorVisible="true"
+        android:fontFamily="@font/spoqahansansneo"
+        android:hint="@string/hint_email"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:paddingHorizontal="20dp"
+        android:textColor="@color/font_color_black"
+        android:textColorHint="@color/font_color_gray"
+        android:textCursorDrawable="@drawable/edittext_cursor"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_inuit_brand_description" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edittext_inner_shadow"
+        android:cursorVisible="true"
+        android:fontFamily="@font/spoqahansansneo"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:paddingHorizontal="20dp"
+        android:textColor="@color/font_color_black"
+        android:textColorHint="@color/font_color_gray"
+        android:textCursorDrawable="@drawable/edittext_cursor"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+
+    <TextView
+        android:id="@+id/tv_inuit_brand_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:text="@string/inuit_brand_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_blue_btn"
+        android:elevation="10dp"
+        android:fontFamily="@font/spoqahansansneo"
+        android:letterSpacing="0.05"
+        android:padding="8dp"
+        android:text="@string/login_btn"
+        android:textColor="@color/font_color_white"
+        android:textSize="19sp"
+        app:backgroundTint="@color/brand_color_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+    <TextView
+        android:id="@+id/tv_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/sing_up"
+        android:textColor="@color/font_color_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"/>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="23dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/keep_login"
+        android:textColor="@color/font_color_black"
+
+        android:theme="@style/checkBoxStyle"
+        android:checked="false"
+        android:paddingLeft="12dp"
+        android:button="@drawable/checkbox_login"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_signup" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

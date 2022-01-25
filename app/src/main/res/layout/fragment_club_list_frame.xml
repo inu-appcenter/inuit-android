@@ -28,7 +28,7 @@
                     android:maxLines="1"
                     android:textSize="15sp"
                     android:imeOptions="actionSearch"
-                    android:paddingHorizontal="10dp"
+                    android:paddingHorizontal="3dp"
                     android:cursorVisible="true"
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     app:layout_constraintBottom_toBottomOf="parent"
