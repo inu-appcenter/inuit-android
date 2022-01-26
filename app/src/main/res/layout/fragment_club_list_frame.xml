@@ -57,11 +57,10 @@
             android:id="@+id/tl_mainTopTap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="@drawable/view_under_line"
             app:tabIndicatorColor="@color/font_color_black"
-            app:tabIndicatorHeight="1dp"
-            app:tabPaddingBottom="3dp"
+            app:tabIndicatorHeight="1.5dp"
+            app:tabPaddingBottom="5dp"
             app:tabSelectedTextColor="@color/font_color_black"
             app:tabTextAppearance="@style/tab_text"
             app:tabTextColor="@color/font_color_gray" />

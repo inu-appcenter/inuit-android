@@ -1,10 +1,12 @@
 package com.inu.appcenter.inuit.recycler
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.item.ClubItem
@@ -78,6 +80,9 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(item: ClubItem){
             iv_img.setImageResource(item.ImageId)
+            // 이미지 모서리 둥글게 하기
+            //iv_img.background = R.drawable.view_round_coner.toDrawable()
+            //iv_img.clipToOutline = true
             tv_name.text = item.name
             tv_desc.text = item.description
         }
@@ -92,19 +97,19 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     }
 
-    fun addItems(item: Item) {
-        this.items.add(item)
-        this.notifyDataSetChanged()
-    }
-
     companion object {
         private const val TYPE_TITLE = 0
         private const val TYPE_CLUB = 1
     }
 
+    fun addItems(item: Item) {
+        this.items.add(item)
+        this.notifyDataSetChanged()
+    }
+
     fun setSampleData() {
         addItems(TitleItem("모집 중"))
-        addItems(ClubItem("인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItems(ClubItem("인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.profile_sample))
         addItems(ClubItem("인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
         addItems(ClubItem("퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
         addItems(TitleItem("모집 마감"))
