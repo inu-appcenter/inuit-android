@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity() {
 
     inner class CategoryListener : View.OnClickListener{
         override fun onClick(view: View?) {
-            //카테고리 액티비티 실행
+            val intent = CategoryActivity.newIntent(this@MainActivity)
+            startActivity(intent)
         }
     }
 

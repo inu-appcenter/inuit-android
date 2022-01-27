@@ -9,4 +9,16 @@
     <string name="sing_up">회원가입</string>
     <string name="keep_login">로그인 유지</string>
 
+    <!-- category -->
+    <string name="top_title_category">카테고리</string>
+    <string name="center_description">어떤 주제의 모임을 \n찾고 계신가요?</string>
+    <string name="sub_description">키워드를 선택해 주세요.</string>
+    <string name="academic">#교양학술</string>
+    <string name="culture">#문화</string>
+    <string name="exercise">#체육</string>
+    <string name="hobby_exhibition">#취미전시</string>
+    <string name="service">#봉사</string>
+    <string name="religion">#종교</string>
+    <string name="etc">#기타</string>
+
 </resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/top_gradation" />
+
+    <item android:drawable="@drawable/left_gradation"
+        android:gravity="bottom|left"
+        android:top="270dp"
+        android:right="50dp"
+        />
+
+    <item android:drawable="@drawable/top_right_gradation"
+        android:top="100dp"
+        android:gravity="right"
+        android:width="150dp"
+        android:height="150dp"/>
+
+</layer-list>
