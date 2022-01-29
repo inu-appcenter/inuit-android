@@ -21,4 +21,12 @@
     <string name="religion">#종교</string>
     <string name="etc">#기타</string>
 
+    <string name="academic_title">교양학술</string>
+    <string name="culture_title">문화</string>
+    <string name="exercise_title">체육</string>
+    <string name="hobby_exhibition_title">취미전시</string>
+    <string name="service_title">봉사</string>
+    <string name="religion_title">종교</string>
+    <string name="etc_title">기타</string>
+
 </resources>

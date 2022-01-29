@@ -7,31 +7,30 @@ import android.widget.ImageButton
 import androidx.fragment.app.FragmentContainerView
 import com.inu.appcenter.inuit.fragment.ClubListFrameFragment
 
-class MainActivity : AppCompatActivity() {
+var login = false //임시, 추후에 로그인 정보는 뷰모델로 관리.
 
-    private var login = false
-    private lateinit var btn_category : ImageButton
-    private lateinit var btn_myprofile : ImageButton
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn_category = findViewById(R.id.imgBtn_category)
+        var btn_category : ImageButton = findViewById(R.id.imgBtn_category)
         btn_category.setOnClickListener(CategoryListener())
 
-        btn_myprofile = findViewById(R.id.imgBtn_myprofile)
+        var btn_myprofile : ImageButton = findViewById(R.id.imgBtn_myprofile)
         btn_myprofile.setOnClickListener(ProfileListener())
 
         var currentFragment = findViewById<FragmentContainerView>(R.id.fragmentContainerView)
+        if(currentFragment == null) setFragment()
+    }
 
-        if(currentFragment == null){
-            val fragment = ClubListFrameFragment()
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragmentContainerView, fragment)
-                .commit()
-        }
+    fun setFragment(){
+        val fragment = ClubListFrameFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragmentContainerView, fragment)
+            .commit()
     }
 
     inner class CategoryListener : View.OnClickListener{
