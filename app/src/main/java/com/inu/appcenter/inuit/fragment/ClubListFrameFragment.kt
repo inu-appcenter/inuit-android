@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -23,6 +24,11 @@ class ClubListFrameFragment : Fragment() {
         val viewPager = view.findViewById(R.id.vp_mainViewPager) as ViewPager2
         val pagerAdapter = PagerAdapter(requireActivity())
         viewPager.adapter = pagerAdapter
+
+        val child = viewPager.getChildAt(0)
+        if (child is RecyclerView) {
+            child.overScrollMode = View.OVER_SCROLL_NEVER
+        }
 
         val tabTitles = listOf<String>("전체", "중앙 동아리", "가 동아리", "소모임")
         TabLayoutMediator(topViewTab, viewPager) { tab, position ->

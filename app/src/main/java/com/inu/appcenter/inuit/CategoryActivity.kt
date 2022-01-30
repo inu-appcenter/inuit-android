@@ -65,6 +65,7 @@ class CategoryActivity : AppCompatActivity() {
             }
             val intent = SelectedCategoryActivity.newIntent(this@CategoryActivity,category)
             startActivity(intent)
+            finish()
         }
     }
 
