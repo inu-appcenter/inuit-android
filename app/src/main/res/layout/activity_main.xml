@@ -38,4 +38,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_myprofile" />
 
+    <ImageView
+        android:id="@+id/iv_inuit_logo"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBtn_category"
+        app:layout_constraintEnd_toStartOf="@+id/imgBtn_myprofile"
+        app:layout_constraintStart_toEndOf="@+id/imgBtn_category"
+        app:layout_constraintTop_toTopOf="@+id/imgBtn_category"
+        app:srcCompat="@drawable/inuit_logo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

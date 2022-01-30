@@ -53,11 +53,11 @@
         android:id="@+id/tv_inuit_brand_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="16dp"
         android:text="@string/inuit_brand_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/btn_login"
@@ -84,10 +84,11 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
+        android:paddingStart="3dp"
         android:text="@string/sing_up"
         android:textColor="@color/font_color_black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"/>
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -95,15 +96,26 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="23dp"
         android:layout_marginTop="4dp"
-        android:text="@string/keep_login"
-        android:textColor="@color/font_color_black"
-
-        android:theme="@style/checkBoxStyle"
+        android:button="@drawable/checkbox_login"
         android:checked="false"
         android:paddingLeft="12dp"
-        android:button="@drawable/checkbox_login"
+        android:text="@string/keep_login"
+        android:textColor="@color/font_color_black"
+        android:theme="@style/checkBoxStyle"
         app:layout_constraintBottom_toBottomOf="@+id/tv_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_signup" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_inuit_brand_description"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/tv_inuit_brand_description"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        app:srcCompat="@drawable/inuit_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
