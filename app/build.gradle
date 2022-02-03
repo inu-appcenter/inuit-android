@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.inu.appcenter.inuclub"
+        applicationId "com.inu.appcenter.inuit"
         minSdkVersion 23
         targetSdkVersion 31
         versionCode 1

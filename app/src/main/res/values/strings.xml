@@ -1,5 +1,32 @@
 <resources>
-    <string name="app_name">INU Club</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">INUIT</string>
+
+    <!-- login -->
+    <string name="inuit_brand_description">이누잇, 인천대의 모든 모임을 <b>잇</b>다</string>
+    <string name="hint_email">이메일</string>
+    <string name="hint_password">비밀번호</string>
+    <string name="login_btn">로그인</string>
+    <string name="sing_up">회원가입</string>
+    <string name="keep_login">로그인 유지</string>
+
+    <!-- category -->
+    <string name="top_title_category">카테고리</string>
+    <string name="center_description">어떤 주제의 모임을 \n찾고 계신가요?</string>
+    <string name="sub_description">키워드를 선택해 주세요.</string>
+    <string name="academic">#교양학술</string>
+    <string name="culture">#문화</string>
+    <string name="exercise">#체육</string>
+    <string name="hobby_exhibition">#취미전시</string>
+    <string name="service">#봉사</string>
+    <string name="religion">#종교</string>
+    <string name="etc">#기타</string>
+
+    <string name="academic_title">교양학술</string>
+    <string name="culture_title">문화</string>
+    <string name="exercise_title">체육</string>
+    <string name="hobby_exhibition_title">취미전시</string>
+    <string name="service_title">봉사</string>
+    <string name="religion_title">종교</string>
+    <string name="etc_title">기타</string>
+
 </resources>

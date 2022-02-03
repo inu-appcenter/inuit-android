@@ -8,13 +8,44 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.inu.appcenter.inuclub.fragment.ClubListFrameFragment"
+        android:name="com.inu.appcenter.inuit.fragment.ClubListFrameFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imgBtn_category" />
+
+    <ImageButton
+        android:id="@+id/imgBtn_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_category" />
+
+    <ImageButton
+        android:id="@+id/imgBtn_myprofile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_myprofile" />
+
+    <ImageView
+        android:id="@+id/iv_inuit_logo"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBtn_category"
+        app:layout_constraintEnd_toStartOf="@+id/imgBtn_myprofile"
+        app:layout_constraintStart_toEndOf="@+id/imgBtn_category"
+        app:layout_constraintTop_toTopOf="@+id/imgBtn_category"
+        app:srcCompat="@drawable/header_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
