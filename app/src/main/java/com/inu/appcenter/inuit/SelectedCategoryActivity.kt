@@ -10,8 +10,6 @@ import android.widget.TextView
 
 class SelectedCategoryActivity : AppCompatActivity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selected_category)
