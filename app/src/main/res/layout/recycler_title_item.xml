@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="18dp"
-    android:layout_marginVertical="15dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="8dp"
     android:orientation="vertical">
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/font_color_black"
         android:fontFamily="@font/spoqahansansneo"
-        android:textSize="21sp"
+        android:textSize="20sp"
         android:text="모집 중"/>
 
 </LinearLayout>
