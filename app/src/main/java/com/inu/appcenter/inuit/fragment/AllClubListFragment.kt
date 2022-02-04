@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
+import com.inu.appcenter.inuit.retrofit.ServiceCreator
 
 class AllClubListFragment : Fragment() {
 
@@ -28,7 +29,7 @@ class AllClubListFragment : Fragment() {
         adapter = MultiTypeAdapter()
         recycler_all_club_list.adapter = adapter
 
-        adapter.setSampleData()
+        adapter.setAllClubList()
 
         return view
     }

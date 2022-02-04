@@ -1,19 +1,25 @@
 package com.inu.appcenter.inuit.recycler
 
-import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.item.ClubItem
 import com.inu.appcenter.inuit.recycler.item.Item
 import com.inu.appcenter.inuit.recycler.item.TitleItem
+import com.inu.appcenter.inuit.retrofit.Circles
+import com.inu.appcenter.inuit.retrofit.ServiceCreator
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private val client = ServiceCreator().create()
 
     private val items = mutableListOf<Item>()
 
@@ -80,9 +86,6 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(item: ClubItem){
             iv_img.setImageResource(item.ImageId)
-            // 이미지 모서리 둥글게 하기
-            //iv_img.background = R.drawable.view_round_coner.toDrawable()
-            //iv_img.clipToOutline = true
             tv_name.text = item.name
             tv_desc.text = item.description
         }
@@ -121,4 +124,36 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         addItems(ClubItem("퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
     }
 
+    fun setAllClubList(){
+
+        val call = client.getAllCircles()
+        call.enqueue(object: Callback<Circles> {
+            override fun onFailure(call: Call<Circles>, t: Throwable) {
+                Log.e("error", "${t.message}")
+            }
+
+            override fun onResponse(
+                call: Call<Circles>,
+                response: Response<Circles>
+            ) {
+                if(response.isSuccessful){
+                    Log.d("응답 성공!", "onResponse is Successful!")
+
+                    val body = response.body()
+                    val list = body?.data
+                    addItems(TitleItem("모집 중"))
+                    list?.forEach {
+                        if(it.recruit) addItems(ClubItem(it.name,it.introduce,R.drawable.profile_sample))
+                    }
+                    addItems(TitleItem("모집 마감"))
+                    list?.forEach {
+                        if(!it.recruit) addItems(ClubItem(it.name,it.introduce,R.drawable.profile_sample))
+                    }
+                }
+                else {
+                    Log.e("응답 실패", "response is not Successful")
+                }
+            }
+        })
+    }
 }
