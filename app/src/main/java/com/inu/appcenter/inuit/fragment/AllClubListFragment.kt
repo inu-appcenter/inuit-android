@@ -29,8 +29,9 @@ class AllClubListFragment : Fragment() {
         adapter = MultiTypeAdapter()
         recycler_all_club_list.adapter = adapter
 
-        adapter.setAllClubList()
+        adapter.updateAllClubList()
 
         return view
     }
+
 }
