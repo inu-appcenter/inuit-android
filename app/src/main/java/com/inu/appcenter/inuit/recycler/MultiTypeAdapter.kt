@@ -140,7 +140,7 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     }
 
-    fun updateAllClubList(){
+    fun updateAllClubList(){ //홈 화면에서의 '전체' 프래그먼트 업데이트 메서드.
 
         val call = client.getAllCircles()
         call.enqueue(object: Callback<Circles> {
@@ -166,4 +166,29 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
         })
     }
+
+    fun updateDivisionAllClubList(division : String){ //홈 화면에서의 중앙 동아리, 가 동아리, 소모임 프래그먼트 업데이트 메서드.
+
+        val call = client.getDivisionAllCircles(division)
+        call.enqueue(object : Callback<Circles>{
+            override fun onFailure(call: Call<Circles>, t: Throwable) {
+                Log.e("error", "${t.message}")
+            }
+
+            override fun onResponse(call: Call<Circles>, response: Response<Circles>) {
+                if(response.isSuccessful){
+                    Log.d("응답 성공!", "onResponse is Successful!")
+
+                    val body = response.body()
+                    val list = body?.data
+                    addListToItems(list)
+                    notifyDataSetChanged()
+                }
+                else {
+                    Log.e("응답 실패", "response is not Successful")
+                }
+            }
+        })
+    }
+
 }

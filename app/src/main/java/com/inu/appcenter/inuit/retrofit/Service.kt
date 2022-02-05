@@ -9,4 +9,7 @@ interface Service {
     @GET("circles")
     fun getAllCircles() : Call<Circles>
 
+    @GET("circles/division/{division}")
+    fun getDivisionAllCircles(@Path("division") division : String) : Call<Circles>
+
 }
