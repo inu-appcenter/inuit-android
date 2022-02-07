@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.inu.appcenter.inuit.InuitViewModel
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
 import com.inu.appcenter.inuit.retrofit.Circle
@@ -18,6 +20,7 @@ import com.inu.appcenter.inuit.retrofit.ServiceCreator
 
 class AllClubListFragment : Fragment() {
 
+    private lateinit var viewModel: InuitViewModel
     private lateinit var recycler_all_club_list : RecyclerView
     private lateinit var adapter: MultiTypeAdapter
 
@@ -26,6 +29,8 @@ class AllClubListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        viewModel = ViewModelProvider(this).get(InuitViewModel::class.java)
+
         val view = inflater.inflate(R.layout.fragment_all_club_list, container, false)
 
         recycler_all_club_list = view.findViewById(R.id.recycler_all_club_list)
@@ -33,17 +38,13 @@ class AllClubListFragment : Fragment() {
 
         adapter = MultiTypeAdapter()
         recycler_all_club_list.adapter = adapter
-        updateAllClubList()
 
-        return view
-    }
-
-    private fun updateAllClubList(){
-        val allClubData : LiveData<List<Circle>> = ServiceCreator().getAllClubList()
-        allClubData.observe(
+        viewModel.allClubList.observe(
             viewLifecycleOwner,
-            Observer {
-                adapter.addListToItems(allClubData.value)
-            })
+            {
+                adapter.addListToItems(it)
+            }
+        )
+        return view
     }
 }
