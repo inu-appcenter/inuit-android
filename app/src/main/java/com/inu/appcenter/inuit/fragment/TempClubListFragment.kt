@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,7 +19,7 @@ import com.inu.appcenter.inuit.retrofit.ServiceCreator
 
 class TempClubListFragment : Fragment() {
 
-    private lateinit var viewModel: InuitViewModel
+    private val viewModel: InuitViewModel by activityViewModels()
     private lateinit var recycler_temp_club_list : RecyclerView
     private lateinit var adapter: MultiTypeAdapter
 
@@ -26,8 +27,6 @@ class TempClubListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        viewModel = ViewModelProvider(this).get(InuitViewModel::class.java)
 
         val view = inflater.inflate(R.layout.fragment_temp_club_list, container, false)
 
