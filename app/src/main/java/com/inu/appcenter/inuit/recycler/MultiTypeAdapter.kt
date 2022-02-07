@@ -1,6 +1,7 @@
 package com.inu.appcenter.inuit.recycler
 
 import android.content.Context
+import android.icu.text.CaseMap
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.item.ClubItem
@@ -22,7 +24,6 @@ import retrofit2.Response
 
 class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val client = ServiceCreator().create()
     private val items = mutableListOf<Item>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder = when (viewType) {
@@ -129,66 +130,18 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     fun addListToItems(list:List<Circle>?){
 
         items.clear()
-        addItems(TitleItem("모집 중"))
-        list?.forEach {
-            if(it.recruit) addItems(ClubItem(it.name,it.introduce,R.drawable.profile_sample))
+        if(list?.size == 0) {
+            addItems(TitleItem("해당하는 동아리가 없습니다"))
         }
-        addItems(TitleItem("모집 마감"))
-        list?.forEach {
-            if(!it.recruit) addItems(ClubItem(it.name,it.introduce,R.drawable.profile_sample))
+        else {
+            addItems(TitleItem("모집 중"))
+            list?.forEach {
+                if(it.recruit) addItems(ClubItem(it.name,it.introduce,R.drawable.profile_sample))
+            }
+            addItems(TitleItem("모집 마감"))
+            list?.forEach {
+                if(!it.recruit) addItems(ClubItem(it.name,it.introduce,R.drawable.profile_sample))
+            }
         }
-
     }
-
-    fun updateAllClubList(){ //홈 화면에서의 '전체' 프래그먼트 업데이트 메서드.
-
-        val call = client.getAllCircles()
-        call.enqueue(object: Callback<Circles> {
-            override fun onFailure(call: Call<Circles>, t: Throwable) {
-                Log.e("error", "${t.message}")
-            }
-
-            override fun onResponse(
-                call: Call<Circles>,
-                response: Response<Circles>
-            ) {
-                if(response.isSuccessful){
-                    Log.d("응답 성공!", "onResponse is Successful!")
-
-                    val body = response.body()
-                    val list = body?.data
-                    addListToItems(list)
-                    notifyDataSetChanged()
-                }
-                else {
-                    Log.e("응답 실패", "response is not Successful")
-                }
-            }
-        })
-    }
-
-    fun updateDivisionAllClubList(division : String){ //홈 화면에서의 중앙 동아리, 가 동아리, 소모임 프래그먼트 업데이트 메서드.
-
-        val call = client.getDivisionAllCircles(division)
-        call.enqueue(object : Callback<Circles>{
-            override fun onFailure(call: Call<Circles>, t: Throwable) {
-                Log.e("error", "${t.message}")
-            }
-
-            override fun onResponse(call: Call<Circles>, response: Response<Circles>) {
-                if(response.isSuccessful){
-                    Log.d("응답 성공!", "onResponse is Successful!")
-
-                    val body = response.body()
-                    val list = body?.data
-                    addListToItems(list)
-                    notifyDataSetChanged()
-                }
-                else {
-                    Log.e("응답 실패", "response is not Successful")
-                }
-            }
-        })
-    }
-
 }

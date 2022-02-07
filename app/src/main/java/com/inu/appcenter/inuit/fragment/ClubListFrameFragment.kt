@@ -1,6 +1,7 @@
 package com.inu.appcenter.inuit.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,8 @@ class ClubListFrameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        Log.i("ClubListFrameFragment","프레임 프래그먼트 생성됨")
 
         val view = inflater.inflate(R.layout.fragment_club_list_frame, container, false)
 

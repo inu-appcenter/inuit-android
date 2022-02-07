@@ -2,6 +2,7 @@ package com.inu.appcenter.inuit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import androidx.fragment.app.FragmentContainerView
@@ -21,16 +22,6 @@ class MainActivity : AppCompatActivity() {
         var btn_myprofile : ImageButton = findViewById(R.id.imgBtn_myprofile)
         btn_myprofile.setOnClickListener(ProfileListener())
 
-        var currentFragment = findViewById<FragmentContainerView>(R.id.fragmentContainerView)
-        if(currentFragment == null) setFragment()
-    }
-
-    fun setFragment(){
-        val fragment = ClubListFrameFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fragmentContainerView, fragment)
-            .commit()
     }
 
     inner class CategoryListener : View.OnClickListener{

@@ -5,10 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
+import com.inu.appcenter.inuit.retrofit.Circle
+import com.inu.appcenter.inuit.retrofit.ServiceCreator
 
 class SmallClubListFragment : Fragment() {
 
@@ -26,10 +30,16 @@ class SmallClubListFragment : Fragment() {
 
         adapter = MultiTypeAdapter()
         recycler_small_club_list.adapter = adapter
-
-        adapter.setSampleData()
+        updateSmallClubList()
 
         return view
     }
-
+    private fun updateSmallClubList(){
+        val allClubData : LiveData<List<Circle>> = ServiceCreator().getDivisionAllClubList("소모임")
+        allClubData.observe(
+            viewLifecycleOwner,
+            Observer {
+                adapter.addListToItems(allClubData.value)
+            })
+    }
 }

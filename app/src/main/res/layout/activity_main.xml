@@ -14,7 +14,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBtn_category" />
+        app:layout_constraintTop_toBottomOf="@+id/imgBtn_category"
+        tools:layout="@layout/fragment_club_list_frame" />
 
     <ImageButton
         android:id="@+id/imgBtn_category"

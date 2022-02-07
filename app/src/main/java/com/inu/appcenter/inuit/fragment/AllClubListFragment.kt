@@ -1,14 +1,19 @@
 package com.inu.appcenter.inuit.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
+import com.inu.appcenter.inuit.retrofit.Circle
+import com.inu.appcenter.inuit.retrofit.Circles
 import com.inu.appcenter.inuit.retrofit.ServiceCreator
 
 class AllClubListFragment : Fragment() {
@@ -28,10 +33,17 @@ class AllClubListFragment : Fragment() {
 
         adapter = MultiTypeAdapter()
         recycler_all_club_list.adapter = adapter
-
-        adapter.updateAllClubList()
+        updateAllClubList()
 
         return view
     }
 
+    private fun updateAllClubList(){
+        val allClubData : LiveData<List<Circle>> = ServiceCreator().getAllClubList()
+        allClubData.observe(
+            viewLifecycleOwner,
+            Observer {
+                adapter.addListToItems(allClubData.value)
+            })
+    }
 }
