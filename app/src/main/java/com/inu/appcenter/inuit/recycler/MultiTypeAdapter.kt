@@ -131,14 +131,32 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         items.clear()
         if(list?.size == 0) {
-            addItems(TitleItem("해당하는 동아리가 없습니다"))
+            addItems(TitleItem("해당하는 동아리/소모임이 없습니다"))
         }
         else {
-            addItems(TitleItem("모집 중"))
+
+            run loop@{
+                list?.forEach {
+                    if(it.recruit) {
+                        addItems(TitleItem("모집 중"))
+                        return@loop
+                    }
+                }
+            }
+
             list?.forEach {
                 if(it.recruit) addItems(ClubItem(it.name,it.introduce,R.drawable.profile_sample))
             }
-            addItems(TitleItem("모집 마감"))
+
+            run loop@{
+                list?.forEach {
+                    if(!it.recruit) {
+                        addItems(TitleItem("모집 마감"))
+                        return@loop
+                    }
+                }
+            }
+
             list?.forEach {
                 if(!it.recruit) addItems(ClubItem(it.name,it.introduce,R.drawable.profile_sample))
             }
