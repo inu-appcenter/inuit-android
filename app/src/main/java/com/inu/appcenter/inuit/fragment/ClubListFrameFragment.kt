@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -25,9 +26,10 @@ class ClubListFrameFragment : Fragment() {
 
         val topViewTab = view.findViewById(R.id.tl_mainTopTap) as TabLayout
         val viewPager = view.findViewById(R.id.vp_mainViewPager) as ViewPager2
-        val pagerAdapter = PagerAdapter(requireActivity())
+        val pagerAdapter = PagerAdapter(parentFragmentManager,lifecycle)
         viewPager.adapter = pagerAdapter
 
+        //뷰페이저 물결 애니메이션 제거
         val child = viewPager.getChildAt(0)
         if (child is RecyclerView) {
             child.overScrollMode = View.OVER_SCROLL_NEVER
@@ -37,6 +39,7 @@ class ClubListFrameFragment : Fragment() {
         TabLayoutMediator(topViewTab, viewPager) { tab, position ->
             tab.text = tabTitles[position]
         }.attach()
+
         return view
     }
 

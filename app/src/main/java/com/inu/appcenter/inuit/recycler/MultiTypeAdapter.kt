@@ -145,7 +145,7 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
 
             list?.forEach {
-                if(it.recruit) addItems(ClubItem(it.name,it.introduce,R.drawable.profile_sample))
+                if(it.recruit) addItems(ClubItem(it.name,it.oneLineIntroduce,R.drawable.profile_sample))
             }
 
             run loop@{
@@ -158,7 +158,7 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
 
             list?.forEach {
-                if(!it.recruit) addItems(ClubItem(it.name,it.introduce,R.drawable.profile_sample))
+                if(!it.recruit) addItems(ClubItem(it.name,it.oneLineIntroduce,R.drawable.profile_sample))
             }
         }
     }
