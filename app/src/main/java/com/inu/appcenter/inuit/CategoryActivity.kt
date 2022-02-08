@@ -45,28 +45,48 @@ class CategoryActivity : AppCompatActivity() {
     inner class CategorybtnListner : View.OnClickListener{
 
         lateinit var category: String
+        lateinit var serverCategory: String
 
         override fun onClick(v: View?) {
 
             when(v?.id){
-                R.id.btn_academic -> { category = getString(R.string.academic_title) }
+                R.id.btn_academic -> {
+                    category = getString(R.string.academic_title)
+                    serverCategory = getString(R.string.server_academic) }
 
-                R.id.btn_culture -> { category = getString(R.string.culture_title) }
+                R.id.btn_culture -> {
+                    category = getString(R.string.culture_title)
+                    serverCategory = getString(R.string.server_culture)
+                }
 
-                R.id.btn_exercise -> { category = getString(R.string.exercise_title) }
+                R.id.btn_exercise -> {
+                    category = getString(R.string.exercise_title)
+                    serverCategory = getString(R.string.server_exercise)
+                }
 
-                R.id.btn_hobby_exhibition -> { category = getString(R.string.hobby_exhibition_title) }
+                R.id.btn_hobby_exhibition -> {
+                    category = getString(R.string.hobby_exhibition_title)
+                    serverCategory = getString(R.string.server_hobby_exhibition)
+                }
 
-                R.id.btn_service -> { category = getString(R.string.service_title) }
+                R.id.btn_service -> {
+                    category = getString(R.string.service_title)
+                    serverCategory = getString(R.string.server_service)
+                }
 
-                R.id.btn_religion -> { category = getString(R.string.religion_title) }
+                R.id.btn_religion -> {
+                    category = getString(R.string.religion_title)
+                    serverCategory = getString(R.string.server_religion)
+                }
 
-                R.id.btn_etc -> { category = getString(R.string.etc_title) }
+                R.id.btn_etc -> {
+                    category = getString(R.string.etc_title)
+                    serverCategory = getString(R.string.server_etc)
+                }
             }
-            val intent = SelectedCategoryActivity.newIntent(this@CategoryActivity,category)
+            val intent = SelectedCategoryActivity.newIntent(this@CategoryActivity,category,serverCategory)
             startActivity(intent)
             finish()
         }
     }
-
 }

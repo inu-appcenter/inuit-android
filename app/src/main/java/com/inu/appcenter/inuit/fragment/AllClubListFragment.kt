@@ -43,17 +43,16 @@ class AllClubListFragment : Fragment() {
     }
 
     private fun setData(){
-        if (viewModel.isMain()){ //홈 화면인 경우
-            viewModel.allClubList.observe(
+
+        if(viewModel.isSelectedCategoryActivity){
+            viewModel.categoryAllClubList.observe(
                 viewLifecycleOwner,
                 {
                     adapter.addListToItems(it)
                 }
             )
-        }
-        else{ // 카테고리 선택한 경우
-            viewModel.setDataWithCategory()
-            viewModel.categoryAllClubList.observe(
+        }else{
+            viewModel.allClubList.observe(
                 viewLifecycleOwner,
                 {
                     adapter.addListToItems(it)

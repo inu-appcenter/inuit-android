@@ -7,7 +7,7 @@ import com.inu.appcenter.inuit.retrofit.ServiceCreator
 
 class InuitViewModel() : ViewModel() {
 
-    private var onMain : Boolean = true
+    var isSelectedCategoryActivity:Boolean = false
 
     val client : ServiceCreator
 
@@ -30,24 +30,10 @@ class InuitViewModel() : ViewModel() {
         smallAllClubList = client.getDivisionAllClubList("소모임")
     }
 
-    fun insertCategory(selectedCategory: String){
-        this.category = selectedCategory
-    }
-
     fun setDataWithCategory(){
         categoryAllClubList = client.getCategoryAllClubList(category)
         mainCategoryClubList = client.getCategoryDivisionClubList(category,"중앙동아리")
         tempCategoryClubList = client.getCategoryDivisionClubList(category,"가동아리")
         smallCategoryClubList = client.getCategoryDivisionClubList(category,"소모임")
-    }
-
-    fun isMain() : Boolean = onMain
-
-    fun activatedSelectedCategoryActivity(){
-        onMain = false
-    }
-
-    fun finishedSelectedCategoryActivity(){
-        onMain = true
     }
 }

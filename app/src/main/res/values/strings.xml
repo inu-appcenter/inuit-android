@@ -29,4 +29,12 @@
     <string name="religion_title">종교</string>
     <string name="etc_title">기타</string>
 
+    <string name="server_academic">학술</string>
+    <string name="server_culture">문화</string>
+    <string name="server_exercise">체육</string>
+    <string name="server_hobby_exhibition">취미전시</string>
+    <string name="server_service">봉사</string>
+    <string name="server_religion">종교</string>
+    <string name="server_etc">기타</string>
+
 </resources>

@@ -7,8 +7,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.activity.viewModels
 
-class SelectedCategoryActivity : AppCompatActivity() {
+class SelectedCategoryActivity : AppCompatActivity(){
+
+    private val viewModel by viewModels<InuitViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,12 +28,16 @@ class SelectedCategoryActivity : AppCompatActivity() {
         val btn_myprofile = findViewById<ImageButton>(R.id.imgBtn_myprofile)
         btn_myprofile.setOnClickListener(ProfileListener())
 
+        viewModel.category = intent.getStringExtra("SERVER_CATEGORY").toString()
+        viewModel.isSelectedCategoryActivity = true
+        viewModel.setDataWithCategory()
     }
 
     companion object {
-        fun newIntent(context: Context, selectedCategory:String): Intent {
+        fun newIntent(context: Context, selectedCategory:String, serverCategory: String): Intent {
             return Intent(context, SelectedCategoryActivity::class.java).apply {
                 putExtra("SELECTED_CATEGORY",selectedCategory)
+                putExtra("SERVER_CATEGORY",serverCategory)
             }
         }
     }
