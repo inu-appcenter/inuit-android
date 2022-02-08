@@ -37,13 +37,28 @@ class AllClubListFragment : Fragment() {
 
         adapter = MultiTypeAdapter()
         recycler_all_club_list.adapter = adapter
+        setData()
 
-        viewModel.allClubList.observe(
-            viewLifecycleOwner,
-            {
-                adapter.addListToItems(it)
-            }
-        )
         return view
+    }
+
+    private fun setData(){
+        if (viewModel.isMain()){ //홈 화면인 경우
+            viewModel.allClubList.observe(
+                viewLifecycleOwner,
+                {
+                    adapter.addListToItems(it)
+                }
+            )
+        }
+        else{ // 카테고리 선택한 경우
+            viewModel.setDataWithCategory()
+            viewModel.categoryAllClubList.observe(
+                viewLifecycleOwner,
+                {
+                    adapter.addListToItems(it)
+                }
+            )
+        }
     }
 }

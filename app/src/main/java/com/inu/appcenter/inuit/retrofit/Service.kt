@@ -12,4 +12,10 @@ interface Service {
     @GET("circles/division/{division}")
     fun getDivisionAllCircles(@Path("division") division : String) : Call<Circles>
 
+    @GET("circles/category/{category}")
+    fun getCategoryAllCircles(@Path("category") category : String) : Call<Circles>
+
+    @GET("circles/category/{category}/division/{division}")
+    fun getCategoryDivisionCircles(@Path("category") category : String, @Path("division") division: String) : Call<Circles>
+
 }

@@ -25,8 +25,8 @@ class ServiceCreator {
     fun getAllClubList(): LiveData<List<Circle>>{
 
         val liveList: MutableLiveData<List<Circle>> = MutableLiveData()
-
         val call = client.getAllCircles()
+
         call.enqueue(object: Callback<Circles> {
             override fun onFailure(call: Call<Circles>, t: Throwable) {
                 Log.e("error", "${t.message}")
@@ -52,8 +52,62 @@ class ServiceCreator {
     fun getDivisionAllClubList(division:String): LiveData<List<Circle>>{
 
         val liveList: MutableLiveData<List<Circle>> = MutableLiveData()
-
         val call = client.getDivisionAllCircles(division)
+
+        call.enqueue(object: Callback<Circles> {
+            override fun onFailure(call: Call<Circles>, t: Throwable) {
+                Log.e("error", "${t.message}")
+            }
+
+            override fun onResponse(
+                call: Call<Circles>,
+                response: Response<Circles>
+            ) {
+                if(response.isSuccessful){
+                    Log.d("응답 성공!", "onResponse is Successful!")
+                    val body = response.body()
+                    liveList.value = body?.data
+                }
+                else {
+                    Log.e("응답 실패", "response is not Successful")
+                }
+            }
+        })
+        return liveList
+    }
+
+    fun getCategoryAllClubList(category:String):LiveData<List<Circle>>{
+
+        val liveList: MutableLiveData<List<Circle>> = MutableLiveData()
+        val call = client.getCategoryAllCircles(category)
+
+        call.enqueue(object: Callback<Circles> {
+            override fun onFailure(call: Call<Circles>, t: Throwable) {
+                Log.e("error", "${t.message}")
+            }
+
+            override fun onResponse(
+                call: Call<Circles>,
+                response: Response<Circles>
+            ) {
+                if(response.isSuccessful){
+                    Log.d("응답 성공!", "onResponse is Successful!")
+                    val body = response.body()
+                    liveList.value = body?.data
+                }
+                else {
+                    Log.e("응답 실패", "response is not Successful")
+                }
+            }
+        })
+        return liveList
+    }
+
+    fun getCategoryDivisionClubList(category : String, division: String):LiveData<List<Circle>>{
+
+        val liveList: MutableLiveData<List<Circle>> = MutableLiveData()
+        val call = client.getCategoryDivisionCircles(category,division)
+
         call.enqueue(object: Callback<Circles> {
             override fun onFailure(call: Call<Circles>, t: Throwable) {
                 Log.e("error", "${t.message}")
