@@ -50,4 +50,10 @@
     <string name="password_check_hint">비밀번호 확인</string>
     <string name="signup_btn">회원가입</string>
 
+    <string name="msg_empty_nickname">닉네임을 입력해주세요.</string>
+    <string name="msg_wrong_email">올바르지 않은 이메일 주소입니다.</string>
+    <string name="msg_code_send">입력하신 이메일로 인증번호가 전송되었습니다.</string>
+    <string name="msg_wrong_code">인증번호가 일치하지 않습니다.</string>
+    <string name="msg_incorrect_password">비밀번호가 일치하지 않습니다.</string>
+
 </resources>

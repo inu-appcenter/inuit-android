@@ -28,7 +28,7 @@ class SignUpServiceCreator {
 
         call.enqueue(object: Callback<EmailResponse> {
             override fun onFailure(call: Call<EmailResponse>, t: Throwable) {
-                Log.e("error", "${t.message}")
+                Log.e("이메일 error", "${t.message}")
                 isSend = false
             }
 
@@ -37,11 +37,15 @@ class SignUpServiceCreator {
                 response: Response<EmailResponse>
             ) {
                 if(response.isSuccessful){
-                    Log.d("응답 성공!", "onResponse is Successful!")
-                    isSend = true
+                    Log.d("요청 성공!", "onResponse is Successful!")
+                    val body = response.body()
+                    if(body?.response == email){
+                        Log.d("이메일 인증번호 전송 성공!", "onResponse is Successful!")
+                        isSend = true
+                    }
                 }
                 else {
-                    Log.e("응답 실패", "response is not Successful")
+                    Log.e("이메일 인증번호 전송 실패", "response is not Successful")
                     isSend = false
                 }
             }
@@ -57,7 +61,7 @@ class SignUpServiceCreator {
 
         call.enqueue(object: Callback<EmailResponse> {
             override fun onFailure(call: Call<EmailResponse>, t: Throwable) {
-                Log.e("error", "${t.message}")
+                Log.e("인증번호 불일치 error", "${t.message}")
                 isVerified = false
             }
 
@@ -65,17 +69,20 @@ class SignUpServiceCreator {
                 call: Call<EmailResponse>,
                 response: Response<EmailResponse>
             ) {
+                Log.d("요청 성공!", "onResponse is Successful!")
                 if(response.isSuccessful){
-                    Log.d("응답 성공!", "onResponse is Successful!")
-                    isVerified = true
+                    val body = response.body()
+                    if(body?.response == code){
+                        Log.d("인증번호 일치! 이메일 인증 성공!", "onResponse is Successful!")
+                        isVerified = true
+                    }
                 }
                 else {
-                    Log.e("응답 실패", "response is not Successful")
+                    Log.e("이메일 인증 실패", "response is not Successful")
                     isVerified = false
                 }
             }
         })
         return isVerified
     }
-
 }
