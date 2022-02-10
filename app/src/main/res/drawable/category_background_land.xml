@@ -5,8 +5,9 @@
 
     <item android:drawable="@drawable/left_gradation"
         android:gravity="bottom|left"
-        android:top="270dp"
-        android:right="50dp"
+        android:top="450dp"
+        android:width="250dp"
+        android:height="250dp"
         />
 
 </layer-list>
