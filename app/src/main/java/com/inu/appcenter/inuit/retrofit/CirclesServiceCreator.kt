@@ -9,17 +9,17 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ServiceCreator {
+class CirclesServiceCreator {
 
     private val BASE_URL = "https://da86-125-180-55-163.ngrok.io/"
-    private val client : Service
+    private val client : CirclesService
 
     init {
         val retrofit:Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            client = retrofit.create(Service::class.java)
+            client = retrofit.create(CirclesService::class.java)
     }
 
     fun getAllClubList(): LiveData<List<Circle>>{

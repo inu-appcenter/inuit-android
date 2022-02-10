@@ -8,10 +8,11 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.viewModels
+import com.inu.appcenter.viewmodel.ClubListViewModel
 
 class SelectedCategoryActivity : AppCompatActivity(){
 
-    private val viewModel by viewModels<InuitViewModel>()
+    private val viewModel by viewModels<ClubListViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

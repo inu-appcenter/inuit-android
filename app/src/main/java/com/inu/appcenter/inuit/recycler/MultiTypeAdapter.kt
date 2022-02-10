@@ -1,26 +1,16 @@
 package com.inu.appcenter.inuit.recycler
 
-import android.content.Context
-import android.icu.text.CaseMap
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.item.ClubItem
 import com.inu.appcenter.inuit.recycler.item.Item
 import com.inu.appcenter.inuit.recycler.item.TitleItem
 import com.inu.appcenter.inuit.retrofit.Circle
-import com.inu.appcenter.inuit.retrofit.Circles
-import com.inu.appcenter.inuit.retrofit.ServiceCreator
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

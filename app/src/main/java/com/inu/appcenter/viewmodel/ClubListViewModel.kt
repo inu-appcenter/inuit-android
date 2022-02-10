@@ -1,15 +1,15 @@
-package com.inu.appcenter.inuit
+package com.inu.appcenter.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.inu.appcenter.inuit.retrofit.Circle
-import com.inu.appcenter.inuit.retrofit.ServiceCreator
+import com.inu.appcenter.inuit.retrofit.CirclesServiceCreator
 
-class InuitViewModel() : ViewModel() {
+class ClubListViewModel() : ViewModel() {
 
     var isSelectedCategoryActivity:Boolean = false
 
-    val client : ServiceCreator
+    val client : CirclesServiceCreator
 
     val allClubList : LiveData<List<Circle>>
     val mainAllClubList : LiveData<List<Circle>>
@@ -23,7 +23,7 @@ class InuitViewModel() : ViewModel() {
     lateinit var smallCategoryClubList : LiveData<List<Circle>>
 
     init {
-        client = ServiceCreator()
+        client = CirclesServiceCreator()
         allClubList = client.getAllClubList()
         mainAllClubList = client.getDivisionAllClubList("중앙동아리")
         tempAllClubList = client.getDivisionAllClubList("가동아리")
