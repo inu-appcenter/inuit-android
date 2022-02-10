@@ -37,4 +37,17 @@
     <string name="server_religion">종교</string>
     <string name="server_etc">기타</string>
 
+    <!-- sign up -->
+    <string name="top_title_signup">회원가입</string>
+    <string name="nickname">닉네임</string>
+    <string name="email">이메일</string>
+    <string name="email_hint_signup">이메일 (@inu.ac.kr)</string>
+    <string name="email_message_signup">인천대학교 포털 웹메일(@inu.ac.kr)만 사용 가능해요.</string>
+    <string name="send_certification_signup"><u>인증 메일 보내기</u>></string>
+    <string name="certification_hint_singup">인증 번호 입력</string>
+    <string name="password">비밀번호</string>
+    <string name="password_hint">비밀번호</string>
+    <string name="password_check_hint">비밀번호 확인</string>
+    <string name="signup_btn">회원가입</string>
+
 </resources>

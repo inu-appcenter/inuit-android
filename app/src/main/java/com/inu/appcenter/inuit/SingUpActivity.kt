@@ -5,24 +5,21 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
-import android.widget.TextView
 
-class LoginActivity : AppCompatActivity() {
-
+class SingUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_sing_up)
 
-        val tv_signup = findViewById<TextView>(R.id.tv_signup)
-        tv_signup.setOnClickListener {
-            val intent = SingUpActivity.newIntent(this@LoginActivity)
-            startActivity(intent)
+        val backButton = findViewById<ImageButton>(R.id.btn_back)
+        backButton.setOnClickListener {
+            finish()
         }
     }
 
     companion object {
         fun newIntent(context: Context): Intent {
-            return Intent(context, LoginActivity::class.java)
+            return Intent(context, SingUpActivity::class.java)
         }
     }
 }
