@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SingUpActivity">
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:backgroundTint="#00FFFFFF"
+        android:paddingRight="-10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back" />
+
+    <TextView
+        android:id="@+id/tv_top_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/spoqahansansneo"
+        android:paddingLeft="3dp"
+        android:text="@string/top_title_signup"
+        android:textColor="@color/font_color_black"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_back" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/view_round_coner_gray"
+        android:orientation="vertical"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_top_title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp">
+
+            <TextView
+                android:id="@+id/tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/nickname"
+                android:textColor="@color/font_color_black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/view_round_coner_white"
+                android:ems="13"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:hint="@string/nickname"
+                android:inputType="textPersonName"
+                android:paddingStart="12dp"
+                android:textColorHint="@color/font_color_gray"
+                android:textSize="15sp"
+                android:nextFocusDown="@id/et_singup_email"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_nickname"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_nickname"
+                app:layout_constraintTop_toTopOf="@+id/tv_nickname" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/email"
+                android:textColor="@color/font_color_black"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_singup_email"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/view_round_coner_white"
+                android:ems="10"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:hint="@string/email_hint_signup"
+                android:inputType="textEmailAddress"
+                android:paddingStart="12dp"
+                android:textColorHint="@color/font_color_gray"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_email_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:paddingBottom="5dp"
+            android:text="@string/email_message_signup"
+            android:textColor="@color/font_color_gray"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_email"
+            app:layout_constraintTop_toBottomOf="@+id/et_singup_email" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="10dp">
+
+            <TextView
+                android:id="@+id/tv_send_certification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/send_certification_signup"
+                android:textColor="@color/font_color_black"
+                android:textFontWeight="600"
+                app:layout_constraintStart_toStartOf="@+id/tv_email_msg"
+                app:layout_constraintTop_toBottomOf="@+id/tv_email_msg" />
+
+            <EditText
+                android:id="@+id/et_certification"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/view_round_coner_white"
+                android:ems="10"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:hint="@string/certification_hint_singup"
+                android:inputType="numberDecimal"
+                android:paddingStart="12dp"
+                android:textColorHint="@color/font_color_gray"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_send_certification" />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/et_password_signup"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/view_round_coner_white"
+            android:ems="20"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword"
+            android:paddingStart="12dp"
+            android:textColorHint="@color/font_color_gray"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_password_signup" />
+
+        <EditText
+            android:id="@+id/et_password_check"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/view_round_coner_white"
+            android:ems="20"
+            android:fontFamily="@font/spoqahansansneo_regular"
+            android:hint="@string/password_check_hint"
+            android:inputType="textPassword"
+            android:paddingStart="12dp"
+            android:textColorHint="@color/font_color_gray"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_password_signup" />
+
+
+        <Button
+            android:id="@+id/btn_singup"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center|right"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/button_blue_btn"
+            android:elevation="10dp"
+            android:fontFamily="@font/spoqahansansneo"
+            android:letterSpacing="0.00"
+            android:text="@string/signup_btn"
+            android:textColor="@color/font_color_white"
+            android:textSize="15sp"
+            app:backgroundTint="@color/brand_color_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
