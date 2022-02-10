@@ -26,7 +26,7 @@ class ClubListFrameFragment : Fragment() {
 
         val topViewTab = view.findViewById(R.id.tl_mainTopTap) as TabLayout
         val viewPager = view.findViewById(R.id.vp_mainViewPager) as ViewPager2
-        val pagerAdapter = PagerAdapter(parentFragmentManager,lifecycle)
+        val pagerAdapter = PagerAdapter(requireActivity())
         viewPager.adapter = pagerAdapter
 
         //뷰페이저 물결 애니메이션 제거
