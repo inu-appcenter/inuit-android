@@ -11,7 +11,9 @@ class SignUpViewModel : ViewModel(){
         client = SignUpServiceCreator()
     }
 
-    fun isCorrectEmail(email:String) = client.isEmailPosted(email)
+    fun postEmail(email:String) {
+        client.EmailPost(email)
+    }
 
     fun isVerifiedEmail(email: String, code:String) = client.isEmailVerified(email, code)
 

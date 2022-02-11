@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.activity.viewModels
@@ -23,6 +24,7 @@ class SingUpActivity : AppCompatActivity() {
     private lateinit var password : EditText
     private lateinit var passwordCheck : EditText
 
+    private val correct = "inu.ac.kr"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,12 +44,15 @@ class SingUpActivity : AppCompatActivity() {
         val sendCode = findViewById<TextView>(R.id.tv_send_certification)
         sendCode.setOnClickListener {
             outFocusEditText()
-            if (viewModel.isCorrectEmail(email.text.toString())) {
-                // 인증번호가 메일로 전송되었습니다.
-                showToastMsg(getString(R.string.msg_code_send))
-            }else{
+
+            if (!isCorrectEmail()) {
                 // 이메일이 올바른 형식이 아닙니다.
                 showToastMsg(getString(R.string.msg_wrong_email))
+
+            }else{
+                viewModel.postEmail(email.text.toString())
+                //입력하신 이메일로 인증번호가 전송되었습니다.
+                showToastMsg(getString(R.string.msg_code_send))
             }
         }
 
@@ -77,6 +82,13 @@ class SingUpActivity : AppCompatActivity() {
     fun outFocusEditText(){
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(email.windowToken, 0)
+    }
+
+    fun isCorrectEmail():Boolean{
+        var inputEmail = email.text.toString()
+        var divEmail = inputEmail.split("@")
+        Log.d("email","${divEmail[1]}")
+        return divEmail[1] == correct
     }
 
     fun showToastMsg(msg:String){
