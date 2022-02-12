@@ -6,8 +6,6 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import androidx.activity.viewModels
-import androidx.fragment.app.FragmentContainerView
-import com.inu.appcenter.inuit.fragment.ClubListFrameFragment
 import com.inu.appcenter.viewmodel.ClubListViewModel
 
 var login = false //임시, 추후에 로그인 정보는 뷰모델로 관리.

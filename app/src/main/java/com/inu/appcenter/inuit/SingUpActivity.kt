@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
@@ -79,6 +80,7 @@ class SingUpActivity : AppCompatActivity() {
     }
 
     private fun signUp(){
+
         if(isEmptyNickName()){
             showToastMsg(getString(R.string.msg_empty_nickname)) //닉네임을 입력해주세요.
             focusEditText(nickname)
@@ -96,12 +98,22 @@ class SingUpActivity : AppCompatActivity() {
             showToastMsg(getString(R.string.msg_incorrect_password)) //비밀번호가 일치하지 않습니다!
             focusEditText(passwordCheck)
         }else{
-            if (viewModel.isVerifiedEmail(email.text.toString(),certificationNum.text.toString())){
-                // 회원가입 성공, 닉네임, 이메일, 패스워드 데이터 전송
-            } else{
-                showToastMsg(getString(R.string.msg_wrong_code)) //인증번호가 일치하지 않습니다.
-                focusEditText(certificationNum)
-            }
+            viewModel.verifiedEmailResponse(email.text.toString(),certificationNum.text.toString())
+            viewModel.verifiedCode.observe(
+                this,
+                {
+                    if(it == certificationNum.text.toString()){
+                        // 회원가입 성공, 닉네임, 이메일, 패스워드 데이터 전송
+                        viewModel.postMember(email.text.toString(),nickname.text.toString(),password.text.toString())
+                        showToastMsg("회원가입 성공")
+                        finish()
+                    }
+                    else{
+                        showToastMsg(getString(R.string.msg_wrong_code)) //인증번호가 일치하지 않습니다.
+                        focusEditText(certificationNum)
+                    }
+                })
+            mCountDown.start()
         }
     }
 
@@ -116,5 +128,14 @@ class SingUpActivity : AppCompatActivity() {
         view.requestFocus()
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(view, 0)
+    }
+    
+    private val mCountDown: CountDownTimer = object : CountDownTimer(5250, 500) {
+        override fun onTick(millisUntilFinished: Long) {
+        }
+        override fun onFinish() {
+            showToastMsg(getString(R.string.msg_wrong_code)) //인증번호가 일치하지 않습니다.
+            focusEditText(certificationNum)
+        }
     }
 }

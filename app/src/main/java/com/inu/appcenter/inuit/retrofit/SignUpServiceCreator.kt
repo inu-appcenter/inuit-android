@@ -1,12 +1,13 @@
 package com.inu.appcenter.inuit.retrofit
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.properties.Delegates
 
 class SignUpServiceCreator {
 
@@ -49,16 +50,15 @@ class SignUpServiceCreator {
         })
     }
 
-    fun isEmailVerified(email: String, code:String) : Boolean{
+    fun isEmailVerified(email: String, code:String) : LiveData<String> {
 
-        var isVerified = false
+        val responseCode : MutableLiveData<String> = MutableLiveData()
         val body = VerifyCode(code)
         val call = client.postVerifyCode(body,email)
 
         call.enqueue(object: Callback<EmailResponse> {
             override fun onFailure(call: Call<EmailResponse>, t: Throwable) {
                 Log.e("인증번호 불일치 error", "${t.message}")
-                isVerified = false
             }
 
             override fun onResponse(
@@ -68,24 +68,24 @@ class SignUpServiceCreator {
                 Log.d("요청 성공!", "onResponse is Successful!")
                 if(response.isSuccessful){
                     val body = response.body()
-                    if(body?.response == code){
+                    if(body?.response == code) {
                         Log.d("인증번호 일치! 이메일 인증 성공!", "onResponse is Successful!")
-                        isVerified = true
+                        responseCode.value = body?.response
                     }
                 }
                 else {
-                    Log.e("이메일 인증 실패", "response is not Successful")
-                    isVerified = false
+                    Log.e("인증번호 불일치. 이메일 인증 실패", "response is not Successful")
                 }
             }
         })
-        return isVerified
+        return responseCode
     }
 
     fun postMember(email: String, nickName: String, password: String){
 
         val body = MemberBody(email,nickName,password)
         val call = client.postMember(body)
+        var id: Int? = null
 
         call.enqueue(object: Callback<MemberResponse>{
             override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
@@ -97,8 +97,10 @@ class SignUpServiceCreator {
                 response: Response<MemberResponse>
             ) {
                 if(response.isSuccessful){
+                    Log.d("회원정보 전송 성공!", "onResponse is Successful!")
                     val body = response.body()
-                        Log.d("회원정보 전송 성공!", "onResponse is Successful!")
+                    id = body?.id
+                    Log.d("회원 ID :", id.toString())
                 }
                 else {
                     Log.e("회원정보 전송 실패", "response is not Successful")

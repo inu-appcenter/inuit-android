@@ -14,11 +14,6 @@ class ClubListViewModel() : ViewModel() {
     lateinit var tempClubList : LiveData<List<Circle>>
     lateinit var smallClubList : LiveData<List<Circle>>
 
-//    lateinit var categoryAllClubList : LiveData<List<Circle>>
-//    lateinit var mainCategoryClubList : LiveData<List<Circle>>
-//    lateinit var tempCategoryClubList : LiveData<List<Circle>>
-//    lateinit var smallCategoryClubList : LiveData<List<Circle>>
-
     init {
         client = CirclesServiceCreator()
     }
