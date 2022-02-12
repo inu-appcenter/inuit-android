@@ -13,4 +13,7 @@ interface SignUpService {
     @POST("verifyCode/{email}")
     fun postVerifyCode(@Body jsonbody: VerifyCode, @Path("email") email: String) : Call<EmailResponse>
 
+    @POST("member")
+    fun postMember(@Body jsonbody: MemberBody) : Call<MemberResponse>
+
 }

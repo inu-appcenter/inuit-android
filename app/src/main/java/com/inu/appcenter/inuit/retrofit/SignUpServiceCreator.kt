@@ -21,7 +21,7 @@ class SignUpServiceCreator {
         client = retrofit.create(SignUpService::class.java)
     }
 
-    fun EmailPost(email:String){
+    fun postEmail(email:String){
 
         val body = Email(email)
         val call = client.postEmail(body)
@@ -80,5 +80,30 @@ class SignUpServiceCreator {
             }
         })
         return isVerified
+    }
+
+    fun postMember(email: String, nickName: String, password: String){
+
+        val body = MemberBody(email,nickName,password)
+        val call = client.postMember(body)
+
+        call.enqueue(object: Callback<MemberResponse>{
+            override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
+                Log.e("회원정보 전송 error", "${t.message}")
+            }
+
+            override fun onResponse(
+                call: Call<MemberResponse>,
+                response: Response<MemberResponse>
+            ) {
+                if(response.isSuccessful){
+                    val body = response.body()
+                        Log.d("회원정보 전송 성공!", "onResponse is Successful!")
+                }
+                else {
+                    Log.e("회원정보 전송 실패", "response is not Successful")
+                }
+            }
+        })
     }
 }

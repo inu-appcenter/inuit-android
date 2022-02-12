@@ -12,9 +12,10 @@ class SignUpViewModel : ViewModel(){
     }
 
     fun postEmail(email:String) {
-        client.EmailPost(email)
+        client.postEmail(email)
     }
 
     fun isVerifiedEmail(email: String, code:String) = client.isEmailVerified(email, code)
 
+    fun postMember(email: String, nickName: String, password: String) = client.postMember(email, nickName, password)
 }
