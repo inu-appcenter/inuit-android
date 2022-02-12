@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
@@ -29,9 +30,9 @@ class SelectedCategoryActivity : AppCompatActivity(){
         val btn_myprofile = findViewById<ImageButton>(R.id.imgBtn_myprofile)
         btn_myprofile.setOnClickListener(ProfileListener())
 
-        viewModel.category = intent.getStringExtra("SERVER_CATEGORY").toString()
-        viewModel.isSelectedCategoryActivity = true
-        viewModel.setDataWithCategory()
+        val category = intent.getStringExtra("SERVER_CATEGORY").toString()
+        viewModel.setDataWithCategory(category)
+        Log.d("SelectedActivity","viewModel.setDataWithCategory() 실행됨")
     }
 
     companion object {

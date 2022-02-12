@@ -36,20 +36,10 @@ class TempClubListFragment : Fragment() {
     }
 
     private fun setData(){
-        if (viewModel.isSelectedCategoryActivity){
-            viewModel.tempCategoryClubList.observe(
-                viewLifecycleOwner,
-                {
+        viewModel.tempClubList.observe(
+            viewLifecycleOwner,
+            {
                     adapter.addListToItems(it)
-                }
-            )
-        }else{
-            viewModel.tempAllClubList.observe(
-                viewLifecycleOwner,
-                {
-                    adapter.addListToItems(it)
-                }
-            )
-        }
+            })
     }
 }

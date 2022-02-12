@@ -5,23 +5,29 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageButton
+import androidx.activity.viewModels
 import androidx.fragment.app.FragmentContainerView
 import com.inu.appcenter.inuit.fragment.ClubListFrameFragment
+import com.inu.appcenter.viewmodel.ClubListViewModel
 
 var login = false //임시, 추후에 로그인 정보는 뷰모델로 관리.
 
 class MainActivity : AppCompatActivity() {
 
+    private val viewModel by viewModels<ClubListViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var btn_category : ImageButton = findViewById(R.id.imgBtn_category)
+        val btn_category : ImageButton = findViewById(R.id.imgBtn_category)
         btn_category.setOnClickListener(CategoryListener())
 
-        var btn_myprofile : ImageButton = findViewById(R.id.imgBtn_myprofile)
+        val btn_myprofile : ImageButton = findViewById(R.id.imgBtn_myprofile)
         btn_myprofile.setOnClickListener(ProfileListener())
 
+        viewModel.setDataNoCategory()
+        Log.d("MainActivity","viewModel.setDataNoCategory() 실행됨")
     }
 
     inner class CategoryListener : View.OnClickListener{

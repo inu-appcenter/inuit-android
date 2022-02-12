@@ -36,21 +36,10 @@ class AllClubListFragment : Fragment() {
     }
 
     private fun setData(){
-
-        if(viewModel.isSelectedCategoryActivity){
-            viewModel.categoryAllClubList.observe(
-                viewLifecycleOwner,
-                {
-                    adapter.addListToItems(it)
-                }
-            )
-        }else{
-            viewModel.allClubList.observe(
-                viewLifecycleOwner,
-                {
-                    adapter.addListToItems(it)
-                }
-            )
-        }
+        viewModel.allClubList.observe(
+            viewLifecycleOwner,
+            {
+                adapter.addListToItems(it)
+            })
     }
 }
