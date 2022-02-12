@@ -74,26 +74,33 @@ class SingUpActivity : AppCompatActivity() {
             showToastMsg(getString(R.string.msg_code_send)) //입력하신 이메일로 인증번호가 전송되었습니다.
         }else{
             showToastMsg(getString(R.string.msg_wrong_email)) // 올바르지 않은 이메일 주소입니다.
+            focusEditText(email)
         }
     }
 
     private fun signUp(){
         if(isEmptyNickName()){
             showToastMsg(getString(R.string.msg_empty_nickname)) //닉네임을 입력해주세요.
+            focusEditText(nickname)
         }else if(isEmptyEmail()){
             showToastMsg(getString(R.string.msg_empty_email)) //이메일을 입력해주세요.
+            focusEditText(email)
         }else if(!isCorrectEmail()){
             showToastMsg(getString(R.string.msg_wrong_email)) // 올바르지 않은 이메일 주소입니다.
+            focusEditText(email)
         }else if(isEmptyPassword()){
             showToastMsg(getString(R.string.msg_empty_password))
+            focusEditText(password)
         }
         else if(!isCorrectPassword()) {
             showToastMsg(getString(R.string.msg_incorrect_password)) //비밀번호가 일치하지 않습니다!
+            focusEditText(passwordCheck)
         }else{
             if (viewModel.isVerifiedEmail(email.text.toString(),certificationNum.text.toString())){
                 // 회원가입 성공, 닉네임, 이메일, 패스워드 데이터 전송
             } else{
                 showToastMsg(getString(R.string.msg_wrong_code)) //인증번호가 일치하지 않습니다.
+                focusEditText(certificationNum)
             }
         }
     }
@@ -103,5 +110,11 @@ class SingUpActivity : AppCompatActivity() {
     private fun outFocusEditText(){
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(email.windowToken, 0)
+    }
+
+    private fun focusEditText(view:EditText){
+        view.requestFocus()
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(view, 0)
     }
 }
