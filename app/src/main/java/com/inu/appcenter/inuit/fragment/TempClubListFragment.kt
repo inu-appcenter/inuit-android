@@ -30,9 +30,18 @@ class TempClubListFragment : Fragment() {
 
         adapter = MultiTypeAdapter()
         recycler_temp_club_list.adapter = adapter
-        setData()
+        //setData()
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.tempClubList.observe(
+            viewLifecycleOwner,
+            {
+                adapter.addListToItems(it)
+            })
     }
 
     private fun setData(){

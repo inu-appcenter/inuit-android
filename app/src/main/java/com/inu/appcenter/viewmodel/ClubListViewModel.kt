@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.inu.appcenter.inuit.retrofit.Circle
 import com.inu.appcenter.inuit.retrofit.CirclesServiceCreator
 
-class ClubListViewModel() : ViewModel() {
+class ClubListViewModel : ViewModel() {
 
     val client : CirclesServiceCreator
 

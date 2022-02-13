@@ -19,20 +19,20 @@ class SelectedCategoryActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_selected_category)
 
+        val category = intent.getStringExtra("SERVER_CATEGORY").toString()
+        viewModel.setDataWithCategory(category)
+        Log.d("SelectedActivity","viewModel.setDataWithCategory() 실행됨")
+
+        val tv_category = findViewById<TextView>(R.id.tv_top_title)
+        tv_category.text = intent.getStringExtra("SELECTED_CATEGORY")
+
         val backButton = findViewById<ImageButton>(R.id.btn_back)
         backButton.setOnClickListener {
             finish()
         }
 
-        val tv_category = findViewById<TextView>(R.id.tv_top_title)
-        tv_category.text = intent.getStringExtra("SELECTED_CATEGORY")
-
         val btn_myprofile = findViewById<ImageButton>(R.id.imgBtn_myprofile)
         btn_myprofile.setOnClickListener(ProfileListener())
-
-        val category = intent.getStringExtra("SERVER_CATEGORY").toString()
-        viewModel.setDataWithCategory(category)
-        Log.d("SelectedActivity","viewModel.setDataWithCategory() 실행됨")
     }
 
     companion object {

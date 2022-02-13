@@ -18,14 +18,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        viewModel.setDataNoCategory()
+        Log.d("MainActivity","viewModel.setDataNoCategory() 실행됨")
+
         val btn_category : ImageButton = findViewById(R.id.imgBtn_category)
         btn_category.setOnClickListener(CategoryListener())
 
         val btn_myprofile : ImageButton = findViewById(R.id.imgBtn_myprofile)
         btn_myprofile.setOnClickListener(ProfileListener())
-
-        viewModel.setDataNoCategory()
-        Log.d("MainActivity","viewModel.setDataNoCategory() 실행됨")
     }
 
     inner class CategoryListener : View.OnClickListener{

@@ -98,6 +98,7 @@ class SingUpActivity : AppCompatActivity() {
             showToastMsg(getString(R.string.msg_incorrect_password)) //비밀번호가 일치하지 않습니다!
             focusEditText(passwordCheck)
         }else{
+            mCountDown.start()
             viewModel.verifiedEmailResponse(email.text.toString(),certificationNum.text.toString())
             viewModel.verifiedCode.observe(
                 this,
@@ -106,14 +107,10 @@ class SingUpActivity : AppCompatActivity() {
                         // 회원가입 성공, 닉네임, 이메일, 패스워드 데이터 전송
                         viewModel.postMember(email.text.toString(),nickname.text.toString(),password.text.toString())
                         showToastMsg("회원가입 성공")
+                        mCountDown.cancel()
                         finish()
                     }
-                    else{
-                        showToastMsg(getString(R.string.msg_wrong_code)) //인증번호가 일치하지 않습니다.
-                        focusEditText(certificationNum)
-                    }
                 })
-            mCountDown.start()
         }
     }
 
@@ -129,7 +126,7 @@ class SingUpActivity : AppCompatActivity() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(view, 0)
     }
-    
+
     private val mCountDown: CountDownTimer = object : CountDownTimer(5250, 500) {
         override fun onTick(millisUntilFinished: Long) {
         }

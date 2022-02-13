@@ -100,7 +100,7 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun addItems(item: Item) {
         this.items.add(item)
-        this.notifyDataSetChanged()
+        //this.notifyDataSetChanged()
     }
 
     fun setSampleData() {
@@ -151,5 +151,6 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 if(!it.recruit) addItems(ClubItem(it.name,it.oneLineIntroduce,R.drawable.profile_sample))
             }
         }
+        notifyDataSetChanged()
     }
 }
