@@ -21,28 +21,32 @@ class MainActivity : AppCompatActivity() {
         viewModel.setDataNoCategory()
         Log.d("MainActivity","viewModel.setDataNoCategory() 실행됨")
 
-        val btn_category : ImageButton = findViewById(R.id.imgBtn_category)
-        btn_category.setOnClickListener(CategoryListener())
+        val categoryButton : ImageButton = findViewById(R.id.imgBtn_category)
+        categoryButton.setOnClickListener{
+            startCategoryActivity()
+        }
 
-        val btn_myprofile : ImageButton = findViewById(R.id.imgBtn_myprofile)
-        btn_myprofile.setOnClickListener(ProfileListener())
-    }
-
-    inner class CategoryListener : View.OnClickListener{
-        override fun onClick(view: View?) {
-            val intent = CategoryActivity.newIntent(this@MainActivity)
-            startActivity(intent)
+        val profileButton : ImageButton = findViewById(R.id.imgBtn_myprofile)
+        profileButton.setOnClickListener {
+            startProfileActivity()
         }
     }
 
-    inner class ProfileListener : View.OnClickListener{
-        override fun onClick(view: View?) {
-            if(!login){
-                val intent = LoginActivity.newIntent(this@MainActivity)
-                startActivity(intent)
-            }else{
-                //내 프로필 액티비티 실행.
-            }
+    private fun startCategoryActivity(){
+        val intent = CategoryActivity.newIntent(this@MainActivity)
+        startActivity(intent)
+    }
+
+    private fun startProfileActivity(){
+        if(!login){
+            startLoginActivity()
+        }else{
+            //내 프로필 액티비티 실행.
         }
+    }
+
+    private fun startLoginActivity(){
+        val intent = LoginActivity.newIntent(this@MainActivity)
+        startActivity(intent)
     }
 }

@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -31,8 +30,10 @@ class SelectedCategoryActivity : AppCompatActivity(){
             finish()
         }
 
-        val btn_myprofile = findViewById<ImageButton>(R.id.imgBtn_myprofile)
-        btn_myprofile.setOnClickListener(ProfileListener())
+        val profileButton = findViewById<ImageButton>(R.id.imgBtn_myprofile)
+        profileButton.setOnClickListener{
+            startProfileActivity()
+        }
     }
 
     companion object {
@@ -44,14 +45,16 @@ class SelectedCategoryActivity : AppCompatActivity(){
         }
     }
 
-    inner class ProfileListener : View.OnClickListener{
-        override fun onClick(view: View?) {
-            if(!login){
-                val intent = LoginActivity.newIntent(this@SelectedCategoryActivity)
-                startActivity(intent)
-            }else{
-                //내 프로필 액티비티 실행.
-            }
+    private fun startProfileActivity(){
+        if(!login){
+            startLoginActivity()
+        }else{
+            //내 프로필 액티비티 실행.
         }
+    }
+
+    private fun startLoginActivity() {
+        val intent = LoginActivity.newIntent(this@SelectedCategoryActivity)
+        startActivity(intent)
     }
 }
