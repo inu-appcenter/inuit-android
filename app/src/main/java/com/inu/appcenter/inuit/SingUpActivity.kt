@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.activity.viewModels
+import com.airbnb.lottie.LottieAnimationView
 import com.inu.appcenter.inuit.viewmodel.SignUpViewModel
 
 class SingUpActivity : AppCompatActivity() {
@@ -20,6 +22,7 @@ class SingUpActivity : AppCompatActivity() {
     private lateinit var certificationNum : EditText
     private lateinit var password : EditText
     private lateinit var passwordCheck : EditText
+    private lateinit var animation : LottieAnimationView
 
     private val correct = "inu.ac.kr"
 
@@ -32,6 +35,8 @@ class SingUpActivity : AppCompatActivity() {
         certificationNum = findViewById(R.id.et_certification)
         password = findViewById(R.id.et_password_signup)
         passwordCheck = findViewById(R.id.et_password_check)
+        animation = findViewById(R.id.loading_signup)
+        pauseLoading()
 
         val backButton = findViewById<ImageButton>(R.id.btn_back)
         backButton.setOnClickListener { finish() }
@@ -99,6 +104,7 @@ class SingUpActivity : AppCompatActivity() {
             focusEditText(passwordCheck)
         }else{
             mCountDown.start()
+            startLoading()
             viewModel.verifiedEmailResponse(email.text.toString(),certificationNum.text.toString())
             viewModel.verifiedCode.observe(
                 this,
@@ -127,10 +133,21 @@ class SingUpActivity : AppCompatActivity() {
         imm.showSoftInput(view, 0)
     }
 
+    private fun pauseLoading(){
+        animation.visibility = View.GONE
+        animation.pauseAnimation()
+    }
+
+    fun startLoading(){
+        animation.visibility = View.VISIBLE
+        animation.playAnimation()
+    }
+
     private val mCountDown: CountDownTimer = object : CountDownTimer(5250, 500) {
         override fun onTick(millisUntilFinished: Long) {
         }
         override fun onFinish() {
+            pauseLoading()
             showToastMsg(getString(R.string.msg_wrong_code)) //인증번호가 일치하지 않습니다.
             focusEditText(certificationNum)
         }
