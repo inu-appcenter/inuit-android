@@ -1,4 +1,4 @@
-package com.inu.appcenter.inuit.retrofit
+package com.inu.appcenter.inuit.retrofit.dto
 
 import com.google.gson.annotations.SerializedName
 

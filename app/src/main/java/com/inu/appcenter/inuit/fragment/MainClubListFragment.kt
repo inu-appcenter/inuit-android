@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.inu.appcenter.viewmodel.ClubListViewModel
+import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
 

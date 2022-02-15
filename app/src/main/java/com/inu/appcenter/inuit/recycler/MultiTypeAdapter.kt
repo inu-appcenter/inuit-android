@@ -10,7 +10,7 @@ import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.item.ClubItem
 import com.inu.appcenter.inuit.recycler.item.Item
 import com.inu.appcenter.inuit.recycler.item.TitleItem
-import com.inu.appcenter.inuit.retrofit.Circle
+import com.inu.appcenter.inuit.retrofit.dto.Circle
 
 class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

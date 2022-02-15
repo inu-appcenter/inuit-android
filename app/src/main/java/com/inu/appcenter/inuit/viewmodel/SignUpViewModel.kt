@@ -1,4 +1,4 @@
-package com.inu.appcenter.viewmodel
+package com.inu.appcenter.inuit.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

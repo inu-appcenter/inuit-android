@@ -8,7 +8,7 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.viewModels
-import com.inu.appcenter.viewmodel.ClubListViewModel
+import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
 
 class SelectedCategoryActivity : AppCompatActivity(){
 

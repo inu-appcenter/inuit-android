@@ -1,8 +1,9 @@
-package com.inu.appcenter.viewmodel
+package com.inu.appcenter.inuit.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.inu.appcenter.inuit.retrofit.Circle
+import com.inu.appcenter.inuit.retrofit.dto.Circle
 import com.inu.appcenter.inuit.retrofit.CirclesServiceCreator
 
 class ClubListViewModel : ViewModel() {

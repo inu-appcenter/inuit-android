@@ -9,7 +9,7 @@ import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.activity.viewModels
-import com.inu.appcenter.viewmodel.SignUpViewModel
+import com.inu.appcenter.inuit.viewmodel.SignUpViewModel
 
 class SingUpActivity : AppCompatActivity() {
 

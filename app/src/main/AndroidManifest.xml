@@ -14,6 +14,7 @@
         android:theme="@style/Theme.INUClub">
         <activity android:name=".SplashActivity"
             android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +23,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".SingUpActivity" />
-        <activity android:name=".SelectedCategoryActivity" />
-        <activity android:name=".CategoryActivity" />
+        <activity android:name=".SelectedCategoryActivity" android:screenOrientation="portrait" />
+        <activity android:name=".CategoryActivity" android:screenOrientation="portrait" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
         </activity>
     </application>
 

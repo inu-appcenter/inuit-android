@@ -3,10 +3,11 @@ package com.inu.appcenter.inuit
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageButton
 import androidx.activity.viewModels
-import com.inu.appcenter.viewmodel.ClubListViewModel
+import androidx.lifecycle.viewModelScope
+import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
+import kotlinx.coroutines.launch
 
 var login = false //임시, 추후에 로그인 정보는 뷰모델로 관리.
 
