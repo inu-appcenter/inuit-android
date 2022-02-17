@@ -50,7 +50,7 @@
     <string name="password_check_hint">비밀번호 확인</string>
     <string name="signup_btn">회원가입</string>
 
-    <!-- sign up msg -->
+    <!-- sign up notification -->
     <string name="msg_empty_nickname">닉네임을 입력해주세요.</string>
     <string name="msg_empty_email">이메일을 입력해주세요.</string>
     <string name="msg_wrong_email">올바르지 않은 이메일 주소입니다.</string>
@@ -58,5 +58,8 @@
     <string name="msg_wrong_code">인증번호가 일치하지 않습니다.</string>
     <string name="msg_empty_password">비밀번호를 입력해주세요.</string>
     <string name="msg_incorrect_password">비밀번호가 일치하지 않습니다.</string>
+
+    <!-- search -->
+    <string name="search_edittext_hint">검색어를 입력해주세요.</string>
 
 </resources>

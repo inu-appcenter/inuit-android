@@ -7,52 +7,6 @@
     android:orientation="vertical"
     tools:context=".fragment.ClubListFrameFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext_inner_shadow"
-            android:layout_marginVertical="5dp"
-            android:layout_marginHorizontal="20dp">
-
-                <!-- INPUT -->
-                <EditText
-                    android:id="@+id/et_search"
-                    android:layout_width="0dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@null"
-                    android:textColor="@color/font_color_black"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textSize="15sp"
-                    android:imeOptions="actionSearch"
-                    android:paddingHorizontal="3dp"
-                    android:cursorVisible="true"
-                    android:textCursorDrawable="@drawable/edittext_cursor"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/username_icon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <!-- ICON -->
-                <ImageView
-                    android:id="@+id/username_icon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:padding="8dp"
-                    android:layout_marginRight="3dp"
-                    android:src="@drawable/ic_search"
-                    android:tint="@color/line_color_black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tl_mainTopTap"
             android:layout_width="match_parent"
