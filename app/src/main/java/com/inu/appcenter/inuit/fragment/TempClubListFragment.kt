@@ -30,7 +30,6 @@ class TempClubListFragment : Fragment() {
 
         adapter = MultiTypeAdapter()
         recycler_temp_club_list.adapter = adapter
-        //setData()
 
         return view
     }
@@ -41,14 +40,6 @@ class TempClubListFragment : Fragment() {
             viewLifecycleOwner,
             {
                 adapter.addListToItems(it)
-            })
-    }
-
-    private fun setData(){
-        viewModel.tempClubList.observe(
-            viewLifecycleOwner,
-            {
-                    adapter.addListToItems(it)
             })
     }
 }

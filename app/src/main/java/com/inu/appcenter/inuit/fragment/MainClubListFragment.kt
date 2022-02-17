@@ -33,21 +33,12 @@ class MainClubListFragment : Fragment() {
 
         adapter = MultiTypeAdapter()
         recycler_main_club_list.adapter = adapter
-        //setData()
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.mainClubList.observe(
-            viewLifecycleOwner,
-            {
-                adapter.addListToItems(it)
-            })
-    }
-
-    private fun setData(){
         viewModel.mainClubList.observe(
             viewLifecycleOwner,
             {

@@ -61,5 +61,6 @@
 
     <!-- search -->
     <string name="search_edittext_hint">검색어를 입력해주세요.</string>
+    <string name="search_info_text">모든 동아리의 소개글을 검색해보세요</string>
 
 </resources>

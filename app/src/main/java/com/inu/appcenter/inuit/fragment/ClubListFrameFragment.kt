@@ -42,5 +42,4 @@ class ClubListFrameFragment : Fragment() {
 
         return view
     }
-
 }

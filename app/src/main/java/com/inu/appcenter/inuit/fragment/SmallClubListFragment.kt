@@ -30,21 +30,12 @@ class SmallClubListFragment : Fragment() {
 
         adapter = MultiTypeAdapter()
         recycler_small_club_list.adapter = adapter
-        //setData()
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.smallClubList.observe(
-            viewLifecycleOwner,
-            {
-                adapter.addListToItems(it)
-            })
-    }
-
-    private fun setData(){
         viewModel.smallClubList.observe(
             viewLifecycleOwner,
             {

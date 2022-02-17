@@ -3,8 +3,12 @@ package com.inu.appcenter.inuit
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import androidx.activity.viewModels
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.Group
 import androidx.lifecycle.viewModelScope
 import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
 import kotlinx.coroutines.launch
@@ -25,6 +29,11 @@ class MainActivity : AppCompatActivity() {
         val categoryButton : ImageButton = findViewById(R.id.imgBtn_category)
         categoryButton.setOnClickListener{
             startCategoryActivity()
+        }
+
+        val search : LinearLayout = findViewById(R.id.searchGroup)
+        search.setOnClickListener {
+            startSearchActivity()
         }
 
         val profileButton : ImageButton = findViewById(R.id.imgBtn_myprofile)
@@ -48,6 +57,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun startLoginActivity(){
         val intent = LoginActivity.newIntent(this@MainActivity)
+        startActivity(intent)
+    }
+
+    private fun startSearchActivity(){
+        val intent = SearchActivity.newIntent(this@MainActivity)
         startActivity(intent)
     }
 }
