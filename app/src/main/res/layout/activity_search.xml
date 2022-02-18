@@ -53,19 +53,20 @@
             android:textCursorDrawable="@drawable/edittext_cursor"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/username_icon"
+            app:layout_constraintEnd_toStartOf="@+id/iv_search"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!-- ICON -->
         <ImageView
-            android:id="@+id/username_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="3dp"
-            android:padding="8dp"
+            android:id="@+id/iv_search"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:padding="3dp"
             android:src="@drawable/ic_search"
             android:tint="@color/line_color_black"
+            android:background="?selectableItemBackgroundBorderless"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
