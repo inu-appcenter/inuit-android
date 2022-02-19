@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.INUClub">
-        <activity android:name=".SearchActivity" android:windowSoftInputMode="adjustPan|stateVisible"/>
+        <activity android:name=".MyProfileActivity"></activity>
+        <activity
+            android:name=".SearchActivity"
+            android:windowSoftInputMode="adjustPan|stateVisible" />
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -34,7 +37,7 @@
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
