@@ -84,7 +84,7 @@ class SignUpServiceCreator {
 
     fun postMember(email: String, nickName: String, password: String){
 
-        val body = MemberBody(email,nickName,password)
+        val body = MemberRegisterBody(email,nickName,password)
         val call = client.postMember(body)
         var id: Int? = null
 

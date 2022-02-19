@@ -63,4 +63,9 @@
     <string name="search_edittext_hint">검색어를 입력해주세요.</string>
     <string name="search_info_text">모든 동아리의 소개글을 검색해보세요</string>
 
+    <!-- profile -->
+    <String name="top_title_profile">내 프로필</String>
+    <string name="change_password">비밀번호 변경</string>
+    <String name="profile_my_clubs">내가 등록한 동아리</String>
+
 </resources>
