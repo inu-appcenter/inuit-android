@@ -3,13 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@drawable/bubble"
     android:layout_marginBottom="11dp"
     android:layout_marginHorizontal="18dp"
+    android:background="@drawable/view_clubitem_ripple"
+    android:padding="7dp"
     android:outlineProvider="paddedBounds"
-    android:padding="6dp"
-    android:elevation="8dp"
-    >
+    android:elevation="8dp">
   
     <ImageView
         android:id="@+id/iv_recycler_item_img"

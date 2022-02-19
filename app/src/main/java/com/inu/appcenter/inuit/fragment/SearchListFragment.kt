@@ -27,6 +27,7 @@ class SearchListFragment : Fragment() {
 
         adapter = MultiTypeAdapter()
         recycler_search_list.adapter = adapter
+        adapter.setSampleData()
 
         return view
     }
