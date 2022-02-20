@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.INUClub">
-        <activity android:name=".MyProfileActivity"></activity>
+        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".MyProfileActivity" />
         <activity
             android:name=".SearchActivity"
             android:windowSoftInputMode="adjustPan|stateVisible" />

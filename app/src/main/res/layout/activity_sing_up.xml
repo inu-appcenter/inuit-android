@@ -34,6 +34,7 @@
                 android:background="@drawable/view_round_coner_white"
                 android:ems="10"
                 android:fontFamily="@font/spoqahansansneo_regular"
+                android:maxLines="1"
                 android:hint="@string/email_hint_signup"
                 android:inputType="textEmailAddress"
                 android:paddingStart="12dp"
@@ -49,13 +50,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/spoqahansansneo_regular"
                 android:text="@string/email"
                 android:textColor="@color/font_color_black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_nickname" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_nickname_msg" />
 
             <TextView
                 android:id="@+id/tv_nickname"
@@ -79,15 +80,29 @@
                 android:background="@drawable/view_round_coner_white"
                 android:ems="10"
                 android:fontFamily="@font/spoqahansansneo_regular"
-                android:hint="@string/nickname"
+                android:hint="@string/nickname_hint"
                 android:inputType="textPersonName"
                 android:paddingStart="12dp"
                 android:textColorHint="@color/font_color_gray"
                 android:textSize="16sp"
+                android:maxLines="1"
+                android:maxLength="20"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_nickname"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_nickname"
                 app:layout_constraintTop_toTopOf="@+id/tv_nickname" />
+
+            <TextView
+                android:id="@+id/tv_nickname_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/nickname_info"
+                android:textColor="@color/font_color_gray"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_nickname"
+                app:layout_constraintTop_toBottomOf="@+id/et_nickname" />
 
             <TextView
                 android:id="@+id/tv_email_msg"
@@ -126,6 +141,7 @@
                 android:fontFamily="@font/spoqahansansneo_regular"
                 android:hint="@string/certification_hint_singup"
                 android:inputType="number"
+                android:maxLines="1"
                 android:paddingStart="12dp"
                 android:textColorHint="@color/font_color_gray"
                 android:textSize="16sp"
@@ -138,10 +154,12 @@
                 android:layout_width="0dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/view_round_coner_white"
                 android:ems="10"
+                android:maxLines="1"
+                android:maxLength="20"
                 android:fontFamily="@font/spoqahansansneo_regular"
                 android:hint="@string/password_hint"
                 android:inputType="textPassword"
@@ -149,7 +167,7 @@
                 android:textColorHint="@color/font_color_gray"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_password_signup" />
 
@@ -162,6 +180,8 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/view_round_coner_white"
                 android:ems="10"
+                android:maxLines="1"
+                android:maxLength="20"
                 android:fontFamily="@font/spoqahansansneo_regular"
                 android:hint="@string/password_check_hint"
                 android:inputType="textPassword"

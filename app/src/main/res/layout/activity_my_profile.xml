@@ -66,7 +66,7 @@
             android:fontFamily="@font/spoqahansansneo_regular"
             android:text="@string/nickname"
             android:textColor="@color/font_color_black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -92,7 +92,7 @@
             android:fontFamily="@font/spoqahansansneo_regular"
             android:text="@string/email"
             android:textColor="@color/font_color_black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_nickname_profile" />
 
@@ -100,7 +100,7 @@
             android:id="@+id/tv_user_nickname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/view_round_coner_white"
             android:padding="12dp"
@@ -115,7 +115,7 @@
             android:id="@+id/tv_user_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/view_round_coner_white"
             android:padding="12dp"
@@ -127,7 +127,7 @@
             app:layout_constraintTop_toTopOf="@+id/tv_email_profile" />
 
         <TextView
-            android:id="@+id/change_password"
+            android:id="@+id/change_my_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

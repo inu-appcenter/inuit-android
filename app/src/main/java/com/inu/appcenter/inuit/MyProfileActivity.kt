@@ -24,6 +24,12 @@ class MyProfileActivity : AppCompatActivity() {
             finish()
         }
 
+        val editMyProfile = findViewById<TextView>(R.id.change_my_profile)
+        editMyProfile.setOnClickListener {
+            val intent = EditProfileActivity.newIntent(this@MyProfileActivity)
+            startActivity(intent)
+        }
+
         val recycler_myclub_List = findViewById<RecyclerView>(R.id.recycler_myclub_list)
         recycler_myclub_List.layoutManager = LinearLayoutManager(this)
         val adapter = MyClubsAdapter()
