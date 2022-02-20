@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 
@@ -17,6 +18,14 @@ class LoginActivity : AppCompatActivity() {
         tv_signup.setOnClickListener {
             val intent = SingUpActivity.newIntent(this@LoginActivity)
             startActivity(intent)
+        }
+
+        val loginButton = findViewById<Button>(R.id.btn_login)
+        loginButton.setOnClickListener {
+            //로그인 성공시
+            val intent = MyProfileActivity.newIntent(this@LoginActivity)
+            startActivity(intent)
+            //실패시 -> 토스트 메세지 출력.
         }
     }
 

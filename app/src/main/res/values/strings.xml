@@ -65,7 +65,8 @@
 
     <!-- profile -->
     <string name="top_title_profile">내 프로필</string>
-    <string name="change_password">비밀번호 변경</string>
+    <string name="change_profile"><u>내 정보 수정하기</u>></string>
     <string name="profile_my_clubs">내가 등록한 동아리</string>
+    <string name="add_new_club"><u>새 동아리 등록하기</u>></string>
 
 </resources>

@@ -13,7 +13,7 @@
         android:textColor="@color/font_color_black"
         android:foreground="?attr/selectableItemBackground"
         android:fontFamily="@font/spoqahansansneo_regular"
-        android:textSize="14sp"
+        android:textSize="15sp"
         android:text="모집 중"/>
 
 </LinearLayout>

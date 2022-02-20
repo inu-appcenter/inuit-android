@@ -1,10 +1,6 @@
 package com.inu.appcenter.inuit.recycler
 
-import android.content.Context
-import android.graphics.PorterDuff
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -107,57 +103,57 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private const val TYPE_CLUB = 1
     }
 
-    fun addItems(item: Item) {
+    fun addItem(item: Item) {
         this.items.add(item)
         //this.notifyDataSetChanged()
     }
 
     fun setSampleData() {
-        addItems(TitleItem("모집 중"))
-        addItems(ClubItem(0,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.profile_sample))
-        addItems(ClubItem(1,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem(2,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(TitleItem("모집 마감"))
-        addItems(ClubItem(3,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem(4,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem(5,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem(6,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem(7,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem(8,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(TitleItem("모집 중"))
+        addItem(ClubItem(0,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.profile_sample))
+        addItem(ClubItem(1,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(2,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(TitleItem("모집 마감"))
+        addItem(ClubItem(3,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(4,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(5,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(6,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(7,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(8,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
     }
 
     fun addListToItems(list:List<Circle>?){
 
         items.clear()
         if(list?.size == 0) {
-            addItems(TitleItem("해당하는 동아리/소모임이 없습니다"))
+            addItem(TitleItem("해당하는 동아리/소모임이 없습니다"))
         }
         else {
 
             run loop@{
                 list?.forEach {
                     if(it.recruit) {
-                        addItems(TitleItem("모집 중"))
+                        addItem(TitleItem("모집 중"))
                         return@loop
                     }
                 }
             }
 
             list?.forEach {
-                if(it.recruit) addItems(ClubItem(it.id,it.name,it.oneLineIntroduce,R.drawable.profile_sample))
+                if(it.recruit) addItem(ClubItem(it.id,it.name,it.oneLineIntroduce,R.drawable.profile_sample))
             }
 
             run loop@{
                 list?.forEach {
                     if(!it.recruit) {
-                        addItems(TitleItem("모집 마감"))
+                        addItem(TitleItem("모집 마감"))
                         return@loop
                     }
                 }
             }
 
             list?.forEach {
-                if(!it.recruit) addItems(ClubItem(it.id, it.name,it.oneLineIntroduce,R.drawable.profile_sample))
+                if(!it.recruit) addItem(ClubItem(it.id, it.name,it.oneLineIntroduce,R.drawable.profile_sample))
             }
         }
         notifyDataSetChanged()
