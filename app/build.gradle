@@ -47,6 +47,7 @@ dependencies {
     implementation "com.airbnb.android:lottie:4.2.2"
     implementation 'com.github.esafirm:android-image-picker:3.0.0-beta1'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

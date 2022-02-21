@@ -4,18 +4,23 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.os.Environment
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.esafirm.imagepicker.features.ImagePickerConfig
+import com.esafirm.imagepicker.features.ImagePickerSavePath
+import com.esafirm.imagepicker.features.registerImagePicker
+import com.esafirm.imagepicker.model.Image
 import com.inu.appcenter.inuit.recycler.MyClubListAdapter
-import com.inu.appcenter.inuit.recycler.item.ClubItem
-import com.inu.appcenter.inuit.retrofit.dto.Circle
 
 class MyProfileActivity : AppCompatActivity() {
+
+    private lateinit var profileImage : ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_profile)
@@ -36,6 +41,29 @@ class MyProfileActivity : AppCompatActivity() {
         val adapter = MyClubListAdapter()
         recycler_myclub_List.adapter = adapter
         adapter.setSampleData()
+
+        //ImagePicker
+        val config = ImagePickerConfig{
+            savePath = ImagePickerSavePath("Camera")
+            savePath = ImagePickerSavePath(Environment.getExternalStorageDirectory().path, isRelative = false)
+            limit = 1
+        }
+
+        val launcher = registerImagePicker { result: List<Image> ->
+
+            result.forEach { image ->
+                println(image)
+                Glide.with(this)
+                    .load(image.uri)
+                    .centerCrop()
+                    .into(profileImage)
+            }
+        }
+
+        profileImage = findViewById(R.id.iv_profile)
+        profileImage.setOnClickListener {
+            launcher.launch(config)
+        }
     }
 
     companion object {
