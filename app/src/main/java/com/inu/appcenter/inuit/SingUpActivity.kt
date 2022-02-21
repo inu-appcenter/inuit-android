@@ -44,11 +44,13 @@ class SingUpActivity : AppCompatActivity() {
         val sendCertification = findViewById<TextView>(R.id.tv_send_certification)
         sendCertification.setOnClickListener {
             outFocusEditText() //키보드 내리기
-            sendCode()
+            sendCode() //이메일이 inu.ac.kr로 끝난다면 인증번호 전송
         }
 
         val signUpButton = findViewById<Button>(R.id.btn_singup)
-        signUpButton.setOnClickListener { signUp() }
+        signUpButton.setOnClickListener {
+            signUp()
+        }
     }
 
     companion object {
