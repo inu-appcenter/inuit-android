@@ -47,7 +47,8 @@ class SignUpServiceCreator {
                     }
                 }
                 else {
-                    Log.e("이메일 인증번호 전송 실패", "response is not Successful")
+                    Log.e("이메일 인증번호 전송 실패", "이미가입한 이메일")
+                    responseEmail.value = "registerer email"
                 }
             }
         })
@@ -79,6 +80,7 @@ class SignUpServiceCreator {
                 }
                 else {
                     Log.e("인증번호 불일치. 이메일 인증 실패", "response is not Successful")
+                    responseCode.value = "code is incorrect"
                 }
             }
         })

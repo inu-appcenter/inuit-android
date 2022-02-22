@@ -86,11 +86,14 @@ class SingUpActivity : AppCompatActivity() {
             viewModel.correctEmail.observe(
                 this,
                 {
+                    pauseLoading()
+                    emailCountDown.cancel()
                     if (it == email.text.toString()){
-                        showToastMsg(getString(R.string.msg_code_send))
                         focusEditText(certificationNum)
-                        emailCountDown.cancel()
-                        pauseLoading()
+                        showToastMsg(getString(R.string.msg_code_send))
+                    }else if(it == "registerer email"){
+                        showToastMsg(getString(R.string.msg_registered_email))
+                        focusEditText(email)
                     }
                 })
         }else{
@@ -128,12 +131,16 @@ class SingUpActivity : AppCompatActivity() {
             viewModel.verifiedCode.observe(
                 this,
                 {
+                    pauseLoading()
+                    singUpCountDown.cancel()
                     if(it == certificationNum.text.toString()){
                         // 회원가입 성공, 닉네임, 이메일, 패스워드 데이터 전송
                         viewModel.registerMember(email.text.toString(),nickname.text.toString(),password.text.toString())
                         showToastMsg("회원가입 성공")
-                        singUpCountDown.cancel()
                         finish()
+                    }else if(it == "code is incorrect"){
+                        showToastMsg(getString(R.string.msg_wrong_code))
+                        focusEditText(certificationNum)
                     }
                 })
         }
@@ -162,22 +169,18 @@ class SingUpActivity : AppCompatActivity() {
         animation.playAnimation()
     }
 
-    private val emailCountDown: CountDownTimer = object : CountDownTimer(7250, 500) {
-        override fun onTick(millisUntilFinished: Long) {
-        }
+    private val emailCountDown: CountDownTimer = object : CountDownTimer(9250, 500) {
+        override fun onTick(millisUntilFinished: Long) {}
         override fun onFinish() {
-            pauseLoading()
-            showToastMsg(getString(R.string.msg_registered_email))
+            showToastMsg(getString(R.string.msg_code_not_sended))
             focusEditText(email)
         }
     }
 
     private val singUpCountDown: CountDownTimer = object : CountDownTimer(5250, 500) {
-        override fun onTick(millisUntilFinished: Long) {
-        }
+        override fun onTick(millisUntilFinished: Long) {}
         override fun onFinish() {
-            pauseLoading()
-            showToastMsg(getString(R.string.msg_wrong_code)) //인증번호가 일치하지 않습니다.
+            showToastMsg(getString(R.string.msg_wrong_code))
             focusEditText(certificationNum)
         }
     }
