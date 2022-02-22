@@ -63,7 +63,7 @@ class SingUpActivity : AppCompatActivity() {
 
     private fun isEmptyEmail(): Boolean = email.text.isEmpty()
 
-    private fun isCorrectEmail(): Boolean{
+    private fun isCorrectEmail(): Boolean{ //형식상 일치하는지 판단.(inu.ac.kr로 끝나는지 확인)
         val inputEmail = email.text.toString()
         if(!inputEmail.contains('@')){ return false }
 
@@ -72,16 +72,29 @@ class SingUpActivity : AppCompatActivity() {
         return divEmail[1] == correct
     }
 
+    private fun isRegisteredEmail() : Boolean = viewModel.correctEmail == email.text
+
     private fun isEmptyPassword(): Boolean = password.text.isEmpty()
 
     private fun isCorrectPassword(): Boolean = password.text.toString() == passwordCheck.text.toString()
 
     private fun sendCode(){
         if (isCorrectEmail()) {
+            emailCountDown.start()
+            startLoading()
             viewModel.postEmail(email.text.toString())
-            showToastMsg(getString(R.string.msg_code_send)) //입력하신 이메일로 인증번호가 전송되었습니다.
+            viewModel.correctEmail.observe(
+                this,
+                {
+                    if (it == email.text.toString()){
+                        showToastMsg(getString(R.string.msg_code_send))
+                        focusEditText(certificationNum)
+                        emailCountDown.cancel()
+                        pauseLoading()
+                    }
+                })
         }else{
-            showToastMsg(getString(R.string.msg_wrong_email)) // 올바르지 않은 이메일 주소입니다.
+            showToastMsg(getString(R.string.msg_wrong_email))
             focusEditText(email)
         }
     }
@@ -104,8 +117,12 @@ class SingUpActivity : AppCompatActivity() {
         else if(!isCorrectPassword()) {
             showToastMsg(getString(R.string.msg_incorrect_password)) //비밀번호가 일치하지 않습니다!
             focusEditText(passwordCheck)
-        }else{
-            mCountDown.start()
+        }else if(isRegisteredEmail()){
+            showToastMsg(getString(R.string.msg_registered_email))
+            focusEditText(email)
+        }
+        else{
+            singUpCountDown.start()
             startLoading()
             viewModel.verifiedEmailResponse(email.text.toString(),certificationNum.text.toString())
             viewModel.verifiedCode.observe(
@@ -113,9 +130,9 @@ class SingUpActivity : AppCompatActivity() {
                 {
                     if(it == certificationNum.text.toString()){
                         // 회원가입 성공, 닉네임, 이메일, 패스워드 데이터 전송
-                        viewModel.postMember(email.text.toString(),nickname.text.toString(),password.text.toString())
+                        viewModel.registerMember(email.text.toString(),nickname.text.toString(),password.text.toString())
                         showToastMsg("회원가입 성공")
-                        mCountDown.cancel()
+                        singUpCountDown.cancel()
                         finish()
                     }
                 })
@@ -145,7 +162,17 @@ class SingUpActivity : AppCompatActivity() {
         animation.playAnimation()
     }
 
-    private val mCountDown: CountDownTimer = object : CountDownTimer(5250, 500) {
+    private val emailCountDown: CountDownTimer = object : CountDownTimer(7250, 500) {
+        override fun onTick(millisUntilFinished: Long) {
+        }
+        override fun onFinish() {
+            pauseLoading()
+            showToastMsg(getString(R.string.msg_registered_email))
+            focusEditText(email)
+        }
+    }
+
+    private val singUpCountDown: CountDownTimer = object : CountDownTimer(5250, 500) {
         override fun onTick(millisUntilFinished: Long) {
         }
         override fun onFinish() {

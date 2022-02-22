@@ -23,8 +23,9 @@ class SignUpServiceCreator {
         client = retrofit.create(SignUpService::class.java)
     }
 
-    fun postEmail(email:String){
+    fun postEmail(email:String) : LiveData<String>{
 
+        val responseEmail : MutableLiveData<String> = MutableLiveData()
         val body = Email(email)
         val call = client.postEmail(body)
 
@@ -42,6 +43,7 @@ class SignUpServiceCreator {
                     val body = response.body()
                     if(body?.response == email){
                         Log.d("이메일 인증번호 전송 성공!", "onResponse is Successful!")
+                        responseEmail.value = body?.response
                     }
                 }
                 else {
@@ -49,6 +51,7 @@ class SignUpServiceCreator {
                 }
             }
         })
+        return responseEmail
     }
 
     fun isEmailVerified(email: String, code:String) : LiveData<String> {
@@ -82,10 +85,10 @@ class SignUpServiceCreator {
         return responseCode
     }
 
-    fun postMember(email: String, nickName: String, password: String){
+    fun registerMember(email: String, nickName: String, password: String){
 
         val body = MemberRegisterBody(email,nickName,password)
-        val call = client.postMember(body)
+        val call = client.registerMember(body)
         var id: Int? = null
 
         call.enqueue(object: Callback<MemberResponse>{
