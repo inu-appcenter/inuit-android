@@ -29,4 +29,59 @@
     <string name="religion_title">종교</string>
     <string name="etc_title">기타</string>
 
+    <string name="server_academic">학술</string>
+    <string name="server_culture">문화</string>
+    <string name="server_exercise">체육</string>
+    <string name="server_hobby_exhibition">취미전시</string>
+    <string name="server_service">봉사</string>
+    <string name="server_religion">종교</string>
+    <string name="server_etc">기타</string>
+
+    <!-- sign up -->
+    <string name="top_title_signup">회원가입</string>
+    <string name="nickname">닉네임</string>
+    <string name="nickname_hint">닉네임 (최대 20자)</string>
+    <string name="nickname_info">동아리를 등록할 때 노출되는 닉네임이에요.</string>
+    <string name="email">이메일</string>
+    <string name="email_hint_signup">이메일 (@inu.ac.kr)</string>
+    <string name="email_message_signup">인천대학교 포털 웹메일(@inu.ac.kr)만 사용 가능해요.</string>
+    <string name="send_certification_signup"><u>인증 메일 보내기</u>></string>
+    <string name="certification_hint_singup">인증 번호 입력</string>
+    <string name="password">비밀번호</string>
+    <string name="password_hint">비밀번호 (최대 20자)</string>
+    <string name="password_check_hint">비밀번호 확인</string>
+    <string name="signup_btn">회원가입</string>
+
+    <!-- sign up notification -->
+    <string name="msg_empty_nickname">닉네임을 입력해주세요.</string>
+    <string name="msg_empty_email">이메일을 입력해주세요.</string>
+    <string name="msg_registered_email">이미 가입된 이메일입니다.</string>
+    <string name="msg_wrong_email">올바르지 않은 이메일 주소입니다.</string>
+    <string name="msg_code_send">입력하신 이메일로 인증번호가 전송되었습니다.</string>
+    <string name="msg_code_not_sended">인증번호를 전송하는 데 실패했습니다.</string>
+    <string name="msg_wrong_code">인증번호가 일치하지 않습니다.</string>
+    <string name="msg_empty_password">비밀번호를 입력해주세요.</string>
+    <string name="msg_incorrect_password">비밀번호가 일치하지 않습니다.</string>
+    <string name="msg_singup_fail">회원가입 실패. 인증번호가 일치하는지 다시 확인해주세요.</string>
+
+    <!-- search -->
+    <string name="search_edittext_hint">검색어를 입력해주세요.</string>
+    <string name="search_info_text">모든 동아리의 소개글을 검색해보세요</string>
+    <string name="search_no_result">검색 결과가 없습니다.</string>
+
+    <!-- profile -->
+    <string name="top_title_profile">내 프로필</string>
+    <string name="change_profile"><u>내 정보 수정하기</u>></string>
+    <string name="profile_my_clubs">내가 등록한 동아리</string>
+    <string name="add_new_club"><u>새 동아리 등록하기</u>></string>
+
+    <!-- edit profile -->
+    <string name="top_title_edit_profile">내 정보 수정하기</string>
+    <string name="edit_nickname_info">동아리를 등록할 때 노출되는 닉네임이에요. (최대 20자)</string>
+    <string name="new_password">새 비밀번호</string>
+    <string name="new_password_hint">새 비밀번호 (최대 20자)</string>
+    <string name="new_password_check_hint">새 비밀번호 확인</string>
+    <string name="sample_email_address">inuappcenter@inu.ac.kr</string>
+    <string name="sample_nickname">앱센터</string>
+
 </resources>

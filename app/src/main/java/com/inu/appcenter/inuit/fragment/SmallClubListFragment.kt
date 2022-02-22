@@ -5,13 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
 
 class SmallClubListFragment : Fragment() {
 
+    private val viewModel: ClubListViewModel by activityViewModels()
     private lateinit var recycler_small_club_list : RecyclerView
     private lateinit var adapter: MultiTypeAdapter
 
@@ -19,6 +22,7 @@ class SmallClubListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(R.layout.fragment_small_club_list, container, false)
 
         recycler_small_club_list = view.findViewById(R.id.recycler_small_club_list)
@@ -27,9 +31,15 @@ class SmallClubListFragment : Fragment() {
         adapter = MultiTypeAdapter()
         recycler_small_club_list.adapter = adapter
 
-        adapter.setSampleData()
-
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.smallClubList.observe(
+            viewLifecycleOwner,
+            {
+                adapter.addListToItems(it)
+            })
+    }
 }

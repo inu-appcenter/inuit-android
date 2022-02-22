@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfileActivity">
+
+    <ImageButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_cancel_x" />
+
+    <ImageButton
+        android:id="@+id/btn_edit_profile"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_check_blue" />
+
+    <TextView
+        android:id="@+id/tv_edit_profile_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/spoqahansansneo"
+        android:paddingLeft="3dp"
+        android:text="@string/top_title_edit_profile"
+        android:textColor="@color/font_color_black"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_email_editprofile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/spoqahansansneo_regular"
+        android:text="@string/email"
+        android:textColor="@color/font_color_black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_edit_profile_title" />
+
+    <TextView
+        android:id="@+id/tv_user_email_editprofile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:fontFamily="@font/spoqahansansneo_regular"
+        android:text="@string/sample_email_address"
+        android:textColor="@color/font_color_gray"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_email_editprofile"
+        app:layout_constraintStart_toEndOf="@+id/tv_email_editprofile"
+        app:layout_constraintTop_toTopOf="@+id/tv_email_editprofile" />
+
+    <TextView
+        android:id="@+id/tv_nickname_editprofile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/spoqahansansneo_regular"
+        android:text="@string/nickname"
+        android:textColor="@color/font_color_black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email_editprofile" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nickname_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/view_under_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nickname_editprofile">
+
+        <EditText
+            android:id="@+id/et_new_nickname"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_marginVertical="8dp"
+            android:background="@null"
+            android:cursorVisible="true"
+            android:ems="10"
+            android:hint="@string/sample_nickname"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:maxLength="20"
+            android:paddingHorizontal="3dp"
+            android:textColor="@color/font_color_black"
+            android:textCursorDrawable="@drawable/edittext_cursor"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_delete_edittext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_delete_edittext"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_delete_edittext" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_edit_nickname_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/spoqahansansneo_regular"
+        android:text="@string/edit_nickname_info"
+        android:textColor="@color/font_color_gray"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nickname_group" />
+
+    <TextView
+        android:id="@+id/tv_new_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/spoqahansansneo_regular"
+        android:text="@string/new_password"
+        android:textColor="@color/font_color_black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_edit_nickname_info" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/password_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/view_under_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_new_password">
+
+        <EditText
+            android:id="@+id/et_new_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@null"
+            android:cursorVisible="true"
+            android:ems="10"
+            android:hint="@string/new_password_hint"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:maxLength="20"
+            android:paddingHorizontal="3dp"
+            android:textColor="@color/font_color_black"
+            android:textCursorDrawable="@drawable/edittext_cursor"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/new_password_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/view_under_line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_group">
+
+        <EditText
+            android:id="@+id/et_new_password_check"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@null"
+            android:cursorVisible="true"
+            android:ems="10"
+            android:hint="@string/new_password_check_hint"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:maxLength="20"
+            android:paddingHorizontal="3dp"
+            android:textColor="@color/font_color_black"
+            android:textCursorDrawable="@drawable/edittext_cursor"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

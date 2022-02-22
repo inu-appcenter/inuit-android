@@ -5,15 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
+import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
 
 class AllClubListFragment : Fragment() {
 
+    private val viewModel: ClubListViewModel by activityViewModels()
     private lateinit var recycler_all_club_list : RecyclerView
     private lateinit var adapter: MultiTypeAdapter
+    private lateinit var animation : LottieAnimationView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +33,19 @@ class AllClubListFragment : Fragment() {
         adapter = MultiTypeAdapter()
         recycler_all_club_list.adapter = adapter
 
-        adapter.setSampleData()
-
+        animation = view.findViewById(R.id.loading_all_club_list)
+        animation.playAnimation()
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.allClubList.observe(
+            viewLifecycleOwner,
+            {
+                adapter.addListToItems(it)
+                animation.pauseAnimation()
+                animation.visibility = View.GONE
+            })
     }
 }

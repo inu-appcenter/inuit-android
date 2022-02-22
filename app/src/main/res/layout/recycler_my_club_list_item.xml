@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginBottom="2dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_recycler_my_club_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/font_color_black"
+        android:foreground="?attr/selectableItemBackground"
+        android:fontFamily="@font/spoqahansansneo_regular"
+        android:textSize="15sp"
+        android:text="모집 중"/>
+
+</LinearLayout>

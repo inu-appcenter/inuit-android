@@ -5,13 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
 
 class TempClubListFragment : Fragment() {
 
+    private val viewModel: ClubListViewModel by activityViewModels()
     private lateinit var recycler_temp_club_list : RecyclerView
     private lateinit var adapter: MultiTypeAdapter
 
@@ -28,9 +31,15 @@ class TempClubListFragment : Fragment() {
         adapter = MultiTypeAdapter()
         recycler_temp_club_list.adapter = adapter
 
-        adapter.setSampleData()
-
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.tempClubList.observe(
+            viewLifecycleOwner,
+            {
+                adapter.addListToItems(it)
+            })
+    }
 }

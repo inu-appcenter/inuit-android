@@ -8,12 +8,13 @@
 
     <ImageButton
         android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
+        android:background="?selectableItemBackgroundBorderless"
         android:backgroundTint="#00FFFFFF"
-        android:paddingRight="0dp"
+        android:paddingRight="-10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back" />
@@ -26,7 +27,7 @@
         android:paddingLeft="3dp"
         android:text="@string/top_title_category"
         android:textColor="@color/font_color_black"
-        android:textSize="25sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
         app:layout_constraintStart_toEndOf="@+id/btn_back"
         app:layout_constraintTop_toTopOf="@+id/btn_back" />
@@ -35,9 +36,11 @@
         android:id="@+id/imgBtn_myprofile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="?selectableItemBackgroundBorderless"
         android:backgroundTint="#00FFFFFF"
+        android:padding="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_myprofile" />
@@ -51,6 +54,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_back"
+        tools:layout="@layout/fragment_club_list_frame" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

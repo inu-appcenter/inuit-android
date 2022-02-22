@@ -2,9 +2,11 @@ package com.inu.appcenter.inuit.fragment
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class PagerAdapter(fa : FragmentActivity) : FragmentStateAdapter(fa){
+class PagerAdapter(fa : FragmentActivity) : FragmentStateAdapter(fa) {
 
     override fun getItemCount(): Int = 4
 

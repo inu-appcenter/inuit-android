@@ -1,17 +1,17 @@
 package com.inu.appcenter.inuit.recycler
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.graphics.drawable.toDrawable
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.item.ClubItem
 import com.inu.appcenter.inuit.recycler.item.Item
 import com.inu.appcenter.inuit.recycler.item.TitleItem
+import com.inu.appcenter.inuit.retrofit.dto.Circle
 
 class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -74,17 +74,19 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class ClubHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         //동아리 아이템에 있는 뷰들, 동아리 이름, 사진, 설명 등
+        var id : Int? = null
         private val iv_img = itemView.findViewById(R.id.iv_recycler_item_img) as ImageView
         private val tv_name = itemView.findViewById(R.id.tv_recycler_item_name) as TextView
         private val tv_desc = itemView.findViewById(R.id.tv_recycler_item_desc) as TextView
 
         fun bind(item: ClubItem){
+            id = item.id
             iv_img.setImageResource(item.ImageId)
-            // 이미지 모서리 둥글게 하기
-            //iv_img.background = R.drawable.view_round_coner.toDrawable()
-            //iv_img.clipToOutline = true
             tv_name.text = item.name
             tv_desc.text = item.description
+            itemView.setOnClickListener {
+                Toast.makeText(itemView.context,"Selected id = $id",Toast.LENGTH_SHORT).show()
+            }
         }
 
         companion object Factory{
@@ -94,7 +96,6 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 return ClubHolder(view)
             }
         }
-
     }
 
     companion object {
@@ -102,23 +103,59 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private const val TYPE_CLUB = 1
     }
 
-    fun addItems(item: Item) {
+    fun addItem(item: Item) {
         this.items.add(item)
-        this.notifyDataSetChanged()
+        //this.notifyDataSetChanged()
     }
 
     fun setSampleData() {
-        addItems(TitleItem("모집 중"))
-        addItems(ClubItem("인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.profile_sample))
-        addItems(ClubItem("인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem("퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(TitleItem("모집 마감"))
-        addItems(ClubItem("인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem("인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem("퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem("인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem("인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItems(ClubItem("퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(TitleItem("모집 중"))
+        addItem(ClubItem(0,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.profile_sample))
+        addItem(ClubItem(1,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(2,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(TitleItem("모집 마감"))
+        addItem(ClubItem(3,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(4,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(5,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(6,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(7,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+        addItem(ClubItem(8,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
     }
 
+    fun addListToItems(list:List<Circle>?){
+
+        items.clear()
+        if(list?.size == 0) {
+            addItem(TitleItem("해당하는 동아리/소모임이 없습니다"))
+        }
+        else {
+
+            run loop@{
+                list?.forEach {
+                    if(it.recruit) {
+                        addItem(TitleItem("모집 중"))
+                        return@loop
+                    }
+                }
+            }
+
+            list?.forEach {
+                if(it.recruit) addItem(ClubItem(it.id,it.name,it.oneLineIntroduce,R.drawable.profile_sample))
+            }
+
+            run loop@{
+                list?.forEach {
+                    if(!it.recruit) {
+                        addItem(TitleItem("모집 마감"))
+                        return@loop
+                    }
+                }
+            }
+
+            list?.forEach {
+                if(!it.recruit) addItem(ClubItem(it.id, it.name,it.oneLineIntroduce,R.drawable.profile_sample))
+            }
+        }
+        notifyDataSetChanged()
+    }
 }

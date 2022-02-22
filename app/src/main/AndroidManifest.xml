@@ -2,25 +2,45 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.inu.appcenter.inuit">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.INUClub">
-        <activity android:name=".SelectedCategoryActivity"></activity>
-        <activity android:name=".CategoryActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".imageviewer.SlideImageViewer"
+            android:theme="@style/SlideImageViewerTheme"/>
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".MyProfileActivity" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".SearchActivity"
+            android:windowSoftInputMode="adjustPan|stateVisible" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SingUpActivity" />
+        <activity
+            android:name=".SelectedCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

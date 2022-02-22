@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.INUClub" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -17,15 +17,26 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!-- TapLayout 설정 -->
+    <!-- TapLayout textSize -->
     <style name="tab_text" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">15sp</item>
     </style>
 
-    <!-- checkBox 설정 -->
+    <!-- checkBox(로그인 유지) -->
     <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
         <item name="colorAccent">@color/brand_color_sky_blue</item>
         <item name="android:textColorSecondary">@color/brand_color_sky_blue</item>
+    </style>
+
+    <!-- Splash(로딩화면) -->
+    <style name="SplashTheme" parent="Theme.INUClub">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <!-- SlideImageViewer -->
+    <style name="SlideImageViewerTheme" parent="Theme.INUClub">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
 </resources>

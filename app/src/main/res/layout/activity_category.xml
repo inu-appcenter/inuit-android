@@ -9,12 +9,13 @@
 
     <ImageButton
         android:id="@+id/btn_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
+        android:background="?selectableItemBackgroundBorderless"
         android:backgroundTint="#00FFFFFF"
-        android:paddingRight="0dp"
+        android:paddingRight="-10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back" />
@@ -24,10 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/spoqahansansneo"
+        android:paddingLeft="3dp"
         android:text="@string/top_title_category"
         android:textColor="@color/font_color_black"
-        android:textSize="25sp"
-        android:paddingLeft="3dp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
         app:layout_constraintStart_toEndOf="@+id/btn_back"
         app:layout_constraintTop_toTopOf="@+id/btn_back" />
@@ -94,7 +95,7 @@
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="13dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/view_round_coner"
             android:elevation="10dp"
             android:fontFamily="@font/spoqahansansneo_regular"
