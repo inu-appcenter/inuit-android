@@ -15,10 +15,12 @@ import com.esafirm.imagepicker.features.ImagePickerConfig
 import com.esafirm.imagepicker.features.ImagePickerSavePath
 import com.esafirm.imagepicker.features.registerImagePicker
 import com.esafirm.imagepicker.model.Image
+import com.inu.appcenter.inuit.imageviewer.SlideImageViewer
 import com.inu.appcenter.inuit.recycler.MyClubListAdapter
 
 class MyProfileActivity : AppCompatActivity() {
 
+    private val images = arrayListOf<Image>()
     private lateinit var profileImage : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +59,9 @@ class MyProfileActivity : AppCompatActivity() {
                     .load(image.uri)
                     .centerCrop()
                     .into(profileImage)
+                images.clear()
+                images.addAll(result)
+                SlideImageViewer.start(this,images)
             }
         }
 

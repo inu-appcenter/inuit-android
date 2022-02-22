@@ -4,7 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class Circle (
     @SerializedName("id") val id : Int,
-    @SerializedName("name") var name : String,
-    @SerializedName("oneLineIntroduce") var oneLineIntroduce : String,
-    @SerializedName("recruit") var recruit : Boolean,
-    @SerializedName("recruitEndDate") var recruitEndDate : String )
+    @SerializedName("name") val name : String,
+    @SerializedName("oneLineIntroduce") val oneLineIntroduce : String,
+    @SerializedName("recruit") val recruit : Boolean,
+    @SerializedName("recruitEndDate") val recruitEndDate : String,
+    @SerializedName("userId") val userId : Int)

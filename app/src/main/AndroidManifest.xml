@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.INUClub">
-        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".imageviewer.SlideImageViewer"
+            android:theme="@style/SlideImageViewerTheme"/>
+        <activity android:name=".EditProfileActivity" />
         <activity android:name=".MyProfileActivity" />
         <activity
             android:name=".SearchActivity"
