@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.viewModels
+import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
 
 class SelectedCategoryActivity : AppCompatActivity(){
@@ -46,15 +47,28 @@ class SelectedCategoryActivity : AppCompatActivity(){
     }
 
     private fun startProfileActivity(){
-        if(!login){
+
+        val autoLogin = App.prefs.autoLogin
+        val token = App.prefs.token
+
+        if(autoLogin == null || autoLogin == false){
             startLoginActivity()
         }else{
-            //내 프로필 액티비티 실행.
+            if(token != null){
+                startMyProfileActivity()
+            }else{
+                startLoginActivity()
+            }
         }
     }
 
     private fun startLoginActivity() {
         val intent = LoginActivity.newIntent(this@SelectedCategoryActivity)
+        startActivity(intent)
+    }
+
+    private fun startMyProfileActivity(){
+        val intent = MyProfileActivity.newIntent(this@SelectedCategoryActivity)
         startActivity(intent)
     }
 }

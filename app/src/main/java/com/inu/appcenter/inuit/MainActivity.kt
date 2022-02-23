@@ -6,9 +6,8 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
-
-var login = false //임시, 추후에 로그인 정보는 뷰모델로 관리.
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         val profileButton : ImageButton = findViewById(R.id.imgBtn_myprofile)
         profileButton.setOnClickListener {
-            startProfileActivity()
+            startActivityProperly()
         }
     }
 
@@ -42,12 +41,14 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun startProfileActivity(){
-        if(!login){
-            startLoginActivity()
-        }else{
-            //내 프로필 액티비티 실행.
-        }
+    private fun startSearchActivity(){
+        val intent = SearchActivity.newIntent(this@MainActivity)
+        startActivity(intent)
+    }
+
+    private fun startMyProfileActivity(){
+        val intent = MyProfileActivity.newIntent(this@MainActivity)
+        startActivity(intent)
     }
 
     private fun startLoginActivity(){
@@ -55,9 +56,18 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun startSearchActivity(){
-        val intent = SearchActivity.newIntent(this@MainActivity)
-        startActivity(intent)
-    }
+    private fun startActivityProperly(){
+        val autoLogin = App.prefs.autoLogin
+        val token = App.prefs.token
 
+        if(autoLogin == null || autoLogin == false){
+            startLoginActivity()
+        }else{
+            if(token != null){
+                startMyProfileActivity()
+            }else{
+                startLoginActivity()
+            }
+        }
+    }
 }
