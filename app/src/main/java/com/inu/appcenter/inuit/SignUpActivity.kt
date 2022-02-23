@@ -7,13 +7,12 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.activity.viewModels
 import com.airbnb.lottie.LottieAnimationView
 import com.inu.appcenter.inuit.viewmodel.SignUpViewModel
 
-class SingUpActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<SignUpViewModel>()
 
@@ -28,7 +27,7 @@ class SingUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sing_up)
+        setContentView(R.layout.activity_sign_up)
 
         nickname = findViewById(R.id.et_nickname)
         email = findViewById(R.id.et_singup_email)
@@ -43,7 +42,7 @@ class SingUpActivity : AppCompatActivity() {
 
         val sendCertification = findViewById<TextView>(R.id.tv_send_certification)
         sendCertification.setOnClickListener {
-            outFocusEditText() //키보드 내리기
+            Utility.outFocusEditText(this,email) //키보드 내리기
             sendCode() //이메일이 inu.ac.kr로 끝난다면 인증번호 전송
         }
 
@@ -55,7 +54,7 @@ class SingUpActivity : AppCompatActivity() {
 
     companion object {
         fun newIntent(context: Context): Intent {
-            return Intent(context, SingUpActivity::class.java)
+            return Intent(context, SignUpActivity::class.java)
         }
     }
 
@@ -79,7 +78,10 @@ class SingUpActivity : AppCompatActivity() {
     private fun isCorrectPassword(): Boolean = password.text.toString() == passwordCheck.text.toString()
 
     private fun sendCode(){
-        if (isCorrectEmail()) {
+        if (!Utility.istNetworkConnected(this)){
+            showToastMsg(getString(R.string.internet_not_connected))
+        }
+        else if (isCorrectEmail()) {
             emailCountDown.start()
             startLoading()
             viewModel.postEmail(email.text.toString())
@@ -89,40 +91,43 @@ class SingUpActivity : AppCompatActivity() {
                     pauseLoading()
                     emailCountDown.cancel()
                     if (it == email.text.toString()){
-                        focusEditText(certificationNum)
+                        Utility.focusEditText(this,certificationNum)
                         showToastMsg(getString(R.string.msg_code_send))
                     }else if(it == "registerer email"){
                         showToastMsg(getString(R.string.msg_registered_email))
-                        focusEditText(email)
+                        Utility.focusEditText(this,email)
                     }
                 })
         }else{
             showToastMsg(getString(R.string.msg_wrong_email))
-            focusEditText(email)
+            Utility.focusEditText(this,email)
         }
     }
 
     private fun signUp(){
 
-        if(isEmptyNickName()){
+        if(!Utility.istNetworkConnected(this)){
+            showToastMsg(getString(R.string.internet_not_connected))
+        }
+        else if(isEmptyNickName()){
             showToastMsg(getString(R.string.msg_empty_nickname)) //닉네임을 입력해주세요.
-            focusEditText(nickname)
+            Utility.focusEditText(this,nickname)
         }else if(isEmptyEmail()){
             showToastMsg(getString(R.string.msg_empty_email)) //이메일을 입력해주세요.
-            focusEditText(email)
+            Utility.focusEditText(this,email)
         }else if(!isCorrectEmail()){
             showToastMsg(getString(R.string.msg_wrong_email)) // 올바르지 않은 이메일 주소입니다.
-            focusEditText(email)
+            Utility.focusEditText(this,email)
         }else if(isEmptyPassword()){
             showToastMsg(getString(R.string.msg_empty_password))
-            focusEditText(password)
+            Utility.focusEditText(this,password)
         }
         else if(!isCorrectPassword()) {
             showToastMsg(getString(R.string.msg_incorrect_password)) //비밀번호가 일치하지 않습니다!
-            focusEditText(passwordCheck)
+            Utility.focusEditText(this,passwordCheck)
         }else if(isRegisteredEmail()){
             showToastMsg(getString(R.string.msg_registered_email))
-            focusEditText(email)
+            Utility.focusEditText(this,email)
         }
         else{
             singUpCountDown.start()
@@ -140,24 +145,13 @@ class SingUpActivity : AppCompatActivity() {
                         finish()
                     }else if(it == "code is incorrect"){
                         showToastMsg(getString(R.string.msg_wrong_code))
-                        focusEditText(certificationNum)
+                        Utility.focusEditText(this,certificationNum)
                     }
                 })
         }
     }
 
     fun showToastMsg(msg:String){ Toast.makeText(this,msg,Toast.LENGTH_SHORT).show() }
-
-    private fun outFocusEditText(){
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(email.windowToken, 0)
-    }
-
-    private fun focusEditText(view:EditText){
-        view.requestFocus()
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(view, 0)
-    }
 
     private fun pauseLoading(){
         animation.visibility = View.GONE
@@ -173,7 +167,7 @@ class SingUpActivity : AppCompatActivity() {
         override fun onTick(millisUntilFinished: Long) {}
         override fun onFinish() {
             showToastMsg(getString(R.string.msg_code_not_sended))
-            focusEditText(email)
+            Utility.focusEditText(this@SignUpActivity,email)
         }
     }
 
@@ -181,7 +175,7 @@ class SingUpActivity : AppCompatActivity() {
         override fun onTick(millisUntilFinished: Long) {}
         override fun onFinish() {
             showToastMsg(getString(R.string.msg_wrong_code))
-            focusEditText(certificationNum)
+            Utility.focusEditText(this@SignUpActivity,certificationNum)
         }
     }
 }

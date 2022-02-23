@@ -35,6 +35,7 @@ class AllClubListFragment : Fragment() {
 
         animation = view.findViewById(R.id.loading_all_club_list)
         animation.playAnimation()
+
         return view
     }
 
@@ -44,8 +45,8 @@ class AllClubListFragment : Fragment() {
             viewLifecycleOwner,
             {
                 adapter.addListToItems(it)
-                animation.pauseAnimation()
                 animation.visibility = View.GONE
+                animation.pauseAnimation()
             })
     }
 }

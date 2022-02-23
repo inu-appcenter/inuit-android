@@ -1,17 +1,12 @@
 package com.inu.appcenter.inuit
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.activity.viewModels
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.Group
-import androidx.lifecycle.viewModelScope
+import androidx.appcompat.app.AppCompatActivity
 import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
-import kotlinx.coroutines.launch
 
 var login = false //임시, 추후에 로그인 정보는 뷰모델로 관리.
 
@@ -64,4 +59,5 @@ class MainActivity : AppCompatActivity() {
         val intent = SearchActivity.newIntent(this@MainActivity)
         startActivity(intent)
     }
+
 }

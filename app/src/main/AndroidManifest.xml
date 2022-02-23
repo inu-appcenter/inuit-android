@@ -3,6 +3,7 @@
     package="com.inu.appcenter.inuit">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -30,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SingUpActivity" />
+        <activity android:name=".SignUpActivity" />
         <activity
             android:name=".SelectedCategoryActivity"
             android:screenOrientation="portrait" />

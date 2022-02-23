@@ -32,15 +32,15 @@ class SearchActivity : AppCompatActivity() {
         }
         searchButton = findViewById(R.id.iv_search)
         searchButton.setOnClickListener {
-            outFocusEditText(et_search)
+            Utility.outFocusEditText(this,et_search)
             search()
         }
 
         et_search = findViewById(R.id.et_search)
-        focusEditText(et_search)
+        Utility.focusEditText(this,et_search)
         et_search.setOnEditorActionListener { v, id, event ->
             if(id == EditorInfo.IME_ACTION_SEARCH){
-                outFocusEditText(et_search)
+                Utility.outFocusEditText(this,et_search)
                 search()
             }
             true
@@ -69,17 +69,6 @@ class SearchActivity : AppCompatActivity() {
                     setFragment(SearchListFragment())
                 }
             })
-    }
-
-    private fun focusEditText(view:EditText){
-        view.requestFocus()
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(view, 0)
-    }
-
-    private fun outFocusEditText(view:EditText){
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     private fun setFragment(fragment:Fragment){

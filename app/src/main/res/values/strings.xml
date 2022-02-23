@@ -8,6 +8,8 @@
     <string name="login_btn">로그인</string>
     <string name="sing_up">회원가입</string>
     <string name="keep_login">로그인 유지</string>
+    <string name="login_not_registered_email">가입되지 않은 이메일입니다.</string>
+    <string name="login_incorrect_password">잘못된 비밀번호입니다.</string>
 
     <!-- category -->
     <string name="top_title_category">카테고리</string>
@@ -83,5 +85,8 @@
     <string name="new_password_check_hint">새 비밀번호 확인</string>
     <string name="sample_email_address">inuappcenter@inu.ac.kr</string>
     <string name="sample_nickname">앱센터</string>
+
+    <!-- internet -->
+    <string name="internet_not_connected">인터넷 연결 상태를 확인해주세요.</string>
 
 </resources>
