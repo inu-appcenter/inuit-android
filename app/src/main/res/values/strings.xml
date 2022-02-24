@@ -6,6 +6,7 @@
     <string name="hint_email">이메일</string>
     <string name="hint_password">비밀번호</string>
     <string name="login_btn">로그인</string>
+    <string name="logout_btn"><u>로그아웃</u> ></string>
     <string name="sing_up">회원가입</string>
     <string name="keep_login">로그인 유지</string>
     <string name="login_not_registered_email">가입되지 않은 이메일입니다.</string>
@@ -73,9 +74,9 @@
 
     <!-- profile -->
     <string name="top_title_profile">내 프로필</string>
-    <string name="change_profile"><u>내 정보 수정하기</u>></string>
+    <string name="change_profile"><u>내 정보 수정하기</u> ></string>
     <string name="profile_my_clubs">내가 등록한 동아리</string>
-    <string name="add_new_club"><u>새 동아리 등록하기</u>></string>
+    <string name="add_new_club"><u>새 동아리 등록하기</u> ></string>
 
     <!-- edit profile -->
     <string name="top_title_edit_profile">내 정보 수정하기</string>

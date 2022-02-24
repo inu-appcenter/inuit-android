@@ -46,6 +46,14 @@ class MyProfileActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val logout = findViewById<TextView>(R.id.tv_btn_logout)
+        logout.setOnClickListener {
+            App.nowLogin = false
+            App.memberInfo = null
+            App.prefs.token = null
+            finish()
+        }
+
         val recycler_myclub_List = findViewById<RecyclerView>(R.id.recycler_myclub_list)
         recycler_myclub_List.layoutManager = LinearLayoutManager(this)
         val adapter = MyClubListAdapter()
