@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.inu.appcenter.inuit.retrofit.dto.Circle
 import com.inu.appcenter.inuit.retrofit.CirclesServiceCreator
+import com.inu.appcenter.inuit.retrofit.MemberServiceCreator
+import com.inu.appcenter.inuit.retrofit.dto.MemberInfo
 
 class ClubListViewModel : ViewModel() {
 
@@ -14,8 +16,12 @@ class ClubListViewModel : ViewModel() {
     lateinit var tempClubList : LiveData<List<Circle>>
     lateinit var smallClubList : LiveData<List<Circle>>
 
+    val memberClient : MemberServiceCreator
+    lateinit var memberInfo : LiveData<MemberInfo>
+
     init {
         client = CirclesServiceCreator()
+        memberClient = MemberServiceCreator()
     }
 
     fun setDataNoCategory(){
@@ -30,5 +36,9 @@ class ClubListViewModel : ViewModel() {
         mainClubList = client.getCategoryDivisionClubList(category,"중앙동아리")
         tempClubList = client.getCategoryDivisionClubList(category,"가동아리")
         smallClubList = client.getCategoryDivisionClubList(category,"소모임")
+    }
+
+    fun requestMemberInfo(token:String){
+        memberInfo = memberClient.requestMemberInfo(token)
     }
 }

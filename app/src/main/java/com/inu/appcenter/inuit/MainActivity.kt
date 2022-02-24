@@ -36,6 +36,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        if(App.nowLogin){ //로그인이 되어 있는데 멤버 정보가 없다면 멤버 정보 불러오기.
+            if(App.memberInfo == null){
+                viewModel.requestMemberInfo(App.prefs.token!!)
+                viewModel.memberInfo.observe(
+                    this,
+                    {
+                        App.memberInfo = it
+                    })
+            }
+        }
+    }
+
     private fun startCategoryActivity(){
         val intent = CategoryActivity.newIntent(this@MainActivity)
         startActivity(intent)
@@ -58,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun startActivityProperly(){
 
-        if(App.nowLogin){
+        if(App.nowLogin && (App.memberInfo != null)){
             startMyProfileActivity()
         }else{
             startLoginActivity()

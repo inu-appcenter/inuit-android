@@ -48,7 +48,7 @@ class SelectedCategoryActivity : AppCompatActivity(){
 
     private fun startActivityProperly(){
 
-        if(App.nowLogin){
+        if(App.nowLogin && (App.memberInfo != null)){
             startMyProfileActivity()
         }else{
             startLoginActivity()
