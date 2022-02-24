@@ -8,6 +8,8 @@ import android.os.Environment
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -23,6 +25,7 @@ class MyProfileActivity : AppCompatActivity() {
 
     private val images = arrayListOf<Image>()
     private lateinit var profileImage : ImageView
+    private lateinit var editResult : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +42,15 @@ class MyProfileActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             finish()
         }
-
+        editResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            if(it.resultCode == RESULT_OK){
+                finish()
+            }
+        }
         val editMyProfile = findViewById<TextView>(R.id.change_my_profile)
         editMyProfile.setOnClickListener {
             val intent = EditProfileActivity.newIntent(this@MyProfileActivity)
-            startActivity(intent)
+            editResult.launch(intent)
         }
 
         val logout = findViewById<TextView>(R.id.tv_btn_logout)
@@ -58,7 +65,9 @@ class MyProfileActivity : AppCompatActivity() {
         recycler_myclub_List.layoutManager = LinearLayoutManager(this)
         val adapter = MyClubListAdapter()
         recycler_myclub_List.adapter = adapter
-        adapter.addMyClub(memberInfo?.circleId!!,memberInfo?.circleName!!)
+        if(memberInfo?.circleId != null && memberInfo?.circleName!= null){
+            adapter.addMyClub(memberInfo.circleId,memberInfo.circleName)
+        }
 
         //ImagePicker
         val config = ImagePickerConfig{
