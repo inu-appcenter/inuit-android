@@ -57,17 +57,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startActivityProperly(){
-        val autoLogin = App.prefs.autoLogin
-        val token = App.prefs.token
 
-        if(autoLogin == null || autoLogin == false){
-            startLoginActivity()
+        if(App.nowLogin){
+            startMyProfileActivity()
         }else{
-            if(token != null){
-                startMyProfileActivity()
-            }else{
-                startLoginActivity()
-            }
+            startLoginActivity()
         }
     }
 }

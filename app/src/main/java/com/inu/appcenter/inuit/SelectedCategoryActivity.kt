@@ -33,7 +33,7 @@ class SelectedCategoryActivity : AppCompatActivity(){
 
         val profileButton = findViewById<ImageButton>(R.id.imgBtn_myprofile)
         profileButton.setOnClickListener{
-            startProfileActivity()
+            startActivityProperly()
         }
     }
 
@@ -46,19 +46,12 @@ class SelectedCategoryActivity : AppCompatActivity(){
         }
     }
 
-    private fun startProfileActivity(){
+    private fun startActivityProperly(){
 
-        val autoLogin = App.prefs.autoLogin
-        val token = App.prefs.token
-
-        if(autoLogin == null || autoLogin == false){
-            startLoginActivity()
+        if(App.nowLogin){
+            startMyProfileActivity()
         }else{
-            if(token != null){
-                startMyProfileActivity()
-            }else{
-                startLoginActivity()
-            }
+            startLoginActivity()
         }
     }
 
