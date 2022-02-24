@@ -16,6 +16,7 @@ import com.esafirm.imagepicker.features.ImagePickerSavePath
 import com.esafirm.imagepicker.features.registerImagePicker
 import com.esafirm.imagepicker.model.Image
 import com.inu.appcenter.inuit.imageviewer.SlideImageViewer
+import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.recycler.MyClubListAdapter
 
 class MyProfileActivity : AppCompatActivity() {
@@ -26,6 +27,13 @@ class MyProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_profile)
+
+        val memberInfo = App.memberInfo
+
+        val userNickName = findViewById<TextView>(R.id.tv_user_nickname)
+        val userEmail = findViewById<TextView>(R.id.tv_user_email)
+        userNickName.text = memberInfo?.nickname
+        userEmail.text = memberInfo?.email
 
         val backButton = findViewById<ImageButton>(R.id.btn_back)
         backButton.setOnClickListener {
@@ -42,7 +50,7 @@ class MyProfileActivity : AppCompatActivity() {
         recycler_myclub_List.layoutManager = LinearLayoutManager(this)
         val adapter = MyClubListAdapter()
         recycler_myclub_List.adapter = adapter
-        adapter.setSampleData()
+        adapter.addMyClub(memberInfo?.circleId!!,memberInfo?.circleName!!)
 
         //ImagePicker
         val config = ImagePickerConfig{

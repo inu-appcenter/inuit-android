@@ -41,11 +41,9 @@ class MyClubListAdapter() : RecyclerView.Adapter<MyClubListAdapter.MyClubViewHol
         this.items.add(item)
     }
 
-    fun addListToItems(list:List<Circle>?){ //List<Circle>은 뷰모델로부터 받는다.
+    fun addMyClub(clubId:Int, clubName:String ){ //List<Circle>은 뷰모델로부터 받는다.
         items.clear()
-        list?.forEach {
-            addItem(ClubItem(it.id,it.name))
-        }
+        addItem(ClubItem(clubId,clubName))
         notifyDataSetChanged()
     }
 
