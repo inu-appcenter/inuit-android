@@ -103,7 +103,6 @@
             android:background="@null"
             android:cursorVisible="true"
             android:ems="10"
-            android:hint="@string/sample_nickname"
             android:inputType="textPersonName"
             android:maxLines="1"
             android:maxLength="20"
