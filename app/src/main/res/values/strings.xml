@@ -86,6 +86,7 @@
     <string name="new_password_check_hint">새 비밀번호 확인</string>
     <string name="sample_email_address">inuappcenter@inu.ac.kr</string>
     <string name="sample_nickname">앱센터</string>
+    <string name="delete_profile">계정 삭제하기</string>
 
     <!-- internet -->
     <string name="internet_not_connected">인터넷 연결 상태를 확인해주세요.</string>

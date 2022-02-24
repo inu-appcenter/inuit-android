@@ -20,6 +20,7 @@ class EditProfileActivity : AppCompatActivity() {
     lateinit var newPassword : EditText
     lateinit var newPasswordCheck : EditText
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
@@ -48,6 +49,23 @@ class EditProfileActivity : AppCompatActivity() {
         checkButton.setOnClickListener {
             viewModel.requestEditMyProfile(App.prefs.token!!,newNickname.text.toString(),newPassword.text.toString())
             viewModel.responseId.observe(
+                this,
+                {
+                    if(memberInfo?.id == it){ //회원정보 수정 성공
+                        App.nowLogin = false
+                        App.memberInfo = null
+                        App.prefs.token = null
+                        setResult(RESULT_OK)
+                        finish()
+                    }
+                }
+            )
+        }
+
+        val deleteMyProfile  = findViewById<TextView>(R.id.tv_delete_profile)
+        deleteMyProfile.setOnClickListener {
+            viewModel.requestDeleteMyProfile(App.prefs.token!!)
+            viewModel.deletedId.observe(
                 this,
                 {
                     if(memberInfo?.id == it){ //회원정보 수정 성공

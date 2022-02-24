@@ -45,7 +45,7 @@ class MemberPatchServiceCreator {
 
                     val body = response.body()
                     responseId.value = body?.id
-                    Log.d("수정 id :", "${responseId.value}")
+                    Log.d("수정된 id :", "${responseId.value}")
                 }
                 else {
                     Log.e("응답 실패", "response is not Successful")
@@ -54,4 +54,32 @@ class MemberPatchServiceCreator {
         })
         return responseId
     }
+
+    fun deleteMemberInfo(token: String) : LiveData<Int> {
+            val responseId = MutableLiveData<Int>()
+            val call = client.deleteMemberInfo(token)
+
+            call.enqueue(object: Callback<MemberResponse> {
+                override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
+                    Log.e("error", "${t.message}")
+                }
+
+                override fun onResponse(
+                    call: Call<MemberResponse>,
+                    response: Response<MemberResponse>
+                ) {
+                    if(response.isSuccessful){
+                        Log.d("Member DELETE 응답 성공!", "onResponse is Successful!")
+
+                        val body = response.body()
+                        responseId.value = body?.id
+                        Log.d("삭제된 id :", "${responseId.value}")
+                    }
+                    else {
+                        Log.e("응답 실패", "response is not Successful")
+                    }
+                }
+            })
+            return responseId
+        }
 }
