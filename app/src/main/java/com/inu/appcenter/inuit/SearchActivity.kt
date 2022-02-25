@@ -9,8 +9,10 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import com.airbnb.lottie.LottieAnimationView
 import com.inu.appcenter.inuit.fragment.SearchInfoFragment
 import com.inu.appcenter.inuit.fragment.SearchListFragment
 import com.inu.appcenter.inuit.viewmodel.SearchViewModel
@@ -32,16 +34,20 @@ class SearchActivity : AppCompatActivity() {
         }
         searchButton = findViewById(R.id.iv_search)
         searchButton.setOnClickListener {
-            Utility.outFocusEditText(this,et_search)
-            search()
+            if(et_search.text.isNotEmpty()){
+                Utility.outFocusEditText(this,et_search)
+                search()
+            }
         }
 
         et_search = findViewById(R.id.et_search)
         Utility.focusEditText(this,et_search)
         et_search.setOnEditorActionListener { v, id, event ->
             if(id == EditorInfo.IME_ACTION_SEARCH){
-                Utility.outFocusEditText(this,et_search)
-                search()
+                if(et_search.text.isNotEmpty()){
+                    Utility.outFocusEditText(this,et_search)
+                    search()
+                }
             }
             true
         }
@@ -57,16 +63,13 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun search(){
+        setFragment(SearchListFragment())
         val keyword = et_search.text.toString()
         viewModel.search(keyword) //뷰모델의 검색 메서드 실행.
         viewModel.searchResultClubList.observe(this,
             {
-                if(it.isEmpty()){
-                    //아무것도 검색되지 않았을 때는 프래그먼트 교체하지 않고 SearchInfoFragment 내부에서 안내 메세지 변경. -> how?
+                if(it.isEmpty()) {
                     setFragment(SearchInfoFragment(getString(R.string.search_no_result)))
-                }else{
-                    //SearchListFragment로 변경.
-                    setFragment(SearchListFragment())
                 }
             })
     }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.SearchListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -12,5 +13,14 @@
         android:background="@color/line_color_white_gray"
         tools:listitem="@layout/recycler_club_item"
         android:overScrollMode="never"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading_search_list"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        app:lottie_loop="true"
+        app:lottie_speed="1.5"
+        app:lottie_fileName="grayloading.json"/>
 
 </FrameLayout>
