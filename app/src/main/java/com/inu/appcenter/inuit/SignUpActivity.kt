@@ -35,7 +35,8 @@ class SignUpActivity : AppCompatActivity() {
         password = findViewById(R.id.et_password_signup)
         passwordCheck = findViewById(R.id.et_password_check)
         animation = findViewById(R.id.loading_signup)
-        pauseLoading()
+
+        Utility.pauseLoading(animation)
 
         val backButton = findViewById<ImageButton>(R.id.btn_back)
         backButton.setOnClickListener { finish() }
@@ -83,12 +84,12 @@ class SignUpActivity : AppCompatActivity() {
         }
         else if (isCorrectEmail()) {
             emailCountDown.start()
-            startLoading()
+            Utility.startLoading(animation)
             viewModel.postEmail(email.text.toString())
             viewModel.correctEmail.observe(
                 this,
                 {
-                    pauseLoading()
+                    Utility.pauseLoading(animation)
                     emailCountDown.cancel()
                     if (it == email.text.toString()){
                         Utility.focusEditText(this,certificationNum)
@@ -131,12 +132,12 @@ class SignUpActivity : AppCompatActivity() {
         }
         else{
             singUpCountDown.start()
-            startLoading()
+            Utility.startLoading(animation)
             viewModel.verifiedEmailResponse(email.text.toString(),certificationNum.text.toString())
             viewModel.verifiedCode.observe(
                 this,
                 {
-                    pauseLoading()
+                    Utility.pauseLoading(animation)
                     singUpCountDown.cancel()
                     if(it == certificationNum.text.toString()){
                         // 회원가입 성공, 닉네임, 이메일, 패스워드 데이터 전송
@@ -152,16 +153,6 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     fun showToastMsg(msg:String){ Toast.makeText(this,msg,Toast.LENGTH_SHORT).show() }
-
-    private fun pauseLoading(){
-        animation.visibility = View.GONE
-        animation.pauseAnimation()
-    }
-
-    fun startLoading(){
-        animation.visibility = View.VISIBLE
-        animation.playAnimation()
-    }
 
     private val emailCountDown: CountDownTimer = object : CountDownTimer(9250, 500) {
         override fun onTick(millisUntilFinished: Long) {}

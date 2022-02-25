@@ -3,8 +3,10 @@ package com.inu.appcenter.inuit
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import com.airbnb.lottie.LottieAnimationView
 
 object Utility {
 
@@ -25,5 +27,15 @@ object Utility {
     fun outFocusEditText(context: Context,view: EditText){
         val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    fun startLoading(animation:LottieAnimationView){
+        animation.visibility = View.VISIBLE
+        animation.playAnimation()
+    }
+
+    fun pauseLoading(animation: LottieAnimationView){
+        animation.visibility = View.GONE
+        animation.pauseAnimation()
     }
 }

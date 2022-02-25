@@ -11,7 +11,9 @@
     <string name="keep_login">로그인 유지</string>
     <string name="login_not_registered_email">이메일 주소를 다시 확인해주세요.</string>
     <string name="login_incorrect_password">비밀번호를 다시 확인해주세요.</string>
-    <string name="login_server_error">네트워크 연결이 원활하지 않습니다</string>
+    <string name="login_server_error">네트워크 연결이 원활하지 않습니다.</string>
+    <string name="login_empty_email">이메일을 입력해주세요.</string>
+    <string name="login_empty_password">비밀번호를 입력해주세요.</string>
 
     <!-- category -->
     <string name="top_title_category">카테고리</string>
