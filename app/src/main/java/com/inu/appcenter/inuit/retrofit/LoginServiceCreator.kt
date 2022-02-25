@@ -62,12 +62,23 @@ class LoginServiceCreator {
                         val convertedBody = serverErrorConverter.convert(errorBody) */
                         val convertedBody = loginErrorConverter.convert(errorBody)
                         Log.e("errorBody() message is ", "${convertedBody?.message}" )
-                        if (convertedBody?.message == "가입되지 않은 E-MAIL 입니다."){
-                            livedata.value = "not registered email"
-                        }else if (convertedBody?.message == "잘못된 비밀번호입니다."){
-                            livedata.value = "incorrect password"
+//                        if (convertedBody?.message == "가입되지 않은 E-MAIL 입니다."){
+//                            livedata.value = "not registered email"
+//                        }else if (convertedBody?.message == "잘못된 비밀번호입니다."){
+//                            livedata.value = "incorrect password"
+//                        }
+                        when(convertedBody?.message){
+                            "가입되지 않은 E-MAIL 입니다." -> {
+                                livedata.value = "not registered email"
+                            }
+                            "잘못된 비밀번호입니다." -> {
+                                livedata.value = "incorrect password"
+                            }else ->{
+                                livedata.value = "server error"
+                            }
                         }
                     }catch (e:Exception){
+                        livedata.value = "server error"
                         e.printStackTrace()
                     }
                 }

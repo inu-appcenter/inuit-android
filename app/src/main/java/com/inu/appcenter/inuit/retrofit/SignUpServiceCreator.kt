@@ -47,8 +47,8 @@ class SignUpServiceCreator {
                     }
                 }
                 else {
-                    Log.e("이메일 인증번호 전송 실패", "이미가입한 이메일")
-                    responseEmail.value = "registerer email"
+                    Log.e("이메일 인증번호 전송 실패", "response is not Successful")
+                    responseEmail.value = "code not sent"
                 }
             }
         })

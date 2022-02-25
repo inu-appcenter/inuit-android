@@ -32,23 +32,31 @@ class LoginActivity : AppCompatActivity() {
         val loginButton = findViewById<Button>(R.id.btn_login)
         loginButton.setOnClickListener {
 
-            viewModel.requestLogin(email.text.toString(),password.text.toString())
-            viewModel.token.observe(this,
-                {
-                    when (it) {
-                        "not registered email" -> {
-                            Toast.makeText(this,getString(R.string.login_not_registered_email),Toast.LENGTH_SHORT).show()
+            if(Utility.istNetworkConnected(this)) {
+                viewModel.requestLogin(email.text.toString(), password.text.toString())
+                viewModel.token.observe(this,
+                    {
+                        when (it) {
+                            "not registered email" -> {
+                                showToastMsg(getString(R.string.login_not_registered_email))
+                            }
+                            "incorrect password" -> {
+                                showToastMsg(getString(R.string.login_incorrect_password))
+                            }
+                            "server error" -> {
+                                showToastMsg(getString(R.string.login_server_error))
+                            }
+                            else -> { //토큰을 정상적으로 받았을 때.
+                                App.prefs.token = it
+                                App.nowLogin = true
+                                showToastMsg("로그인 성공")
+                                finish()
+                            }
                         }
-                        "incorrect password" -> {
-                            Toast.makeText(this,getString(R.string.login_incorrect_password),Toast.LENGTH_SHORT).show()
-                        }
-                        else -> { //토큰을 정상적으로 받았을 때.
-                            App.prefs.token = it
-                            App.nowLogin = true
-                            finish()
-                        }
-                    }
-                })
+                    })
+            }else{
+                showToastMsg(getString(R.string.internet_not_connected))
+            }
         }
     }
 
@@ -57,4 +65,6 @@ class LoginActivity : AppCompatActivity() {
             return Intent(context, LoginActivity::class.java)
         }
     }
+
+    fun showToastMsg(msg:String){ Toast.makeText(this,msg,Toast.LENGTH_SHORT).show() }
 }

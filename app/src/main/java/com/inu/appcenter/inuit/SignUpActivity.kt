@@ -93,8 +93,8 @@ class SignUpActivity : AppCompatActivity() {
                     if (it == email.text.toString()){
                         Utility.focusEditText(this,certificationNum)
                         showToastMsg(getString(R.string.msg_code_send))
-                    }else if(it == "registerer email"){
-                        showToastMsg(getString(R.string.msg_registered_email))
+                    }else if(it == "code not sent"){
+                        showToastMsg(getString(R.string.msg_code_not_sent))
                         Utility.focusEditText(this,email)
                     }
                 })
@@ -166,7 +166,7 @@ class SignUpActivity : AppCompatActivity() {
     private val emailCountDown: CountDownTimer = object : CountDownTimer(9250, 500) {
         override fun onTick(millisUntilFinished: Long) {}
         override fun onFinish() {
-            showToastMsg(getString(R.string.msg_code_not_sended))
+            showToastMsg(getString(R.string.msg_code_not_sent))
             Utility.focusEditText(this@SignUpActivity,email)
         }
     }
