@@ -95,4 +95,37 @@
     <!-- internet -->
     <string name="internet_not_connected">인터넷 연결 상태를 확인해주세요.</string>
 
+    <!-- post circle -->
+    <string name="top_title_post_circle">새 동아리 등록하기</string>
+    <string name="post_circle_name">이름</string>
+    <string name="post_circle_name_hint">우리 동아리의 이름은?</string>
+    <string name="post_circle_category">카테고리</string>
+    <string name="post_circle_division_hint">동아리의 유형을 선택해주세요. (택 1)</string>
+    <string name="post_circle_division_main_circle">중앙 동아리</string>
+    <string name="post_circle_division_temp_circle">가 동아리</string>
+    <string name="post_circle_division_small_circle">소모임</string>
+    <string name="post_circle_category_hint">동아리의 주제 키워드를 선택해주세요. (택 1)</string>
+    <string name="post_circle_profile_image">프로필 사진</string>
+    <string name="post_circle_select_file">업로드 할 파일 선택</string>
+    <string name="post_circle_profile_info">로고 등 동아리를 대표하는 사진을 선택해 주세요. (최대 10MB)</string>
+    <string name="post_circle_poster">포스터</string>
+    <string name="post_circle_poster_info">동아리 상세 페이지에 올릴 동아리 포스터를 선택해 주세요. (최대 10MB)</string>
+    <string name="post_circle_line_introduce">한 줄 소개</string>
+    <string name="post_circle_line_hint">우리 동아리를 한 줄로 소개하자면?</string>
+    <string name="post_circle_line_info">입력한 내용은 메인 화면에 간략히 노출돼요. (최대 30자)</string>
+    <string name="post_circle_description">동아리 소개 본문</string>
+    <string name="post_circle_description_info">동아리 상세 페이지에 올릴 글을 작성해 주세요. (최대 1000자)</string>
+    <string name="post_circle_location">위치</string>
+    <string name="post_circle_hint">17호관 xx호, 동방없음</string>
+    <string name="post_circle_recruit_schedule">모집 일정</string>
+    <string name="post_circle_recruit_hint">모집 시작일과 마감일을 입력해주세요</string>
+    <string name="post_circle_site">공식 페이지 링크</string>
+    <string name="post_circle_site_hint">카페, 블로그, sns 페이지, 유튜브</string>
+    <string name="post_circle_kakao">카카오톡 링크</string>
+    <string name="post_circle_kakao_hint">오픈 채팅방, 플러스 친구</string>
+    <string name="post_circle_phone_contact">전화번호</string>
+    <string name="post_circle_phone_hint">010-xxxx-xxxx</string>
+    <string name="post_circle_apply_link">동아리 지원 폼 링크</string>
+    <string name="post_circle_apply_hint">구글 폼, 네이버 폼</string>
+
 </resources>
