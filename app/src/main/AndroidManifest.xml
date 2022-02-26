@@ -3,7 +3,7 @@
     package="com.inu.appcenter.inuit">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".login.App"
@@ -14,8 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.INUClub">
-        <activity android:name=".imageviewer.SlideImageViewer"
-            android:theme="@style/SlideImageViewerTheme"/>
+        <activity android:name=".PostCircleActivity"/>
+        <activity
+            android:name=".imageviewer.SlideImageViewer"
+            android:theme="@style/SlideImageViewerTheme" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".MyProfileActivity" />
         <activity

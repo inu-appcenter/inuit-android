@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PostCircleActivity">
+
+    <ImageButton
+        android:id="@+id/btn_cancel_post_circle"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_cancel_x" />
+
+    <ImageButton
+        android:id="@+id/btn_post_circle"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_check_blue" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_post_circle_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="30dp"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/spoqahansansneo"
+                android:text="@string/top_title_post_circle"
+                android:textColor="@color/font_color_black"
+                android:textSize="26sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title_circle_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_name"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_post_name_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <EditText
+                    android:id="@+id/et_post_circle_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:hint="@string/post_circle_name_hint"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title_line_introduce"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_line_introduce"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_post_line_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <EditText
+                    android:id="@+id/et_post_circle_line_introduce"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:hint="@string/post_circle_line_hint"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title_circle_line_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_line_info"
+                android:textColor="@color/font_color_gray"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_title_circle_profile_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_profile_image"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_circle_profile_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <ImageView
+                    android:id="@+id/iv_profile_box"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_gray_box"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_post_circle_profile_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_post_circle_profile_image" />
+
+                <TextView
+                    android:id="@+id/tv_post_circle_profile_image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:hint="@string/post_circle_select_file"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_profile_box"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title_profile_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_profile_info"
+                android:textColor="@color/font_color_gray"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_title_circle_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_category"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_title_circle_division_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_division_hint"
+                android:textColor="@color/font_color_gray"
+                android:textSize="12sp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_main_circle"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_btn_short"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/post_circle_division_main_circle"
+                    android:textColor="@drawable/radio_btn_text"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_temp_circle"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_btn_short"
+                    android:backgroundTint="@null"
+                    android:button="@null"
+                    android:text="@string/post_circle_division_temp_circle"
+                    android:textAlignment="center"
+                    android:textColor="@drawable/radio_btn_text"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_small_circle"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_btn_short"
+                    android:backgroundTint="@null"
+                    android:button="@null"
+                    android:text="@string/post_circle_division_small_circle"
+                    android:textAlignment="center"
+                    android:textColor="@drawable/radio_btn_text"
+                    android:textSize="15sp" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_title_circle_category_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_category_hint"
+                android:textColor="@color/font_color_gray"
+                android:textSize="12sp" />
+
+            <com.wayne.constraintradiogroup.ConstraintRadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="15dp"
+                app:selected_text_color="@color/font_color_white"
+                app:unSelected_text_color="@color/font_color_gray">
+
+                <RadioButton
+                    android:id="@+id/rb_academic"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/radio_btn_short"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/academic"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/rb_exercise"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_exercise"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_btn_short"
+                    android:backgroundTint="@null"
+                    android:button="@null"
+                    android:text="@string/exercise"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/rb_academic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/rb_academic"
+                    app:layout_constraintTop_toTopOf="@+id/rb_academic" />
+
+                <RadioButton
+                    android:id="@+id/rb_culture"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_btn_short"
+                    android:backgroundTint="@null"
+                    android:button="@null"
+                    android:text="@string/culture"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/rb_service"
+                    app:layout_constraintEnd_toStartOf="@+id/rb_service"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rb_service"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <RadioButton
+                    android:id="@+id/rb_service"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_btn_short"
+                    android:backgroundTint="@null"
+                    android:button="@null"
+                    android:text="@string/service"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/rb_religion"
+                    app:layout_constraintEnd_toStartOf="@+id/rb_religion"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/rb_culture"
+                    app:layout_constraintTop_toTopOf="@+id/rb_religion" />
+
+                <RadioButton
+                    android:id="@+id/rb_religion"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_btn_short"
+                    android:backgroundTint="@null"
+                    android:button="@null"
+                    android:text="@string/religion"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/rb_service"
+                    app:layout_constraintTop_toBottomOf="@+id/rb_exercise" />
+
+                <RadioButton
+                    android:id="@+id/rb_etc"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_btn_short"
+                    android:backgroundTint="@null"
+                    android:button="@null"
+                    android:text="@string/etc"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/rb_hobby_exhibition"
+                    app:layout_constraintEnd_toStartOf="@+id/rb_hobby_exhibition"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rb_hobby_exhibition" />
+
+                <RadioButton
+                    android:id="@+id/rb_hobby_exhibition"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/radio_btn_short"
+                    android:backgroundTint="@null"
+                    android:button="@null"
+                    android:text="@string/hobby_exhibition"
+                    android:textAlignment="center"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintStart_toEndOf="@+id/rb_etc"
+                    app:layout_constraintTop_toBottomOf="@+id/rb_religion" />
+
+            </com.wayne.constraintradiogroup.ConstraintRadioGroup>
+
+            <TextView
+                android:id="@+id/tv_title_circle_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_description"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_post_circle_description_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <EditText
+                    android:id="@+id/et_post_circle_description_hint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:gravity="top"
+                    android:ems="10"
+                    android:hint="@string/post_circle_description_hint"
+                    android:inputType="textMultiLine"
+                    android:minLines="5"
+                    android:maxLines="100"
+                    android:maxLength="1000"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/font_color_black"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title_circle_description_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_description_info"
+                android:textColor="@color/font_color_gray"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_title_circle_poster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_poster"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_circle_poster_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <ImageView
+                    android:id="@+id/iv_poster_box"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_gray_box"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_post_circle_poster_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_post_circle_poster_image" />
+
+                <TextView
+                    android:id="@+id/tv_post_circle_poster_image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:hint="@string/post_circle_select_file"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_poster_box"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title_poster_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_poster_info"
+                android:textColor="@color/font_color_gray"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_title_circle_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_location"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_post_location_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <EditText
+                    android:id="@+id/et_post_circle_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:hint="@string/post_circle_location_hint"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title_circle_site"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_site"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_post_site_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <EditText
+                    android:id="@+id/et_post_circle_site"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:hint="@string/post_circle_site_hint"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title_circle_kakao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_kakao"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_post_kakao_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <EditText
+                    android:id="@+id/et_post_circle_kakao"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:hint="@string/post_circle_kakao_hint"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title_circle_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_phone_contact"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_post_phone_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <EditText
+                    android:id="@+id/et_post_circle_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:hint="@string/post_circle_phone_hint"
+                    android:inputType="number"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title_recruit_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_recruit_schedule"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_circle_recruit_schedule_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <ImageView
+                    android:id="@+id/iv_recruit_schedule_box"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_gray_box"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_post_circle_recruit_schedule"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_post_circle_recruit_schedule" />
+
+                <TextView
+                    android:id="@+id/tv_post_circle_recruit_schedule"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:hint="@string/post_circle_recruit_hint"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iv_recruit_schedule_box"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title_circle_apply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_apply_link"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_post_apply_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="50dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <EditText
+                    android:id="@+id/et_post_circle_apply_link"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:hint="@string/post_circle_apply_hint"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

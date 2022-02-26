@@ -69,6 +69,12 @@ class MyProfileActivity : AppCompatActivity() {
             adapter.addMyClub(memberInfo.circleId,memberInfo.circleName)
         }
 
+        val addNewClub = findViewById<TextView>(R.id.tv_add_new_club)
+        addNewClub.setOnClickListener {
+            val intent = PostCircleActivity.newIntent(this)
+            startActivity(intent)
+        }
+
         //ImagePicker
         val config = ImagePickerConfig{
             savePath = ImagePickerSavePath("Camera")

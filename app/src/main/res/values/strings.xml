@@ -114,9 +114,10 @@
     <string name="post_circle_line_hint">우리 동아리를 한 줄로 소개하자면?</string>
     <string name="post_circle_line_info">입력한 내용은 메인 화면에 간략히 노출돼요. (최대 30자)</string>
     <string name="post_circle_description">동아리 소개 본문</string>
+    <string name="post_circle_description_hint">하나부터 열까지, 우리 동아리의 모든 것!</string>
     <string name="post_circle_description_info">동아리 상세 페이지에 올릴 글을 작성해 주세요. (최대 1000자)</string>
     <string name="post_circle_location">위치</string>
-    <string name="post_circle_hint">17호관 xx호, 동방없음</string>
+    <string name="post_circle_location_hint">17호관 xx호, 동방없음</string>
     <string name="post_circle_recruit_schedule">모집 일정</string>
     <string name="post_circle_recruit_hint">모집 시작일과 마감일을 입력해주세요</string>
     <string name="post_circle_site">공식 페이지 링크</string>
