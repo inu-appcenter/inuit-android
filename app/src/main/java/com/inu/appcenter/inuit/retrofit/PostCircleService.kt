@@ -13,12 +13,12 @@ interface PostCircleService {
 
     @Multipart
     @POST("user/circle/{id}/photos")
-    fun sendPhotos(@Header("X-AUTH-TOKEN") token : String,
-                   @Path("id") id :String,
+    fun postPhotos(@Header("X-AUTH-TOKEN") token : String,
+                   @Path("id") id :Int,
                    @Part files : List<MultipartBody.Part>) : Call<List<Int>>
 
     @POST("user/circle/{circleId}/photo/{photoId}")
     fun setProfileImage(@Header("X-AUTH-TOKEN") token : String,
-                        @Path("circleId") circleId : String,
-                        @Path("photoId") photoId : String) : Call<Int>
+                        @Path("circleId") circleId : Int,
+                        @Path("photoId") photoId : Int) : Call<Int>
 }
