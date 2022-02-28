@@ -262,6 +262,7 @@
                 android:textSize="12sp" />
 
             <RadioGroup
+                android:id="@+id/rg_division"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
@@ -322,6 +323,7 @@
                 android:textSize="12sp" />
 
             <com.wayne.constraintradiogroup.ConstraintRadioGroup
+                android:id="@+id/rg_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"

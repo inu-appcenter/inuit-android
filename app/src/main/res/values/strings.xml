@@ -43,6 +43,10 @@
     <string name="server_religion">종교</string>
     <string name="server_etc">기타</string>
 
+    <string name="server_main_circle">중앙동아리</string>
+    <string name="server_temp_circle">가동아리</string>
+    <string name="server_small_circle">소모임</string>
+
     <!-- sign up -->
     <string name="top_title_signup">회원가입</string>
     <string name="nickname">닉네임</string>

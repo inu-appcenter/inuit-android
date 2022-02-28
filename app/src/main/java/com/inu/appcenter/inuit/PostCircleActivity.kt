@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.widget.*
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,11 +16,22 @@ import com.esafirm.imagepicker.features.ImagePickerSavePath
 import com.esafirm.imagepicker.features.registerImagePicker
 import com.esafirm.imagepicker.model.Image
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.recycler.ImagePreviewAdapter
+import com.inu.appcenter.inuit.retrofit.dto.CirclePostBody
+import com.inu.appcenter.inuit.viewmodel.PostCircleViewModel
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class PostCircleActivity : AppCompatActivity() {
+
+    private val viewModel by viewModels<PostCircleViewModel>()
+    private var files  = ArrayList<MultipartBody.Part>()
 
     private val profileImage = arrayListOf<Image>()
     private val posterImage = arrayListOf<Image>()
@@ -47,6 +59,9 @@ class PostCircleActivity : AppCompatActivity() {
     private lateinit var phone : EditText
     private lateinit var applyLink:EditText
 
+    private lateinit var divisionGroup : RadioGroup
+    private lateinit var categoryGroup : RadioGroup
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_circle)
@@ -66,6 +81,9 @@ class PostCircleActivity : AppCompatActivity() {
         addPosterImage = findViewById(R.id.tv_post_circle_poster_image)
         setRecruitSchedule = findViewById(R.id.tv_post_circle_recruit_schedule)
         dropDownRecruitSchedule = findViewById(R.id.ibtn_recruit_schedule)
+
+        divisionGroup = findViewById(R.id.rg_division)
+        categoryGroup = findViewById(R.id.rg_category)
         
         val scrollView = findViewById<ScrollView>(R.id.scrollview_post_circle)
         val topGroup = findViewById<ConstraintLayout>(R.id.top_button_group)
@@ -114,6 +132,11 @@ class PostCircleActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             finish()
         }
+        
+        val checkButton = findViewById<ImageButton>(R.id.btn_post_circle)
+        checkButton.setOnClickListener {
+
+        }
     }
 
     companion object {
@@ -138,6 +161,7 @@ class PostCircleActivity : AppCompatActivity() {
             profileImageAdapter.addImage(image)
             profileImage.clear()
             profileImage.addAll(result)
+
         }
     }
 
@@ -189,6 +213,82 @@ class PostCircleActivity : AppCompatActivity() {
             false
         }
         pop.show()
+    }
+
+    private fun addImagesToFiles(images: ArrayList<Image>){
+        images.forEach {
+            files.add(imageToFile(it.path))
+        }
+    }
+
+    private fun imageToFile(photoPath:String) : MultipartBody.Part{
+        val file = File(photoPath)
+
+        val requestFile = RequestBody.create(MediaType.parse("image/jpeg"), file)
+        val body = MultipartBody.Part.createFormData("files", file.name, requestFile)
+        return body
+    }
+
+    private fun postCircleData(){
+        val body = getCirclePostBody()
+        viewModel.postCircle(App.prefs.token!!,body)
+        viewModel.postedCircleId.observe(
+            this,
+            {
+                //이미지 보내기 실행.
+                addImagesToFiles(profileImage)
+                addImagesToFiles(posterImage)
+                App.memberInfo?.circleId = it
+                viewModel.postPhotos(App.prefs.token!!,it,files)
+                viewModel.postedImagesId.observe(
+                    this,
+                    {
+                        viewModel.setProfile(App.prefs.token!!,App.memberInfo?.circleId!!,it[0])
+                    }
+                )
+            }
+        )
+    }
+
+
+    private fun getCirclePostBody(): CirclePostBody {
+        return CirclePostBody(
+            name.text.toString(),
+            getCircleDivision(),
+            getCircleCategory(),
+            oneLineIntroduce.text.toString(),
+            description.text.toString(),
+            true,
+            null,
+            isoStartDate,
+            isoEndDate,
+            location.text.toString(),
+            siteLink.text.toString(),
+            kakaoLink.text.toString(),
+            phone.text.toString(),
+            applyLink.text.toString())
+    }
+
+    private fun getCircleDivision() :String{
+        when (divisionGroup.checkedRadioButtonId) {
+            R.id.rb_main_circle -> return getString(R.string.server_main_circle)
+            R.id.rb_temp_circle -> return getString(R.string.server_temp_circle)
+            R.id.rb_small_circle ->  return getString(R.string.server_small_circle)
+            else -> return getString(R.string.server_main_circle)
+        }
+    }
+
+    private fun getCircleCategory() :String{
+        when(categoryGroup.checkedRadioButtonId){
+            R.id.rb_academic -> return getString(R.string.server_academic)
+            R.id.rb_exercise -> return getString(R.string.server_exercise)
+            R.id.rb_culture -> return getString(R.string.server_culture)
+            R.id.rb_service -> return getString(R.string.server_service)
+            R.id.rb_religion -> return getString(R.string.server_religion)
+            R.id.rb_etc -> return getString(R.string.server_etc)
+            R.id.rb_hobby_exhibition -> return getString(R.string.server_hobby_exhibition)
+            else -> return getString(R.string.server_etc)
+        }
     }
 
     fun showToastMsg(msg:String){ Toast.makeText(this,msg, Toast.LENGTH_SHORT).show() }
