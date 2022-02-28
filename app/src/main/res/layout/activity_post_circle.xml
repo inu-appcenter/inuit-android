@@ -164,6 +164,15 @@
                 android:textColor="@color/font_color_black"
                 android:textSize="15sp" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_profile_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:orientation="horizontal"
+                tools:itemCount="1"
+                tools:listitem="@layout/recycler_image_image_item"/>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/et_circle_profile_group"
                 android:layout_width="match_parent"
@@ -496,6 +505,16 @@
                 android:text="@string/post_circle_poster"
                 android:textColor="@color/font_color_black"
                 android:textSize="15sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_poster_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:orientation="horizontal"
+                tools:itemCount="1"
+                tools:listitem="@layout/recycler_image_image_item"/>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/et_circle_poster_group"

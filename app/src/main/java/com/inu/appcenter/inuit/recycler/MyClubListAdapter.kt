@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.item.ClubItem
-import com.inu.appcenter.inuit.retrofit.dto.Circle
 
 class MyClubListAdapter() : RecyclerView.Adapter<MyClubListAdapter.MyClubViewHolder>() {
 
