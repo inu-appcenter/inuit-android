@@ -776,8 +776,20 @@
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ibtn_recruit_schedule"
                     app:layout_constraintStart_toEndOf="@+id/iv_recruit_schedule_box"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_recruit_schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_drop_down"
+                    android:tint="@color/line_color_gray"
+                    android:background="?selectableItemBackgroundBorderless"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,4 +39,11 @@
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
+    <!-- DateRangePicker -->
+    <style name="AppThemeMaterial" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/brand_color_blue</item>
+        <item name="colorPrimaryDark">@color/brand_color_blue</item>
+        <item name="colorAccent">@color/brand_color_yellow</item>
+    </style>
+
 </resources>

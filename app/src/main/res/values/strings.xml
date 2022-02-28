@@ -120,6 +120,7 @@
     <string name="post_circle_location_hint">17호관 xx호, 동방없음</string>
     <string name="post_circle_recruit_schedule">모집 일정</string>
     <string name="post_circle_recruit_hint">모집 시작일과 마감일을 입력해주세요</string>
+    <string name="post_circle_recruit_schedule_dialog_msg">모집기간을 정해주세요.</string>
     <string name="post_circle_site">공식 페이지 링크</string>
     <string name="post_circle_site_hint">카페, 블로그, sns 페이지, 유튜브</string>
     <string name="post_circle_kakao">카카오톡 링크</string>
@@ -130,5 +131,6 @@
     <string name="post_circle_apply_hint">구글 폼, 네이버 폼</string>
     <string name="post_profile_image_msg">프로필 사진은 1장만 업로드 할 수 있어요.</string>
     <string name="post_poster_image_msg">포스터는 1장만 업로드 할 수 있어요.</string>
+
 
 </resources>
