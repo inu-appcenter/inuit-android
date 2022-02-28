@@ -34,9 +34,6 @@ class MainActivity : AppCompatActivity() {
         profileButton.setOnClickListener {
             startActivityProperly()
         }
-
-        val intent = PostCircleActivity.newIntent(this)
-        startActivity(intent)
     }
 
     override fun onResume() {

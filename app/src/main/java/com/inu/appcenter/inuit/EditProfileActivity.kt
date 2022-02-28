@@ -56,6 +56,16 @@ class EditProfileActivity : AppCompatActivity() {
             editMyProfile()
         }
 
+        val logout = findViewById<TextView>(R.id.tv_btn_logout)
+        logout.setOnClickListener {
+            App.nowLogin = false
+            App.memberInfo = null
+            App.prefs.token = null
+            setResult(RESULT_OK)
+            Toast.makeText(this,"로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
+            finish()
+        }
+
         val deleteMyProfile  = findViewById<TextView>(R.id.tv_delete_profile)
         deleteMyProfile.setOnClickListener {
             AlertDialog.Builder(this)

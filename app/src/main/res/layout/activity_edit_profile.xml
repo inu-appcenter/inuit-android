@@ -229,15 +229,40 @@
         android:id="@+id/tv_delete_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="32dp"
-        android:text="@string/delete_profile"
-        android:textSize="15sp"
         android:fontFamily="@font/spoqahansansneo_regular"
-        android:textFontWeight="900"
         android:foreground="?attr/selectableItemBackground"
+        android:text="@string/delete_profile"
+        android:textSize="13sp"
+        android:textColor="@color/font_color_gray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_just_design"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="|"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_delete_profile" />
+
+    <TextView
+        android:id="@+id/tv_btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/spoqahansansneo_regular"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="@string/logout"
+        android:textSize="13sp"
+        android:textColor="@color/font_color_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_just_design" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

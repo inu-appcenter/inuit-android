@@ -89,7 +89,8 @@
     <string name="new_password_check_hint">새 비밀번호 확인</string>
     <string name="sample_email_address">inuappcenter@inu.ac.kr</string>
     <string name="sample_nickname">앱센터</string>
-    <string name="delete_profile">계정 삭제하기</string>
+    <string name="logout"><u>로그아웃</u></string>
+    <string name="delete_profile"><u>회원탈퇴</u></string>
     <string name="check_delete_profile">계정을 삭제하면 등록한 동아리 정보도 함께 사라집니다. \n정말로 삭제하시겠습니까?</string>
 
     <!-- internet -->
