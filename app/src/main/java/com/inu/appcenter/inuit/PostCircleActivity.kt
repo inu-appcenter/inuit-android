@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -35,13 +34,31 @@ class PostCircleActivity : AppCompatActivity() {
 
     private lateinit var setRecruitSchedule : TextView
     private lateinit var dropDownRecruitSchedule : ImageButton
+    private lateinit var isoStartDate : String
+    private lateinit var isoEndDate : String
 
-    private lateinit var applyLink:TextView
-    private lateinit var applyConstraint : ConstraintLayout
+    // -- EditText --
+    private lateinit var name : EditText
+    private lateinit var oneLineIntroduce : EditText
+    private lateinit var description : EditText
+    private lateinit var location : EditText
+    private lateinit var siteLink : EditText
+    private lateinit var kakaoLink : EditText
+    private lateinit var phone : EditText
+    private lateinit var applyLink:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_circle)
+
+        name = findViewById(R.id.et_post_circle_name)
+        oneLineIntroduce = findViewById(R.id.et_post_circle_line_introduce)
+        description = findViewById(R.id.et_post_circle_description)
+        location = findViewById(R.id.et_post_circle_location)
+        siteLink = findViewById(R.id.et_post_circle_site)
+        kakaoLink = findViewById(R.id.et_post_circle_kakao)
+        phone = findViewById(R.id.et_post_circle_phone)
+        applyLink = findViewById(R.id.et_post_circle_apply_link)
 
         profileRecyclerView = findViewById(R.id.recycler_profile_image)
         addProfileImage = findViewById(R.id.tv_post_circle_profile_image)
@@ -49,8 +66,16 @@ class PostCircleActivity : AppCompatActivity() {
         addPosterImage = findViewById(R.id.tv_post_circle_poster_image)
         setRecruitSchedule = findViewById(R.id.tv_post_circle_recruit_schedule)
         dropDownRecruitSchedule = findViewById(R.id.ibtn_recruit_schedule)
-        applyLink = findViewById(R.id.tv_title_circle_apply)
-        applyConstraint = findViewById(R.id.et_post_apply_group)
+        
+        val scrollView = findViewById<ScrollView>(R.id.scrollview_post_circle)
+        val topGroup = findViewById<ConstraintLayout>(R.id.top_button_group)
+        scrollView.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (!v.canScrollVertically(1) || !v.canScrollVertically(-1)){
+                topGroup.elevation = 0f
+            }else{
+            topGroup.elevation = 10f
+            }
+        }
 
         profileRecyclerView.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
         profileImageAdapter = ImagePreviewAdapter()
@@ -145,7 +170,9 @@ class PostCircleActivity : AppCompatActivity() {
             val startDate = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()).format(it.first)
             val endDate = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()).format(it.second)
             setRecruitSchedule.text = startDate + " ~ " + endDate
-            Log.d("test", "startDate: $startDate, endDate : $endDate")
+            isoStartDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(it.first)
+            isoEndDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(it.second)
+            Log.d("isoDate", "startDate: $isoStartDate, endDate : $isoEndDate")
         }
         dateRangePicker.show(supportFragmentManager,dateRangePicker.toString())
     }

@@ -6,34 +6,53 @@
     android:layout_height="match_parent"
     tools:context=".PostCircleActivity">
 
-    <ImageButton
-        android:id="@+id/btn_cancel_post_circle"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
-        android:background="?selectableItemBackgroundBorderless"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_cancel_x" />
-
-    <ImageButton
-        android:id="@+id/btn_post_circle"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="12dp"
-        android:background="?selectableItemBackgroundBorderless"
-        android:backgroundTint="#00FFFFFF"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_button_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_check_blue" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_cancel_post_circle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_cancel_x" />
+
+        <ImageButton
+            android:id="@+id/btn_post_circle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_check_blue" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <ScrollView
+        android:id="@+id/scrollview_post_circle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="60dp"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -459,7 +478,7 @@
                 android:background="@drawable/view_under_line">
 
                 <EditText
-                    android:id="@+id/et_post_circle_description_hint"
+                    android:id="@+id/et_post_circle_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"

@@ -3,9 +3,11 @@ package com.inu.appcenter.inuit
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import com.airbnb.lottie.LottieAnimationView
 
 object Utility {
