@@ -14,7 +14,6 @@ import com.esafirm.imagepicker.features.ImagePickerConfig
 import com.esafirm.imagepicker.features.ImagePickerSavePath
 import com.esafirm.imagepicker.features.registerImagePicker
 import com.esafirm.imagepicker.model.Image
-import com.inu.appcenter.inuit.imageviewer.SlideImageViewer
 import com.inu.appcenter.inuit.recycler.ImagePreviewAdapter
 
 class PostCircleActivity : AppCompatActivity() {
@@ -85,10 +84,9 @@ class PostCircleActivity : AppCompatActivity() {
         result.forEach { image ->
             println(image)
 
-            profileImageAdapter.addProfileImage(image.uri)
+            profileImageAdapter.addImage(image)
             profileImage.clear()
             profileImage.addAll(result)
-            //SlideImageViewer.start(this,profileImage)
         }
     }
 
@@ -103,13 +101,11 @@ class PostCircleActivity : AppCompatActivity() {
         result.forEach { image ->
             println(image)
 
-            posterImageAdapter.addProfileImage(image.uri)
+            posterImageAdapter.addImage(image)
             posterImage.clear()
             posterImage.addAll(result)
-            //SlideImageViewer.start(this,posterImage)
         }
     }
-
 
     fun showToastMsg(msg:String){ Toast.makeText(this,msg, Toast.LENGTH_SHORT).show() }
 }

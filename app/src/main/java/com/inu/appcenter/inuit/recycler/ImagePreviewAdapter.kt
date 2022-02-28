@@ -8,7 +8,9 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.esafirm.imagepicker.model.Image
 import com.inu.appcenter.inuit.R
+import com.inu.appcenter.inuit.imageviewer.SlideImageViewer
 import com.inu.appcenter.inuit.recycler.item.ImageItem
 
 class ImagePreviewAdapter() : RecyclerView.Adapter<ImagePreviewAdapter.ImagePreviewViewHolder>(){
@@ -28,8 +30,8 @@ class ImagePreviewAdapter() : RecyclerView.Adapter<ImagePreviewAdapter.ImagePrev
 
     override fun getItemCount(): Int = items.size
 
-    fun addProfileImage(imageUri: Uri){
-        this.items.add(ImageItem(imageUri))
+    fun addImage(image: Image){
+        this.items.add(ImageItem(image))
         notifyDataSetChanged()
     }
 
@@ -40,9 +42,13 @@ class ImagePreviewAdapter() : RecyclerView.Adapter<ImagePreviewAdapter.ImagePrev
         val deleteButton = view.findViewById<ImageButton>(R.id.ibtn_delete_pre_image)
         fun bind(data:ImageItem){
             Glide.with(itemView.context)
-                .load(data.imageUri)
+                .load(data.image.uri)
                 .centerCrop()
                 .into(imagePreview)
+
+            imagePreview.setOnClickListener {
+                SlideImageViewer.start(itemView.context, arrayListOf(data.image))
+            }
 
             deleteButton.setOnClickListener {
                 val itemPosition = adapterPosition

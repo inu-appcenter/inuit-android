@@ -1,5 +1,5 @@
 package com.inu.appcenter.inuit.recycler.item
 
-import android.net.Uri
+import com.esafirm.imagepicker.model.Image
 
-data class ImageItem(val imageUri : Uri)
+data class ImageItem(val image : Image)
