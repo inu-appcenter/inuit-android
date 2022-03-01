@@ -158,8 +158,8 @@ class PostCircleActivity : AppCompatActivity() {
         
         val checkButton = findViewById<ImageButton>(R.id.btn_post_circle)
         checkButton.setOnClickListener {
-            //postCircleData()
-            postPhotos(App.memberInfo?.circleId!!)
+            postCircleData()
+            //postPhotos(App.memberInfo?.circleId!!)
         }
     }
 
@@ -168,7 +168,6 @@ class PostCircleActivity : AppCompatActivity() {
             return Intent(context, PostCircleActivity::class.java)
         }
     }
-
 
     // -- 동아리 프로필 이미지피커 설정 --
     private val profilePickerConfig = ImagePickerConfig{
@@ -224,8 +223,8 @@ class PostCircleActivity : AppCompatActivity() {
             val startDate = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()).format(it.first)
             val endDate = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()).format(it.second)
             setRecruitSchedule.text = startDate + " ~ " + endDate
-            isoStartDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(it.first)
-            isoEndDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(it.second)
+            isoStartDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(it.first) + "T00:00:00"
+            isoEndDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(it.second) + "T23:59:59"
             Log.d("isoDate", "startDate: $isoStartDate, endDate : $isoEndDate")
         }
         dateRangePicker.show(supportFragmentManager,dateRangePicker.toString())
@@ -237,8 +236,16 @@ class PostCircleActivity : AppCompatActivity() {
         pop.setOnMenuItemClickListener {
             when(it.itemId){
                 R.id.menu_select_day -> pickDateRange()
-                R.id.menu_all_day_open -> setRecruitSchedule.text = it.title
-                R.id.menu_close -> setRecruitSchedule.text = it.title
+                R.id.menu_all_day_open -> {
+                    setRecruitSchedule.text = it.title
+                    isoStartDate = "2000-01-01T00:00:00"
+                    isoEndDate = "2099-12-29T23:23:23"
+                }
+                R.id.menu_close -> {
+                    setRecruitSchedule.text = it.title
+                    isoStartDate = "2000-01-01T00:00:00"
+                    isoEndDate = "2000-01-01T00:00:00"
+                }
             }
             false
         }
@@ -311,6 +318,8 @@ class PostCircleActivity : AppCompatActivity() {
             {
                 if(photoId == it){
                     showToastMsg("새 동아리 등록하기 성공!")
+                    setResult(RESULT_OK)
+                    finish()
                 }
             }
         )

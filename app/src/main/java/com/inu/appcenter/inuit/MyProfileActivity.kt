@@ -4,28 +4,22 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.esafirm.imagepicker.features.ImagePickerConfig
-import com.esafirm.imagepicker.features.ImagePickerSavePath
-import com.esafirm.imagepicker.features.registerImagePicker
-import com.esafirm.imagepicker.model.Image
-import com.inu.appcenter.inuit.imageviewer.SlideImageViewer
 import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.recycler.MyClubListAdapter
+import com.inu.appcenter.inuit.viewmodel.MyProfileViewModel
 
 class MyProfileActivity : AppCompatActivity() {
 
-    private val images = arrayListOf<Image>()
-    private lateinit var profileImage : ImageView
+    private val viewModel by viewModels<MyProfileViewModel>()
     private lateinit var editResult : ActivityResultLauncher<Intent>
+    private lateinit var addResult : ActivityResultLauncher <Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,11 +36,13 @@ class MyProfileActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             finish()
         }
+
         editResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             if(it.resultCode == RESULT_OK){
                 finish()
             }
         }
+
         val editMyProfile = findViewById<TextView>(R.id.change_my_profile)
         editMyProfile.setOnClickListener {
             val intent = EditProfileActivity.newIntent(this@MyProfileActivity)
@@ -58,39 +54,25 @@ class MyProfileActivity : AppCompatActivity() {
         val adapter = MyClubListAdapter()
         recycler_myclub_List.adapter = adapter
         if(memberInfo?.circleId != null && memberInfo?.circleName!= null){
-            adapter.addMyClub(memberInfo.circleId,memberInfo.circleName)
+            adapter.setMyClub(memberInfo.circleId,memberInfo.circleName)
         }
 
         val addNewClub = findViewById<TextView>(R.id.tv_add_new_club)
         addNewClub.setOnClickListener {
             val intent = PostCircleActivity.newIntent(this@MyProfileActivity)
-            startActivity(intent)
+            addResult.launch(intent)
         }
 
-        //ImagePicker
-        val config = ImagePickerConfig{
-            savePath = ImagePickerSavePath("Camera")
-            savePath = ImagePickerSavePath(Environment.getExternalStorageDirectory().path, isRelative = false)
-            limit = 1
-        }
-
-        val launcher = registerImagePicker { result: List<Image> ->
-
-            result.forEach { image ->
-                println(image)
-                Glide.with(this)
-                    .load(image.uri)
-                    .centerCrop()
-                    .into(profileImage)
-                images.clear()
-                images.addAll(result)
-                SlideImageViewer.start(this,images)
+        addResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            if(it.resultCode == RESULT_OK){
+                viewModel.requestMemberInfo(App.prefs.token!!)
+                viewModel.memberInfo.observe(
+                    this,
+                    {
+                        adapter.setMyClub(it.circleId!!,it.circleName!!)
+                    }
+                )
             }
-        }
-
-        profileImage = findViewById(R.id.iv_profile)
-        profileImage.setOnClickListener {
-            launcher.launch(config)
         }
     }
 

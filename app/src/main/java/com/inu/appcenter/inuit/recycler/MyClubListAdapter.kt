@@ -40,7 +40,7 @@ class MyClubListAdapter() : RecyclerView.Adapter<MyClubListAdapter.MyClubViewHol
         this.items.add(item)
     }
 
-    fun addMyClub(clubId:Int, clubName:String ){ //List<Circle>은 뷰모델로부터 받는다.
+    fun setMyClub(clubId:Int, clubName:String ){ //List<Circle>은 뷰모델로부터 받는다.
         items.clear()
         addItem(ClubItem(clubId,clubName))
         notifyDataSetChanged()
