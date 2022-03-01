@@ -80,13 +80,24 @@ class LoginActivity : AppCompatActivity() {
                     }
                     else -> { //토큰을 정상적으로 받았을 때.
                         App.prefs.token = it
-                        App.nowLogin = true
-                        showToastMsg("로그인 성공")
-                        finish()
+                        requestMemberInfo(it)
                     }
                 }
                 Utility.pauseLoading(loadingAnimation)
             })
+    }
+
+    private fun requestMemberInfo(token:String){
+        viewModel.requestMemberInfo(token)
+        viewModel.memberInfo.observe(
+            this,
+            {
+                App.memberInfo = it
+                App.nowLogin = true
+                showToastMsg("로그인 성공")
+                finish()
+            }
+        )
     }
 
     companion object {
