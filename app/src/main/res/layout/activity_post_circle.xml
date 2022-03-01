@@ -492,7 +492,7 @@
                     android:inputType="textMultiLine"
                     android:minLines="5"
                     android:maxLines="100"
-                    android:maxLength="1000"
+                    android:maxLength="3000"
                     android:scrollbars="vertical"
                     android:textColor="@color/font_color_black"
                     android:textSize="15sp"
@@ -514,7 +514,7 @@
                 android:fontFamily="@font/spoqahansansneo_regular"
                 android:text="@string/post_circle_description_info"
                 android:textColor="@color/font_color_gray"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tv_title_circle_poster"

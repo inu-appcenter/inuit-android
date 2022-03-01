@@ -83,7 +83,6 @@ class LoginActivity : AppCompatActivity() {
                         requestMemberInfo(it)
                     }
                 }
-                Utility.pauseLoading(loadingAnimation)
             })
     }
 
@@ -95,6 +94,7 @@ class LoginActivity : AppCompatActivity() {
                 App.memberInfo = it
                 App.nowLogin = true
                 showToastMsg("로그인 성공")
+                Utility.pauseLoading(loadingAnimation)
                 finish()
             }
         )

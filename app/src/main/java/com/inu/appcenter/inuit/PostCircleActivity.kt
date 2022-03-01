@@ -172,6 +172,8 @@ class PostCircleActivity : AppCompatActivity() {
 
     // -- 동아리 프로필 이미지피커 설정 --
     private val profilePickerConfig = ImagePickerConfig{
+        isShowCamera = false
+        isFolderMode = true
         savePath = ImagePickerSavePath("Camera")
         savePath = ImagePickerSavePath(Environment.getExternalStorageDirectory().path, isRelative = false)
         limit = 1
@@ -192,9 +194,11 @@ class PostCircleActivity : AppCompatActivity() {
 
     // -- 동아리 포스터 이미지피커 설정 --
     private val posterPickerConfig = ImagePickerConfig{
+        isShowCamera = false
+        isFolderMode = true
         savePath = ImagePickerSavePath("Camera")
         savePath = ImagePickerSavePath(Environment.getExternalStorageDirectory().path, isRelative = false)
-        limit = 1
+        limit = 10
     }
 
     // -- 동아리 포스터 이미지피커 런쳐 --
