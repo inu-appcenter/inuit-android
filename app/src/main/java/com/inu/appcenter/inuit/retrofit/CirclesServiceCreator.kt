@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.inu.appcenter.inuit.retrofit.dto.Circle
+import com.inu.appcenter.inuit.retrofit.dto.CircleContent
+import com.inu.appcenter.inuit.retrofit.dto.CircleGetBody
 import com.inu.appcenter.inuit.retrofit.dto.Circles
 import retrofit2.Call
 import retrofit2.Callback
@@ -130,5 +132,29 @@ class CirclesServiceCreator {
             }
         })
         return liveList
+    }
+
+    fun getCircleContent(id:Int) : LiveData<CircleContent>{
+
+        val liveData = MutableLiveData<CircleContent>()
+        val call = client.getCircleContent(id)
+
+        call.enqueue(object : Callback<CircleGetBody>{
+            override fun onFailure(call: Call<CircleGetBody>, t: Throwable) {
+                Log.e("error", "${t.message}")
+            }
+
+            override fun onResponse(call: Call<CircleGetBody>, response: Response<CircleGetBody>) {
+                if(response.isSuccessful){
+                    Log.d("응답 성공!", "onResponse is Successful!")
+                    val body = response.body()
+                    liveData.value = body?.data
+                }
+                else {
+                    Log.e("응답 실패", "response is not Successful")
+                }
+            }
+        })
+        return liveData
     }
 }
