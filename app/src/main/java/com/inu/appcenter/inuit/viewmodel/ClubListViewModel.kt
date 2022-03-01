@@ -16,7 +16,6 @@ class ClubListViewModel : ViewModel() {
     lateinit var mainClubList : LiveData<List<Circle>>
     lateinit var tempClubList : LiveData<List<Circle>>
     lateinit var smallClubList : LiveData<List<Circle>>
-    lateinit var circleContent : LiveData<CircleContent>
 
     val memberClient : MemberServiceCreator
     lateinit var memberInfo : LiveData<MemberInfo>
@@ -42,9 +41,5 @@ class ClubListViewModel : ViewModel() {
 
     fun requestMemberInfo(token:String){
         memberInfo = memberClient.requestMemberInfo(token)
-    }
-
-    fun requestCircleContent(id:Int){
-        circleContent = client.getCircleContent(id)
     }
 }

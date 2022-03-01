@@ -133,28 +133,4 @@ class CirclesServiceCreator {
         })
         return liveList
     }
-
-    fun getCircleContent(id:Int) : LiveData<CircleContent>{
-
-        val liveData = MutableLiveData<CircleContent>()
-        val call = client.getCircleContent(id)
-
-        call.enqueue(object : Callback<CircleGetBody>{
-            override fun onFailure(call: Call<CircleGetBody>, t: Throwable) {
-                Log.e("error", "${t.message}")
-            }
-
-            override fun onResponse(call: Call<CircleGetBody>, response: Response<CircleGetBody>) {
-                if(response.isSuccessful){
-                    Log.d("응답 성공!", "onResponse is Successful!")
-                    val body = response.body()
-                    liveData.value = body?.data
-                }
-                else {
-                    Log.e("응답 실패", "response is not Successful")
-                }
-            }
-        })
-        return liveData
-    }
 }

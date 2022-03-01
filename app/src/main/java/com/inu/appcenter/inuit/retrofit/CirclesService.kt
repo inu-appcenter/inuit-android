@@ -19,7 +19,4 @@ interface CirclesService {
 
     @GET("circles/category/{category}/division/{division}")
     fun getCategoryDivisionCircles(@Path("category") category : String, @Path("division") division: String) : Call<Circles>
-
-    @GET("circles/{id}")
-    fun getCircleContent(@Path("id") id : Int) : Call<CircleGetBody>
 }
