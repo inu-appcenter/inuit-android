@@ -2,8 +2,10 @@ package com.inu.appcenter.inuit.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.inu.appcenter.inuit.retrofit.MemberServiceCreator
 import com.inu.appcenter.inuit.retrofit.PostCircleServiceCreator
 import com.inu.appcenter.inuit.retrofit.dto.CirclePostBody
+import com.inu.appcenter.inuit.retrofit.dto.MemberInfo
 import okhttp3.MultipartBody
 
 class PostCircleViewModel : ViewModel() {
@@ -14,8 +16,12 @@ class PostCircleViewModel : ViewModel() {
     lateinit var postedImagesId : LiveData<List<Int>>
     lateinit var profileImageId : LiveData<Int>
 
+    val memberClient : MemberServiceCreator
+    lateinit var memberInfo : LiveData<MemberInfo>
+
     init {
         client = PostCircleServiceCreator()
+        memberClient = MemberServiceCreator()
     }
 
     fun postCircle(token:String, circleBody:CirclePostBody){
@@ -28,5 +34,9 @@ class PostCircleViewModel : ViewModel() {
 
     fun setProfile(token: String, circleId : Int, photoId : Int){
         profileImageId = client.setProfileImage(token, circleId, photoId)
+    }
+
+    fun getNewMemberInfo(token: String){
+        memberInfo = memberClient.requestMemberInfo(token)
     }
 }

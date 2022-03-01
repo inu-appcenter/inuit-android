@@ -135,7 +135,7 @@ class PostCircleActivity : AppCompatActivity() {
         
         val checkButton = findViewById<ImageButton>(R.id.btn_post_circle)
         checkButton.setOnClickListener {
-
+            postCircleData()
         }
     }
 
@@ -161,7 +161,6 @@ class PostCircleActivity : AppCompatActivity() {
             profileImageAdapter.addImage(image)
             profileImage.clear()
             profileImage.addAll(result)
-
         }
     }
 
@@ -235,17 +234,43 @@ class PostCircleActivity : AppCompatActivity() {
         viewModel.postedCircleId.observe(
             this,
             {
-                //이미지 보내기 실행.
-                addImagesToFiles(profileImage)
-                addImagesToFiles(posterImage)
-                App.memberInfo?.circleId = it
-                viewModel.postPhotos(App.prefs.token!!,it,files)
-                viewModel.postedImagesId.observe(
-                    this,
-                    {
-                        viewModel.setProfile(App.prefs.token!!,App.memberInfo?.circleId!!,it[0])
-                    }
-                )
+                //POST circle 실행 성공시 처리.
+                updateMemberInfo()
+                postPhotos(it)
+            }
+        )
+    }
+
+    private fun updateMemberInfo(){
+        viewModel.getNewMemberInfo(App.prefs.token!!)
+        viewModel.memberInfo.observe(
+            this,
+            {
+                App.memberInfo = it //멤버 정보 갱신(내가 등록한 동아리, circle id에 값을 추가하기 위해서)
+            }
+        )
+    }
+
+    private fun postPhotos(circleId:Int){
+        addImagesToFiles(profileImage)
+        addImagesToFiles(posterImage)
+        viewModel.postPhotos(App.prefs.token!!,circleId,files)
+        viewModel.postedImagesId.observe(
+            this,
+            {
+                setCircleProfile(circleId,it[0])
+            }
+        )
+    }
+
+    private fun setCircleProfile(circleId: Int,photoId:Int){
+        viewModel.setProfile(App.prefs.token!!,circleId,photoId)
+        viewModel.profileImageId.observe(
+            this,
+            {
+                if(photoId == it){
+                    showToastMsg("새 동아리 등록하기 성공!")
+                }
             }
         )
     }
@@ -258,8 +283,8 @@ class PostCircleActivity : AppCompatActivity() {
             getCircleCategory(),
             oneLineIntroduce.text.toString(),
             description.text.toString(),
-            true,
-            null,
+            getRecruit(),
+            setRecruitSchedule.text.toString(),
             isoStartDate,
             isoEndDate,
             location.text.toString(),
@@ -290,6 +315,8 @@ class PostCircleActivity : AppCompatActivity() {
             else -> return getString(R.string.server_etc)
         }
     }
+
+    private fun getRecruit():Boolean = setRecruitSchedule.text != "모집마감"
 
     fun showToastMsg(msg:String){ Toast.makeText(this,msg, Toast.LENGTH_SHORT).show() }
 }
