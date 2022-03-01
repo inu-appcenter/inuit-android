@@ -136,7 +136,7 @@ class PostCircleActivity : AppCompatActivity() {
 
 
         addPosterImage.setOnClickListener {
-            if(posterImageAdapter.itemsSize() == 0){
+            if(posterImageAdapter.itemsSize() < 10){
                 posterPickerLauncher.launch(posterPickerConfig)
             }else{
                 showToastMsg(getString(R.string.post_poster_image_msg))
@@ -185,7 +185,6 @@ class PostCircleActivity : AppCompatActivity() {
         result.forEach { image ->
             println(image)
 
-
             profileImageAdapter.addImage(image)
             profileImage.clear()
             profileImage.addAll(result)
@@ -193,7 +192,7 @@ class PostCircleActivity : AppCompatActivity() {
     }
 
     // -- 동아리 포스터 이미지피커 설정 --
-    private val posterPickerConfig = ImagePickerConfig{
+    private var posterPickerConfig = ImagePickerConfig{
         isShowCamera = false
         isFolderMode = true
         savePath = ImagePickerSavePath("Camera")
@@ -206,7 +205,10 @@ class PostCircleActivity : AppCompatActivity() {
 
         result.forEach { image ->
             println(image)
-            posterImageAdapter.addImage(image)
+
+            if(posterImageAdapter.itemsSize()<10){
+                posterImageAdapter.addImage(image)
+            }
             posterImage.clear()
             posterImage.addAll(result)
         }
