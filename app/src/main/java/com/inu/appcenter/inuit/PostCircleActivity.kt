@@ -2,6 +2,7 @@ package com.inu.appcenter.inuit
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -20,13 +21,17 @@ import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.recycler.ImagePreviewAdapter
 import com.inu.appcenter.inuit.retrofit.dto.CirclePostBody
 import com.inu.appcenter.inuit.viewmodel.PostCircleViewModel
+import com.wayne.constraintradiogroup.ConstraintRadioGroup
+import com.wayne.constraintradiogroup.OnCheckedChangeListener
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+
 
 class PostCircleActivity : AppCompatActivity() {
 
@@ -60,7 +65,8 @@ class PostCircleActivity : AppCompatActivity() {
     private lateinit var applyLink:EditText
 
     private lateinit var divisionGroup : RadioGroup
-    private lateinit var categoryGroup : RadioGroup
+    private lateinit var categoryGroup : ConstraintRadioGroup
+    var category = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,6 +90,23 @@ class PostCircleActivity : AppCompatActivity() {
 
         divisionGroup = findViewById(R.id.rg_division)
         categoryGroup = findViewById(R.id.rg_category)
+        categoryGroup.checkedChangeListener = object : OnCheckedChangeListener {
+            override fun onCheckedChanged(
+                group: ConstraintRadioGroup,
+                checkedButton: CompoundButton
+            ) {
+                when(checkedButton.id){
+                    R.id.rb_academic -> category = getString(R.string.server_academic)
+                    R.id.rb_exercise -> category =getString(R.string.server_exercise)
+                    R.id.rb_culture -> category =getString(R.string.server_culture)
+                    R.id.rb_service -> category =getString(R.string.server_service)
+                    R.id.rb_religion -> category = getString(R.string.server_religion)
+                    R.id.rb_etc -> category = getString(R.string.server_etc)
+                    R.id.rb_hobby_exhibition ->category = getString(R.string.server_hobby_exhibition)
+                    else -> category = getString(R.string.server_etc)
+                }
+            }
+        }
         
         val scrollView = findViewById<ScrollView>(R.id.scrollview_post_circle)
         val topGroup = findViewById<ConstraintLayout>(R.id.top_button_group)
@@ -135,7 +158,8 @@ class PostCircleActivity : AppCompatActivity() {
         
         val checkButton = findViewById<ImageButton>(R.id.btn_post_circle)
         checkButton.setOnClickListener {
-            postCircleData()
+            //postCircleData()
+            postPhotos(App.memberInfo?.circleId!!)
         }
     }
 
@@ -144,6 +168,7 @@ class PostCircleActivity : AppCompatActivity() {
             return Intent(context, PostCircleActivity::class.java)
         }
     }
+
 
     // -- 동아리 프로필 이미지피커 설정 --
     private val profilePickerConfig = ImagePickerConfig{
@@ -157,6 +182,7 @@ class PostCircleActivity : AppCompatActivity() {
 
         result.forEach { image ->
             println(image)
+
 
             profileImageAdapter.addImage(image)
             profileImage.clear()
@@ -176,7 +202,6 @@ class PostCircleActivity : AppCompatActivity() {
 
         result.forEach { image ->
             println(image)
-
             posterImageAdapter.addImage(image)
             posterImage.clear()
             posterImage.addAll(result)
@@ -216,13 +241,23 @@ class PostCircleActivity : AppCompatActivity() {
 
     private fun addImagesToFiles(images: ArrayList<Image>){
         images.forEach {
-            files.add(imageToFile(it.path))
+            files.add(getCompressedFile(it.path)) //files.add(imageToFile(it.path))는 고화질 이미지 전송 안됨
         }
     }
 
+    private fun getCompressedFile(photoPath: String) : MultipartBody.Part{
+        val bitmap = getScaledBitmap(photoPath,this)
+        val stream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream)
+        val byteArray = stream.toByteArray()
+        val bitmapBody = RequestBody.create(MediaType.parse("image/jpeg"),byteArray)
+        val body = MultipartBody.Part.createFormData("files",photoPath,bitmapBody)
+        return body
+    }
+
+
     private fun imageToFile(photoPath:String) : MultipartBody.Part{
         val file = File(photoPath)
-
         val requestFile = RequestBody.create(MediaType.parse("image/jpeg"), file)
         val body = MultipartBody.Part.createFormData("files", file.name, requestFile)
         return body
@@ -280,7 +315,7 @@ class PostCircleActivity : AppCompatActivity() {
         return CirclePostBody(
             name.text.toString(),
             getCircleDivision(),
-            getCircleCategory(),
+            category,
             oneLineIntroduce.text.toString(),
             description.text.toString(),
             getRecruit(),
@@ -300,19 +335,6 @@ class PostCircleActivity : AppCompatActivity() {
             R.id.rb_temp_circle -> return getString(R.string.server_temp_circle)
             R.id.rb_small_circle ->  return getString(R.string.server_small_circle)
             else -> return getString(R.string.server_main_circle)
-        }
-    }
-
-    private fun getCircleCategory() :String{
-        when(categoryGroup.checkedRadioButtonId){
-            R.id.rb_academic -> return getString(R.string.server_academic)
-            R.id.rb_exercise -> return getString(R.string.server_exercise)
-            R.id.rb_culture -> return getString(R.string.server_culture)
-            R.id.rb_service -> return getString(R.string.server_service)
-            R.id.rb_religion -> return getString(R.string.server_religion)
-            R.id.rb_etc -> return getString(R.string.server_etc)
-            R.id.rb_hobby_exhibition -> return getString(R.string.server_hobby_exhibition)
-            else -> return getString(R.string.server_etc)
         }
     }
 
