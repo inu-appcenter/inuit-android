@@ -6,20 +6,30 @@ import androidx.lifecycle.MutableLiveData
 import com.inu.appcenter.inuit.retrofit.dto.CirclePostBody
 import com.inu.appcenter.inuit.retrofit.dto.MemberResponse
 import okhttp3.MultipartBody
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class PostCircleServiceCreator {
 
     private val BASE_URL = "https://da86-125-180-55-163.ngrok.io/"
     private val client : PostCircleService
 
+
+    val httpClient = OkHttpClient.Builder()
+        .connectTimeout(1, TimeUnit.MINUTES)
+        .readTimeout(30, TimeUnit.SECONDS)
+        .writeTimeout(30, TimeUnit.SECONDS)
+        .build()
+
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
+        .client(httpClient)
         .build()
 
     init {
@@ -105,7 +115,6 @@ class PostCircleServiceCreator {
                 }
             }
         })
-
         return liveData
     }
 }
