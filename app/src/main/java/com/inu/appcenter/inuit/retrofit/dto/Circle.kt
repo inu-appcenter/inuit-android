@@ -8,4 +8,5 @@ data class Circle (
     @SerializedName("oneLineIntroduce") val oneLineIntroduce : String,
     @SerializedName("recruit") val recruit : Boolean,
     @SerializedName("recruitEndDate") val recruitEndDate : String,
-    @SerializedName("userId") val userId : Int)
+    @SerializedName("userId") val userId : Int,
+    @SerializedName("photoId") val photoId : Int)

@@ -70,13 +70,16 @@ class LoginActivity : AppCompatActivity() {
                     "not registered email" -> {
                         showToastMsg(getString(R.string.login_not_registered_email))
                         Utility.focusEditText(this,email)
+                        Utility.pauseLoading(loadingAnimation)
                     }
                     "incorrect password" -> {
                         showToastMsg(getString(R.string.login_incorrect_password))
                         Utility.focusEditText(this,password)
+                        Utility.pauseLoading(loadingAnimation)
                     }
                     "server error" -> {
                         showToastMsg(getString(R.string.login_server_error))
+                        Utility.pauseLoading(loadingAnimation)
                     }
                     else -> { //토큰을 정상적으로 받았을 때.
                         App.prefs.token = it

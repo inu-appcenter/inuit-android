@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.item.ClubItem
 import com.inu.appcenter.inuit.recycler.item.Item
@@ -81,9 +82,15 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(item: ClubItem){
             id = item.id
-            iv_img.setImageResource(item.ImageId)
             tv_name.text = item.name
             tv_desc.text = item.description
+            if(item.ImageId != null){
+                Glide.with(itemView.context)
+                    .load("http://da86-125-180-55-163.ngrok.io:80/circles/view/photo/$itemId")
+                    .into(iv_img)
+            }else{
+                iv_img.setImageResource(R.drawable.ic_null_profile_sample)
+            }
             itemView.setOnClickListener {
                 Toast.makeText(itemView.context,"Selected id = $id",Toast.LENGTH_SHORT).show()
             }
@@ -140,7 +147,7 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
 
             list?.forEach {
-                if(it.recruit) addItem(ClubItem(it.id,it.name,it.oneLineIntroduce,R.drawable.profile_sample))
+                if(it.recruit) addItem(ClubItem(it.id,it.name,it.oneLineIntroduce,it.photoId))
             }
 
             run loop@{
@@ -153,7 +160,7 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
 
             list?.forEach {
-                if(!it.recruit) addItem(ClubItem(it.id, it.name,it.oneLineIntroduce,R.drawable.profile_sample))
+                if(!it.recruit) addItem(ClubItem(it.id, it.name,it.oneLineIntroduce,it.photoId))
             }
         }
         notifyDataSetChanged()

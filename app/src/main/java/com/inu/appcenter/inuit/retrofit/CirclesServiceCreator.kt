@@ -1,5 +1,7 @@
 package com.inu.appcenter.inuit.retrofit
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +9,7 @@ import com.inu.appcenter.inuit.retrofit.dto.Circle
 import com.inu.appcenter.inuit.retrofit.dto.CircleContent
 import com.inu.appcenter.inuit.retrofit.dto.CircleGetBody
 import com.inu.appcenter.inuit.retrofit.dto.Circles
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
