@@ -10,10 +10,11 @@
         android:id="@+id/tv_recycler_my_club_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:textColor="@color/font_color_black"
         android:foreground="?attr/selectableItemBackground"
         android:fontFamily="@font/spoqahansansneo_regular"
-        android:textSize="15sp"
+        android:textSize="17sp"
         android:text="모집 중"/>
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.inu.appcenter.inuit.retrofit.dto.Member
 import com.inu.appcenter.inuit.retrofit.dto.MemberInfo
+import com.inu.appcenter.inuit.retrofit.dto.MemberResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -52,5 +53,31 @@ class MemberServiceCreator {
             }
         })
         return liveData
+    }
+
+    fun deleteCircle(token:String, id:Int) : LiveData<Int>{
+        val livedata = MutableLiveData<Int>()
+        val call = client.deleteCircle(token, id)
+
+        call.enqueue(object : Callback<MemberResponse>{
+
+            override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
+                Log.e("error", "${t.message}")
+            }
+
+            override fun onResponse(
+                call: Call<MemberResponse>,
+                response: Response<MemberResponse>
+            ) {
+                if(response.isSuccessful){
+                    Log.d("삭제 응답 성공!", "onResponse is Successful!")
+                    val body = response.body()
+                    livedata.value = body?.id
+                }else{
+                    Log.e("응답 실패", "response is not Successful")
+                }
+            }
+        })
+        return livedata
     }
 }

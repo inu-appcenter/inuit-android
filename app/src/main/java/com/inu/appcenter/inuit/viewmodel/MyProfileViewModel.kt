@@ -10,6 +10,7 @@ class MyProfileViewModel : ViewModel() {
     val memberClient : MemberServiceCreator
 
     lateinit var memberInfo : LiveData<MemberInfo>
+    lateinit var deletedCircleId : LiveData<Int>
 
     init {
         memberClient = MemberServiceCreator()
@@ -17,5 +18,9 @@ class MyProfileViewModel : ViewModel() {
 
     fun requestMemberInfo(token:String){
         memberInfo = memberClient.requestMemberInfo(token)
+    }
+
+    fun deleteCircle(token:String, id:Int){
+        deletedCircleId = memberClient.deleteCircle(token,id)
     }
 }
