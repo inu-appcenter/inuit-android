@@ -9,4 +9,4 @@ data class Circle (
     @SerializedName("recruit") val recruit : Boolean,
     @SerializedName("recruitEndDate") val recruitEndDate : String,
     @SerializedName("userId") val userId : Int,
-    @SerializedName("photoId") val photoId : Int)
+    @SerializedName("photoId") val photoId : Int?)

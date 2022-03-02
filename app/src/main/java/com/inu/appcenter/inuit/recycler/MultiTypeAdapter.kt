@@ -84,9 +84,12 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             id = item.id
             tv_name.text = item.name
             tv_desc.text = item.description
+            iv_img.clipToOutline = true
             if(item.ImageId != null){
                 Glide.with(itemView.context)
-                    .load("http://da86-125-180-55-163.ngrok.io:80/circles/view/photo/$itemId")
+                    .load("http://da86-125-180-55-163.ngrok.io:80/circles/view/photo/${item.ImageId}")
+                    .centerCrop()
+                    .override(200,200)
                     .into(iv_img)
             }else{
                 iv_img.setImageResource(R.drawable.ic_null_profile_sample)

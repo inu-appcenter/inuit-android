@@ -26,16 +26,6 @@ class MyClubListAdapter() : RecyclerView.Adapter<MyClubListAdapter.MyClubViewHol
 
     override fun getItemCount(): Int = items.size
 
-    fun setSampleData(){
-        addItem(ClubItem(1,"인유공방"))
-        addItem(ClubItem(1,"인유공방"))
-        addItem(ClubItem(1,"인유공방"))
-        addItem(ClubItem(1,"인유공방"))
-        addItem(ClubItem(1,"인유공방"))
-        addItem(ClubItem(1,"인유공방"))
-        addItem(ClubItem(1,"인유공방"))
-    }
-
     fun addItem(item: ClubItem) {
         this.items.add(item)
     }
