@@ -88,7 +88,7 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             if(item.ImageId != null){
                 Glide.with(itemView.context)
                     .load("http://da86-125-180-55-163.ngrok.io:80/circles/view/photo/${item.ImageId}")
-                    .centerCrop()
+                    .fitCenter()
                     .override(200,200)
                     .into(iv_img)
             }else{

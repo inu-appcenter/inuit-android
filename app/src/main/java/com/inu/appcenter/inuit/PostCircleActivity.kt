@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.esafirm.imagepicker.features.ImagePickerConfig
 import com.esafirm.imagepicker.features.ImagePickerSavePath
 import com.esafirm.imagepicker.features.registerImagePicker
@@ -68,6 +69,8 @@ class PostCircleActivity : AppCompatActivity() {
     private lateinit var categoryGroup : ConstraintRadioGroup
     var category = ""
 
+    private lateinit var loadingAnimation : LottieAnimationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_circle)
@@ -87,6 +90,8 @@ class PostCircleActivity : AppCompatActivity() {
         addPosterImage = findViewById(R.id.tv_post_circle_poster_image)
         setRecruitSchedule = findViewById(R.id.tv_post_circle_recruit_schedule)
         dropDownRecruitSchedule = findViewById(R.id.ibtn_recruit_schedule)
+        loadingAnimation = findViewById(R.id.loading_post_circle)
+        Utility.pauseLoading(loadingAnimation)
 
         divisionGroup = findViewById(R.id.rg_division)
         categoryGroup = findViewById(R.id.rg_category)
@@ -277,6 +282,7 @@ class PostCircleActivity : AppCompatActivity() {
     }
 
     private fun postCircleData(){
+        Utility.startLoading(loadingAnimation)
         val body = getCirclePostBody()
         viewModel.postCircle(App.prefs.token!!,body)
         viewModel.postedCircleId.observe(
@@ -317,6 +323,7 @@ class PostCircleActivity : AppCompatActivity() {
             this,
             {
                 if(photoId == it){
+                    Utility.pauseLoading(loadingAnimation)
                     showToastMsg("새 동아리 등록하기 성공!")
                     setResult(RESULT_OK)
                     finish()
