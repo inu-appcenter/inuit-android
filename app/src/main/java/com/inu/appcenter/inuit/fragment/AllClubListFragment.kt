@@ -54,8 +54,8 @@ class AllClubListFragment : Fragment() , OnCircleClick {
             })
     }
 
-    override fun startCircleDetail(id: Int) {
-        val intent = CircleDetailActivity.newIntent(requireActivity())
+    override fun startCircleDetail(id: Int,name:String) {
+        val intent = CircleDetailActivity.newIntent(requireActivity(),id,name)
         startActivity(intent)
     }
 }

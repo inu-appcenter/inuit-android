@@ -96,7 +96,7 @@ class MultiTypeAdapter(val clickListener : OnCircleClick): RecyclerView.Adapter<
             }
             itemView.setOnClickListener {
                 //Toast.makeText(itemView.context,"Selected id = $id",Toast.LENGTH_SHORT).show()
-                clickListener.startCircleDetail(id!!)
+                clickListener.startCircleDetail(item.id,item.name)
             }
         }
 
