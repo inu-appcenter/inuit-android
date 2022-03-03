@@ -13,9 +13,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.INUClub">
-        <activity android:name=".PostCircleActivity"/>
+        android:theme="@style/Theme.INUClub"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".CircleDetailActivity"></activity>
+        <activity android:name=".PostCircleActivity" />
         <activity
             android:name=".imageviewer.SlideImageViewer"
             android:theme="@style/SlideImageViewerTheme" />
