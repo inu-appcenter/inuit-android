@@ -1,5 +1,6 @@
 package com.inu.appcenter.inuit.fragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,11 +10,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
+import com.inu.appcenter.inuit.CategoryActivity
+import com.inu.appcenter.inuit.CircleDetailActivity
 import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
+import com.inu.appcenter.inuit.recycler.OnCircleClick
 
-class AllClubListFragment : Fragment() {
+class AllClubListFragment : Fragment() , OnCircleClick {
 
     private val viewModel: ClubListViewModel by activityViewModels()
     private lateinit var recycler_all_club_list : RecyclerView
@@ -30,7 +34,7 @@ class AllClubListFragment : Fragment() {
         recycler_all_club_list = view.findViewById(R.id.recycler_all_club_list)
         recycler_all_club_list.layoutManager = LinearLayoutManager(context)
 
-        adapter = MultiTypeAdapter()
+        adapter = MultiTypeAdapter(this)
         recycler_all_club_list.adapter = adapter
 
         animation = view.findViewById(R.id.loading_all_club_list)
@@ -48,5 +52,10 @@ class AllClubListFragment : Fragment() {
                 animation.visibility = View.GONE
                 animation.pauseAnimation()
             })
+    }
+
+    override fun startCircleDetail(id: Int) {
+        val intent = CircleDetailActivity.newIntent(requireActivity())
+        startActivity(intent)
     }
 }

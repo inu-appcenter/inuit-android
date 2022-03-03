@@ -9,12 +9,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
+import com.inu.appcenter.inuit.CircleDetailActivity
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.Utility
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
+import com.inu.appcenter.inuit.recycler.OnCircleClick
 import com.inu.appcenter.inuit.viewmodel.SearchViewModel
 
-class SearchListFragment : Fragment() {
+class SearchListFragment : Fragment(), OnCircleClick{
 
     private val viewModel: SearchViewModel by activityViewModels()
     private lateinit var recycler_search_list : RecyclerView
@@ -34,7 +36,7 @@ class SearchListFragment : Fragment() {
         recycler_search_list = view.findViewById(R.id.recycler_search_list)
         recycler_search_list.layoutManager = LinearLayoutManager(context)
 
-        adapter = MultiTypeAdapter()
+        adapter = MultiTypeAdapter(this)
         recycler_search_list.adapter = adapter
 
         return view
@@ -52,5 +54,10 @@ class SearchListFragment : Fragment() {
                 Utility.pauseLoading(loadingAnimation)
             }
         )
+    }
+
+    override fun startCircleDetail(id: Int) {
+        val intent = CircleDetailActivity.newIntent(requireActivity())
+        startActivity(intent)
     }
 }

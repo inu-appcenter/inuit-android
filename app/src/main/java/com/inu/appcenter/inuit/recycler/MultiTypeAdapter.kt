@@ -14,7 +14,7 @@ import com.inu.appcenter.inuit.recycler.item.Item
 import com.inu.appcenter.inuit.recycler.item.TitleItem
 import com.inu.appcenter.inuit.retrofit.dto.Circle
 
-class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MultiTypeAdapter(val clickListener : OnCircleClick): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val items = mutableListOf<Item>()
 
@@ -36,7 +36,7 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 holder.bind(items[position] as TitleItem)
             }
             is ClubHolder -> {
-                holder.bind(items[position] as ClubItem)
+                holder.bind(items[position] as ClubItem,clickListener)
             }
         }
     }
@@ -80,7 +80,7 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private val tv_name = itemView.findViewById(R.id.tv_recycler_item_name) as TextView
         private val tv_desc = itemView.findViewById(R.id.tv_recycler_item_desc) as TextView
 
-        fun bind(item: ClubItem){
+        fun bind(item: ClubItem,clickListener : OnCircleClick){
             id = item.id
             tv_name.text = item.name
             tv_desc.text = item.description
@@ -95,7 +95,8 @@ class MultiTypeAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 iv_img.setImageResource(R.drawable.ic_null_profile_sample)
             }
             itemView.setOnClickListener {
-                Toast.makeText(itemView.context,"Selected id = $id",Toast.LENGTH_SHORT).show()
+                //Toast.makeText(itemView.context,"Selected id = $id",Toast.LENGTH_SHORT).show()
+                clickListener.startCircleDetail(id!!)
             }
         }
 
