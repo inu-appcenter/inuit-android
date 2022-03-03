@@ -31,9 +31,16 @@ class MyClubListAdapter(val clickListener : OnMyCircleClick) : RecyclerView.Adap
         this.items.add(item)
     }
 
-    fun setMyClub(clubId:Int, clubName:String ){ //List<Circle>은 뷰모델로부터 받는다.
+    fun setMyClub(clubId:Int?, clubName:String ){ //List<Circle>은 뷰모델로부터 받는다.
         items.clear()
-        addItem(ClubItem(clubId,clubName))
+        if(clubId != null){
+            addItem(ClubItem(clubId,clubName))
+        }
+        notifyDataSetChanged()
+    }
+
+    fun clearAll(){
+        items.clear()
         notifyDataSetChanged()
     }
 
@@ -46,7 +53,7 @@ class MyClubListAdapter(val clickListener : OnMyCircleClick) : RecyclerView.Adap
             id = data.id
             clubName.text = data.name
             itemView.setOnClickListener {
-                Toast.makeText(itemView.context,"Selected id = $id", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(itemView.context,"Selected id = $id", Toast.LENGTH_SHORT).show()
                 val pop = PopupMenu(itemView.context, itemView)
                 pop.inflate(R.menu.menu_my_circle)
                 pop.setOnMenuItemClickListener {

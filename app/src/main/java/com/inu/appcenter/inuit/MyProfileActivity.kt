@@ -22,6 +22,8 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
     private val viewModel by viewModels<MyProfileViewModel>()
     private lateinit var editResult : ActivityResultLauncher<Intent>
     private lateinit var addResult : ActivityResultLauncher <Intent>
+    private lateinit var adapter : MyClubListAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +55,7 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
 
         val recycler_myclub_List = findViewById<RecyclerView>(R.id.recycler_myclub_list)
         recycler_myclub_List.layoutManager = LinearLayoutManager(this)
-        val adapter = MyClubListAdapter(this)
+        adapter = MyClubListAdapter(this)
         recycler_myclub_List.adapter = adapter
         if(memberInfo?.circleId != null && memberInfo?.circleName!= null){
             adapter.setMyClub(memberInfo.circleId,memberInfo.circleName)
@@ -67,13 +69,7 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
 
         addResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             if(it.resultCode == RESULT_OK){
-                viewModel.requestMemberInfo(App.prefs.token!!)
-                viewModel.memberInfo.observe(
-                    this,
-                    {
-                        adapter.setMyClub(it.circleId!!,it.circleName!!)
-                    }
-                )
+                updateMemberInfo()
             }
         }
     }
@@ -96,6 +92,20 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
         //동아리 상세페이지로 이동.
     }
 
+    fun updateMemberInfo(){
+        viewModel.requestMemberInfo(App.prefs.token!!)
+        viewModel.memberInfo.observe(
+            this,
+            {
+                if(it.circleId != null){
+                    adapter.setMyClub(it.circleId!!,it.circleName!!)
+                }else{
+                    adapter.clearAll()
+                }
+            }
+        )
+    }
+
     fun deleteCircle(id:Int){
         viewModel.deleteCircle(App.prefs.token!!,id)
         viewModel.deletedCircleId.observe(
@@ -103,6 +113,7 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
             {
                 if(it == id){
                     Toast.makeText(this,"동아리 삭제 성공",Toast.LENGTH_SHORT).show()
+                    updateMemberInfo()
                 }
             }
         )
