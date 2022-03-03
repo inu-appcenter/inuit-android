@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/line_color_white_gray"
+    app:layoutDescription="@xml/activity_circle_detail_scene"
     tools:context=".CircleDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,26 +43,14 @@
             app:layout_constraintStart_toEndOf="@+id/btn_back"
             app:layout_constraintTop_toTopOf="@+id/btn_back" />
 
-        <ImageButton
-            android:id="@+id/imgBtn_myprofile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="20dp"
-            android:background="?selectableItemBackgroundBorderless"
-            android:backgroundTint="#00FFFFFF"
-            android:padding="3dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_menu_dots" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/constraint_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="12dp"
+        android:paddingBottom="10dp"
+        android:background="@color/line_color_white_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
@@ -73,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:text="@string/detail_title_location"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -190,28 +178,30 @@
             app:layout_constraintTop_toTopOf="@+id/textView3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView_details"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/white"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/constraint_details">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/iv_circle_detail_poster"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_null_profile_sample"/>
+                android:src="@drawable/ic_null_profile_sample" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -223,22 +213,21 @@
                     android:id="@+id/tv_detail_recruit_state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="#모집중"
-                    />
+                    android:text="#모집중" />
 
                 <TextView
                     android:id="@+id/tv_detail_division"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="#중앙 동아리"/>
+                    android:text="#중앙 동아리" />
 
                 <TextView
                     android:id="@+id/tv_detail_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="#문화예술"/>
+                    android:text="#문화예술" />
 
             </LinearLayout>
 
@@ -246,32 +235,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
                 android:text="@string/mid_title_circle_introduce"
                 android:textColor="@color/font_color_black"
-                android:fontFamily="@font/spoqahansansneo_regular"
-                android:textSize="26sp"/>
+                android:textSize="26sp" />
 
             <TextView
                 android:id="@+id/tv_detail_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="@string/description_sample"/>
-            <Button
-                android:id="@+id/btn_detail_apply"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/button_blue_btn"
-                android:elevation="10dp"
-                android:fontFamily="@font/spoqahansansneo"
-                android:letterSpacing="0.05"
-                android:textColor="@color/font_color_white"
-                android:textSize="19sp"
-                app:backgroundTint="@color/brand_color_blue"
-                android:text="@string/detail_btn_apply"/>
+                android:layout_marginBottom="100dp"
+                android:text="@string/description_sample" />
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_detail_apply"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_blue_btn"
+        android:elevation="10dp"
+        android:fontFamily="@font/spoqahansansneo"
+        android:letterSpacing="0.05"
+        android:text="@string/detail_btn_apply"
+        android:textColor="@color/font_color_white"
+        android:textSize="19sp"
+        app:backgroundTint="@color/brand_color_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
