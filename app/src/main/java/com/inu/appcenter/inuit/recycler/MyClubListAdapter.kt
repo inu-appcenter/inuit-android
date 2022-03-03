@@ -3,13 +3,14 @@ package com.inu.appcenter.inuit.recycler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.item.ClubItem
 
-class MyClubListAdapter() : RecyclerView.Adapter<MyClubListAdapter.MyClubViewHolder>() {
+class MyClubListAdapter(val clickListener : OnMyCircleClick) : RecyclerView.Adapter<MyClubListAdapter.MyClubViewHolder>() {
 
     private val items = mutableListOf<ClubItem>()
 
@@ -36,7 +37,7 @@ class MyClubListAdapter() : RecyclerView.Adapter<MyClubListAdapter.MyClubViewHol
         notifyDataSetChanged()
     }
 
-    class MyClubViewHolder(view: View): RecyclerView.ViewHolder(view){
+    inner class MyClubViewHolder(view: View): RecyclerView.ViewHolder(view){
 
         var id : Int? = null
         val clubName = view.findViewById<TextView>(R.id.tv_recycler_my_club_list)
@@ -46,6 +47,24 @@ class MyClubListAdapter() : RecyclerView.Adapter<MyClubListAdapter.MyClubViewHol
             clubName.text = data.name
             itemView.setOnClickListener {
                 Toast.makeText(itemView.context,"Selected id = $id", Toast.LENGTH_SHORT).show()
+                val pop = PopupMenu(itemView.context, itemView)
+                pop.inflate(R.menu.menu_my_circle)
+                pop.setOnMenuItemClickListener {
+                    when(it.itemId){
+                        R.id.menu_show_circle -> {
+                            //동아리 상세페이지로 이동
+                        }
+                        R.id.menu_delete_circle -> {
+                            //MyPrifile에 있는 delete 메서드 실행
+                            clickListener.onMyCircleDeleteClick(id!!)
+                        }
+                        R.id.menu_edit_circle -> {
+                            //내 동아리 수정하기 메서드 실행행
+                       }
+                    }
+                    false
+                }
+                pop.show()
             }
         }
     }
