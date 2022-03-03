@@ -6,4 +6,6 @@ interface OnMyCircleClick {
     fun onMyCircleEditClick(id : Int)
 
     fun onMyCircleDescClick(id : Int)
+
+    fun showDeleteDialog(id : Int)
 }

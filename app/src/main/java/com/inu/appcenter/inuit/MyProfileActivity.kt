@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.login.App
@@ -92,11 +94,27 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
         //동아리 상세페이지로 이동.
     }
 
+    override fun showDeleteDialog(id:Int) {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.delete_circle_dialog_title))
+            .setMessage(getString(R.string.delete_circle_dialog_msg))
+            .setPositiveButton("확인") { dialog, which ->
+                deleteCircle(id)
+                dialog.dismiss()
+                Log.d("MyTag", "positive") }
+            .setNegativeButton("취소") { dialog, which ->
+                dialog.dismiss()
+                Log.d("MyTag", "negative") }
+            .create()
+            .show()
+    }
+
     fun updateMemberInfo(){
         viewModel.requestMemberInfo(App.prefs.token!!)
         viewModel.memberInfo.observe(
             this,
             {
+                App.memberInfo = it
                 if(it.circleId != null){
                     adapter.setMyClub(it.circleId!!,it.circleName!!)
                 }else{
