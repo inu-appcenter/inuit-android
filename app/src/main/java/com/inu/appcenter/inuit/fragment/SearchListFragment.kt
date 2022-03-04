@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.inu.appcenter.inuit.CircleDetailActivity
 import com.inu.appcenter.inuit.R
-import com.inu.appcenter.inuit.Utility
+import com.inu.appcenter.inuit.util.Utility
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
 import com.inu.appcenter.inuit.recycler.OnCircleClick
 import com.inu.appcenter.inuit.viewmodel.SearchViewModel

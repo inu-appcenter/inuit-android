@@ -1,4 +1,4 @@
-package com.inu.appcenter.inuit
+package com.inu.appcenter.inuit.util
 
 import android.content.Context
 import android.net.ConnectivityManager

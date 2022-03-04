@@ -58,6 +58,7 @@ class PostCircleServiceCreator {
                 else {
                     Log.e("응답 실패", "response is not Successful")
                     Log.e("errorBody() is ", response.errorBody()!!.string())
+                    liveData.value = -1
                 }
             }
         })
@@ -85,6 +86,7 @@ class PostCircleServiceCreator {
                 }
                 else {
                     Log.e("응답 실패", "response is not Successful")
+                    liveData.value = listOf(-1)
                 }
             }
         })
@@ -112,6 +114,7 @@ class PostCircleServiceCreator {
                 }
                 else {
                     Log.e("응답 실패", "response is not Successful")
+                    liveData.value = -1
                 }
             }
         })

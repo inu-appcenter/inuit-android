@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.INUClub"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CircleDetailActivity"></activity>
+        <activity android:name=".CircleDetailActivity" />
         <activity android:name=".PostCircleActivity" />
         <activity
             android:name=".imageviewer.SlideImageViewer"

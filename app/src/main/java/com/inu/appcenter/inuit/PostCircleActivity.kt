@@ -21,6 +21,8 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.recycler.ImagePreviewAdapter
 import com.inu.appcenter.inuit.retrofit.dto.CirclePostBody
+import com.inu.appcenter.inuit.util.LoadingDialog
+import com.inu.appcenter.inuit.util.Utility
 import com.inu.appcenter.inuit.viewmodel.PostCircleViewModel
 import com.wayne.constraintradiogroup.ConstraintRadioGroup
 import com.wayne.constraintradiogroup.OnCheckedChangeListener
@@ -70,6 +72,7 @@ class PostCircleActivity : AppCompatActivity() {
     var category = ""
 
     private lateinit var loadingAnimation : LottieAnimationView
+    private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,6 +95,7 @@ class PostCircleActivity : AppCompatActivity() {
         dropDownRecruitSchedule = findViewById(R.id.ibtn_recruit_schedule)
         loadingAnimation = findViewById(R.id.loading_post_circle)
         Utility.pauseLoading(loadingAnimation)
+        loadingDialog = LoadingDialog(this@PostCircleActivity)
 
         divisionGroup = findViewById(R.id.rg_division)
         categoryGroup = findViewById(R.id.rg_category)
@@ -282,15 +286,20 @@ class PostCircleActivity : AppCompatActivity() {
     }
 
     private fun postCircleData(){
-        Utility.startLoading(loadingAnimation)
+        //Utility.startLoading(loadingAnimation)
+        loadingDialog.show()
         val body = getCirclePostBody()
         viewModel.postCircle(App.prefs.token!!,body)
         viewModel.postedCircleId.observe(
             this,
             {
                 //POST circle 실행 성공시 처리.
-                updateMemberInfo()
-                postPhotos(it)
+                if(it == -1){ //서버 응답 실패
+                    loadingDialog.dismiss()
+                }else{
+                    updateMemberInfo()
+                    postPhotos(it)
+                }
             }
         )
     }
@@ -300,7 +309,7 @@ class PostCircleActivity : AppCompatActivity() {
         viewModel.memberInfo.observe(
             this,
             {
-                App.memberInfo = it //멤버 정보 갱신(내가 등록한 동아리, circle id에 값을 추가하기 위해서)
+                App.memberInfo = it //멤버 정보 갱신(내가 등록한 동아리, circle id에 값을 추가하기 위해서,동아리 삭제 반영하기 위해서)
             }
         )
     }
@@ -312,7 +321,11 @@ class PostCircleActivity : AppCompatActivity() {
         viewModel.postedImagesId.observe(
             this,
             {
-                setCircleProfile(circleId,it[0])
+                if(it[0] == -1){ //서버 응답 실패
+                    loadingDialog.dismiss()
+                }else{
+                    setCircleProfile(circleId,it[0])
+                }
             }
         )
     }
@@ -322,11 +335,14 @@ class PostCircleActivity : AppCompatActivity() {
         viewModel.profileImageId.observe(
             this,
             {
+                //Utility.pauseLoading(loadingAnimation)
+                loadingDialog.dismiss()
                 if(photoId == it){
-                    Utility.pauseLoading(loadingAnimation)
                     showToastMsg("새 동아리 등록하기 성공!")
                     setResult(RESULT_OK)
                     finish()
+                }else if(it == -1){ //서버 응답 실패
+
                 }
             }
         )

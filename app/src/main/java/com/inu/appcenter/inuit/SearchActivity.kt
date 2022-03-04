@@ -5,16 +5,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import com.airbnb.lottie.LottieAnimationView
 import com.inu.appcenter.inuit.fragment.SearchInfoFragment
 import com.inu.appcenter.inuit.fragment.SearchListFragment
+import com.inu.appcenter.inuit.util.Utility
 import com.inu.appcenter.inuit.viewmodel.SearchViewModel
 
 class SearchActivity : AppCompatActivity() {

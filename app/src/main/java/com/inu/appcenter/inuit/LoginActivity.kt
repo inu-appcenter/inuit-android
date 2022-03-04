@@ -11,6 +11,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
 import com.inu.appcenter.inuit.login.App
+import com.inu.appcenter.inuit.util.LoadingDialog
+import com.inu.appcenter.inuit.util.Utility
 import com.inu.appcenter.inuit.viewmodel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -18,17 +20,15 @@ class LoginActivity : AppCompatActivity() {
     private val viewModel by viewModels<LoginViewModel>()
     private lateinit var email : EditText
     private lateinit var password : EditText
-    private lateinit var loadingAnimation : LottieAnimationView
+    private lateinit var loadingDialog : LoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        loadingAnimation = findViewById(R.id.loading_login)
         email = findViewById(R.id.et_email)
         password = findViewById(R.id.et_password)
-
-        Utility.pauseLoading(loadingAnimation)
+        loadingDialog = LoadingDialog(this@LoginActivity)
 
         val tv_signup = findViewById<TextView>(R.id.tv_signup)
         tv_signup.setOnClickListener {
@@ -62,24 +62,22 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginProcess(){
-        Utility.startLoading(loadingAnimation)
+        loadingDialog.show()
         viewModel.requestLogin(email.text.toString(), password.text.toString())
         viewModel.token.observe(this,
             {
+                loadingDialog.dismiss()
                 when (it) {
                     "not registered email" -> {
                         showToastMsg(getString(R.string.login_not_registered_email))
                         Utility.focusEditText(this,email)
-                        Utility.pauseLoading(loadingAnimation)
                     }
                     "incorrect password" -> {
                         showToastMsg(getString(R.string.login_incorrect_password))
                         Utility.focusEditText(this,password)
-                        Utility.pauseLoading(loadingAnimation)
                     }
                     "server error" -> {
                         showToastMsg(getString(R.string.login_server_error))
-                        Utility.pauseLoading(loadingAnimation)
                     }
                     else -> { //토큰을 정상적으로 받았을 때.
                         App.prefs.token = it
@@ -97,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
                 App.memberInfo = it
                 App.nowLogin = true
                 showToastMsg("로그인 성공")
-                Utility.pauseLoading(loadingAnimation)
+                loadingDialog.dismiss()
                 finish()
             }
         )

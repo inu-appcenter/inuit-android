@@ -6,10 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
-import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
 import com.airbnb.lottie.LottieAnimationView
+import com.inu.appcenter.inuit.util.LoadingDialog
+import com.inu.appcenter.inuit.util.Utility
 import com.inu.appcenter.inuit.viewmodel.SignUpViewModel
 
 class SignUpActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var certificationNum : EditText
     private lateinit var password : EditText
     private lateinit var passwordCheck : EditText
-    private lateinit var animation : LottieAnimationView
+    private lateinit var loadingDialog: LoadingDialog
 
     private val correct = "inu.ac.kr"
 
@@ -34,9 +35,7 @@ class SignUpActivity : AppCompatActivity() {
         certificationNum = findViewById(R.id.et_certification)
         password = findViewById(R.id.et_password_signup)
         passwordCheck = findViewById(R.id.et_password_check)
-        animation = findViewById(R.id.loading_signup)
-
-        Utility.pauseLoading(animation)
+        loadingDialog = LoadingDialog(this@SignUpActivity)
 
         val backButton = findViewById<ImageButton>(R.id.btn_back)
         backButton.setOnClickListener { finish() }
@@ -84,12 +83,12 @@ class SignUpActivity : AppCompatActivity() {
         }
         else if (isCorrectEmail()) {
             emailCountDown.start()
-            Utility.startLoading(animation)
+            loadingDialog.show()
             viewModel.postEmail(email.text.toString())
             viewModel.correctEmail.observe(
                 this,
                 {
-                    Utility.pauseLoading(animation)
+                    loadingDialog.dismiss()
                     emailCountDown.cancel()
                     if (it == email.text.toString()){
                         Utility.focusEditText(this,certificationNum)
@@ -132,12 +131,12 @@ class SignUpActivity : AppCompatActivity() {
         }
         else{
             singUpCountDown.start()
-            Utility.startLoading(animation)
+            loadingDialog.show()
             viewModel.verifiedEmailResponse(email.text.toString(),certificationNum.text.toString())
             viewModel.verifiedCode.observe(
                 this,
                 {
-                    Utility.pauseLoading(animation)
+                    loadingDialog.dismiss()
                     singUpCountDown.cancel()
                     if(it == certificationNum.text.toString()){
                         // 회원가입 성공, 닉네임, 이메일, 패스워드 데이터 전송
