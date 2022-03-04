@@ -46,7 +46,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
     <ScrollView
         android:id="@+id/scrollview_post_circle"
         android:layout_width="0dp"
@@ -55,8 +54,10 @@
         android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -103,11 +104,11 @@
                     android:background="@null"
                     android:cursorVisible="true"
                     android:ems="10"
+                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:hint="@string/post_circle_name_hint"
                     android:inputType="text"
                     android:maxLength="20"
                     android:maxLines="1"
-                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:textColor="@color/font_color_black"
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:textSize="15sp"
@@ -146,11 +147,11 @@
                     android:background="@null"
                     android:cursorVisible="true"
                     android:ems="10"
+                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:hint="@string/post_circle_line_hint"
                     android:inputType="text"
                     android:maxLength="30"
                     android:maxLines="1"
-                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:textColor="@color/font_color_black"
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:textSize="15sp"
@@ -190,7 +191,7 @@
                 android:layout_marginStart="24dp"
                 android:orientation="horizontal"
                 tools:itemCount="1"
-                tools:listitem="@layout/recycler_image_image_item"/>
+                tools:listitem="@layout/recycler_image_image_item" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/et_circle_profile_group"
@@ -486,18 +487,18 @@
                     android:layout_marginBottom="8dp"
                     android:background="@null"
                     android:cursorVisible="true"
-                    android:gravity="top"
                     android:ems="10"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:gravity="top"
                     android:hint="@string/post_circle_description_hint"
                     android:inputType="textMultiLine"
-                    android:minLines="5"
-                    android:maxLines="100"
                     android:maxLength="3000"
+                    android:maxLines="100"
+                    android:minLines="5"
                     android:scrollbars="vertical"
                     android:textColor="@color/font_color_black"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -534,7 +535,7 @@
                 android:layout_marginStart="24dp"
                 android:orientation="horizontal"
                 tools:itemCount="1"
-                tools:listitem="@layout/recycler_image_image_item"/>
+                tools:listitem="@layout/recycler_image_image_item" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -585,6 +586,107 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_title_recruit_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_recruit_schedule"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_circle_recruit_schedule_group"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <ImageView
+                    android:id="@+id/iv_recruit_schedule_box"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_gray_box"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_post_circle_recruit_schedule"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_post_circle_recruit_schedule" />
+
+                <TextView
+                    android:id="@+id/tv_post_circle_recruit_schedule"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:hint="@string/post_circle_recruit_hint"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ibtn_recruit_schedule"
+                    app:layout_constraintStart_toEndOf="@+id/iv_recruit_schedule_box"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/ibtn_recruit_schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_drop_down"
+                    android:tint="@color/line_color_gray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_title_circle_apply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_apply_link"
+                android:textColor="@color/font_color_black"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/et_post_apply_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/view_under_line">
+
+                <EditText
+                    android:id="@+id/et_post_circle_apply_link"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:ems="10"
+                    android:fontFamily="@font/spoqahansansneo_regular"
+                    android:hint="@string/post_circle_apply_hint"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:textColor="@color/font_color_black"
+                    android:textCursorDrawable="@drawable/edittext_cursor"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
                 android:id="@+id/tv_title_circle_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -612,11 +714,11 @@
                     android:background="@null"
                     android:cursorVisible="true"
                     android:ems="10"
+                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:hint="@string/post_circle_location_hint"
                     android:inputType="text"
                     android:maxLength="30"
                     android:maxLines="1"
-                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:textColor="@color/font_color_black"
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:textSize="15sp"
@@ -655,11 +757,11 @@
                     android:background="@null"
                     android:cursorVisible="true"
                     android:ems="10"
+                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:hint="@string/post_circle_site_hint"
                     android:inputType="text"
                     android:maxLength="30"
                     android:maxLines="1"
-                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:textColor="@color/font_color_black"
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:textSize="15sp"
@@ -698,11 +800,11 @@
                     android:background="@null"
                     android:cursorVisible="true"
                     android:ems="10"
+                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:hint="@string/post_circle_kakao_hint"
                     android:inputType="text"
                     android:maxLength="30"
                     android:maxLines="1"
-                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:textColor="@color/font_color_black"
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:textSize="15sp"
@@ -730,6 +832,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginBottom="50dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/view_under_line">
 
@@ -737,15 +840,14 @@
                     android:id="@+id/et_post_circle_phone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
                     android:background="@null"
                     android:cursorVisible="true"
                     android:ems="10"
+                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:hint="@string/post_circle_phone_hint"
                     android:inputType="number"
                     android:maxLength="30"
                     android:maxLines="1"
-                    android:fontFamily="@font/spoqahansansneo_regular"
                     android:textColor="@color/font_color_black"
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:textSize="15sp"
@@ -755,110 +857,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/tv_title_recruit_schedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="50dp"
-                android:fontFamily="@font/spoqahansansneo_regular"
-                android:text="@string/post_circle_recruit_schedule"
-                android:textColor="@color/font_color_black"
-                android:textSize="15sp" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/et_circle_recruit_schedule_group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/view_under_line">
-
-                <ImageView
-                    android:id="@+id/iv_recruit_schedule_box"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/ic_gray_box"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_post_circle_recruit_schedule"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tv_post_circle_recruit_schedule" />
-
-                <TextView
-                    android:id="@+id/tv_post_circle_recruit_schedule"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/spoqahansansneo_regular"
-                    android:hint="@string/post_circle_recruit_hint"
-                    android:textColor="@color/font_color_black"
-                    android:textCursorDrawable="@drawable/edittext_cursor"
-                    android:textSize="15sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/ibtn_recruit_schedule"
-                    app:layout_constraintStart_toEndOf="@+id/iv_recruit_schedule_box"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/ibtn_recruit_schedule"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:src="@drawable/ic_drop_down"
-                    android:tint="@color/line_color_gray"
-                    android:background="?selectableItemBackgroundBorderless"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/tv_title_circle_apply"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="50dp"
-                android:fontFamily="@font/spoqahansansneo_regular"
-                android:text="@string/post_circle_apply_link"
-                android:textColor="@color/font_color_black"
-                android:textSize="15sp" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/et_post_apply_group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="50dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/view_under_line">
-
-                <EditText
-                    android:id="@+id/et_post_circle_apply_link"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:background="@null"
-                    android:cursorVisible="true"
-                    android:ems="10"
-                    android:hint="@string/post_circle_apply_hint"
-                    android:inputType="text"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:fontFamily="@font/spoqahansansneo_regular"
-                    android:textColor="@color/font_color_black"
-                    android:textCursorDrawable="@drawable/edittext_cursor"
-                    android:textSize="15sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         </LinearLayout>
 

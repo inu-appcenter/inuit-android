@@ -8,6 +8,7 @@ import android.os.Environment
 import android.util.Log
 import android.widget.*
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,7 +37,6 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-
 
 class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
@@ -71,7 +71,9 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
     private lateinit var divisionGroup : RadioGroup
     private lateinit var categoryGroup : ConstraintRadioGroup
-    var category = ""
+    var division : String? = null
+    var category : String? = null
+    var information : String? = null
 
     private lateinit var loadingAnimation : LottieAnimationView
     private lateinit var loadingDialog: LoadingDialog
@@ -108,9 +110,9 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             ) {
                 when(checkedButton.id){
                     R.id.rb_academic -> category = getString(R.string.server_academic)
-                    R.id.rb_exercise -> category =getString(R.string.server_exercise)
-                    R.id.rb_culture -> category =getString(R.string.server_culture)
-                    R.id.rb_service -> category =getString(R.string.server_service)
+                    R.id.rb_exercise -> category = getString(R.string.server_exercise)
+                    R.id.rb_culture -> category = getString(R.string.server_culture)
+                    R.id.rb_service -> category = getString(R.string.server_service)
                     R.id.rb_religion -> category = getString(R.string.server_religion)
                     R.id.rb_etc -> category = getString(R.string.server_etc)
                     R.id.rb_hobby_exhibition ->category = getString(R.string.server_hobby_exhibition)
@@ -164,14 +166,19 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
         val backButton = findViewById<ImageButton>(R.id.btn_cancel_post_circle)
         backButton.setOnClickListener {
-            finish()
+            cancelDialog()
         }
         
         val checkButton = findViewById<ImageButton>(R.id.btn_post_circle)
         checkButton.setOnClickListener {
-            postCircleData()
-            //postPhotos(App.memberInfo?.circleId!!)
+            if(checkBeforePost()){
+                postCircleData()
+            }
         }
+    }
+
+    override fun onBackPressed() {
+        cancelDialog()
     }
 
     companion object {
@@ -218,9 +225,9 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
             if(posterImageAdapter.itemsSize()<10){
                 posterImageAdapter.addImage(image)
+                posterImage.add(image)
             }
-            posterImage.clear()
-            posterImage.addAll(result)
+            //posterImage.addAll(result)
         }
     }
 
@@ -234,6 +241,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             val startDate = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()).format(it.first)
             val endDate = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()).format(it.second)
             setRecruitSchedule.text = startDate + " ~ " + endDate
+            information = setRecruitSchedule.text.toString()
             isoStartDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(it.first) + "T00:00:00"
             isoEndDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(it.second) + "T23:59:59"
             Log.d("isoDate", "startDate: $isoStartDate, endDate : $isoEndDate")
@@ -249,11 +257,13 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
                 R.id.menu_select_day -> pickDateRange()
                 R.id.menu_all_day_open -> {
                     setRecruitSchedule.text = it.title
+                    information = it.title.toString()
                     isoStartDate = "2000-01-01T00:00:00"
                     isoEndDate = "2099-12-29T23:23:23"
                 }
                 R.id.menu_close -> {
                     setRecruitSchedule.text = it.title
+                    information = it.title.toString()
                     isoStartDate = "2000-01-01T00:00:00"
                     isoEndDate = "2000-01-01T00:00:00"
                 }
@@ -298,6 +308,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
                 //POST circle 실행 성공시 처리.
                 if(it == -1){ //서버 응답 실패
                     loadingDialog.dismiss()
+                    showToastMsg("등록 실패")
                 }else{
                     updateMemberInfo()
                     postPhotos(it)
@@ -325,6 +336,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             {
                 if(it[0] == -1){ //서버 응답 실패
                     loadingDialog.dismiss()
+                    showToastMsg("사진 업로드 실패")
                 }else{
                     setCircleProfile(circleId,it[0])
                 }
@@ -344,7 +356,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
                     setResult(RESULT_OK)
                     finish()
                 }else if(it == -1){ //서버 응답 실패
-
+                    showToastMsg("프로필 사진 등록 실패")
                 }
             }
         )
@@ -354,8 +366,8 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
     private fun getCirclePostBody(): CirclePostBody {
         return CirclePostBody(
             name.text.toString(),
-            getCircleDivision(),
-            category,
+            division!!,
+            category!!,
             oneLineIntroduce.text.toString(),
             description.text.toString(),
             getRecruit(),
@@ -369,18 +381,78 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             applyLink.text.toString())
     }
 
-    private fun getCircleDivision() :String{
+    private fun getCircleDivision() :String?{
         when (divisionGroup.checkedRadioButtonId) {
-            R.id.rb_main_circle -> return getString(R.string.server_main_circle)
-            R.id.rb_temp_circle -> return getString(R.string.server_temp_circle)
-            R.id.rb_small_circle ->  return getString(R.string.server_small_circle)
-            else -> return getString(R.string.server_main_circle)
+            R.id.rb_main_circle -> division = getString(R.string.server_main_circle)
+            R.id.rb_temp_circle -> division = getString(R.string.server_temp_circle)
+            R.id.rb_small_circle -> division = getString(R.string.server_small_circle)
+            else -> division = null
         }
+        return division
     }
 
     private fun getRecruit():Boolean = setRecruitSchedule.text != "모집마감"
 
+    private fun isNameEmpty() : Boolean = name.text.isEmpty()
+
+    private fun isDivisionEmpty() : Boolean = getCircleDivision() == null
+
+    private fun isCategoryEmpty() : Boolean = category == null
+
+    private fun isIntroduceEmpty() : Boolean = oneLineIntroduce.text.isEmpty()
+
+    private fun isDescriptionEmpty() : Boolean = description.text.isEmpty()
+
+    private fun isRecruitInfoEmpty() : Boolean = information == null
+
+    private fun checkBeforePost() : Boolean{
+        var check = false
+        when {
+            isNameEmpty() -> {
+                showToastMsg("동아리 이름을 입력해주세요")
+                Utility.focusEditText(this,name)
+            }
+            isIntroduceEmpty() -> {
+                showToastMsg("한 줄 소개를 입력해주세요")
+                Utility.focusEditText(this,oneLineIntroduce)
+            }
+            isDivisionEmpty() -> {
+                showToastMsg("동아리 유형을 선택해주세요")
+            }
+            isCategoryEmpty() -> {
+                showToastMsg("주제 키워드를 선택해주세요")
+            }
+            isDescriptionEmpty() -> {
+                showToastMsg("동아리 소개를 입력해주세요")
+                Utility.focusEditText(this,description)
+            }
+            isRecruitInfoEmpty() -> {
+                showToastMsg("모집 일정을 선택해주세요")
+            }
+            else -> {
+                check = true
+            }
+        }
+        return check
+    }
+
     fun showToastMsg(msg:String){ Toast.makeText(this,msg, Toast.LENGTH_SHORT).show() }
+
+    fun cancelDialog(){
+        AlertDialog.Builder(this)
+            .setTitle("새 동아리 등록하기 취소")
+            .setMessage("작성한 내용이 사라집니다. \n정말로 취소하시겠습니까?")
+            .setPositiveButton("확인") { dialog, which ->
+                finish()
+                super.onBackPressed()
+                dialog.dismiss()
+                Log.d("MyTag", "positive") }
+            .setNegativeButton("취소") { dialog, which ->
+                dialog.dismiss()
+                Log.d("MyTag", "negative") }
+            .create()
+            .show()
+    }
 
     override fun startProfileSlideImageViewer(curIndex:Int) { //0은 프로필 1은 포스터 및 추가 이미지
         SlideImageViewer.start(this, profileImage)

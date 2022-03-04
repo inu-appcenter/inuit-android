@@ -24,7 +24,7 @@ class PreviewImageAdapter(val mode:Int, val clickListener:OnPreviewImageClick) :
 
     override fun onBindViewHolder(holder: ImagePreviewViewHolder, position: Int) {
         val data = items[position]
-        holder.bind(data)
+        holder.bind(data,position)
     }
 
     override fun getItemCount(): Int = items.size
@@ -39,7 +39,7 @@ class PreviewImageAdapter(val mode:Int, val clickListener:OnPreviewImageClick) :
     inner class ImagePreviewViewHolder(view:View): RecyclerView.ViewHolder(view){
         val imagePreview  = view.findViewById<ImageView>(R.id.iv_preview)
         val deleteButton = view.findViewById<ImageButton>(R.id.ibtn_delete_pre_image)
-        fun bind(data:ImageItem){
+        fun bind(data:ImageItem,position: Int){
 
             Glide.with(itemView.context)
                 .load(data.image.uri)
@@ -50,17 +50,18 @@ class PreviewImageAdapter(val mode:Int, val clickListener:OnPreviewImageClick) :
 
             imagePreview.setOnClickListener {
                 if (mode == 0){
-                    clickListener.startProfileSlideImageViewer(itemPosition)
+                    SlideImageViewer.start(itemView.context, arrayListOf(data.image))
                 }else if(mode == 1){
-                    clickListener.startPosterSlideImageViewer(itemPosition)
+                    clickListener.startPosterSlideImageViewer(position)
                 }
-                //SlideImageViewer.start(itemView.context, arrayListOf(data.image))
             }
 
             deleteButton.setOnClickListener {
-                items.removeAt(itemPosition)
-                notifyItemRemoved(itemPosition)
-                clickListener.deletePosterImage(itemPosition)
+                items.removeAt(position)
+                notifyDataSetChanged()
+                if(mode == 1){
+                    clickListener.deletePosterImage(position)
+                }
             }
         }
     }

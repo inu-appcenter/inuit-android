@@ -41,6 +41,9 @@ class MainActivity : AppCompatActivity() {
             viewModel.setDataNoCategory()
             refreshLayout.isRefreshing = false
         }
+
+        val intent = PostCircleActivity.newIntent(this@MainActivity)
+        startActivity(intent)
     }
 
     override fun onResume() {
