@@ -6,6 +6,7 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
 
@@ -35,6 +36,11 @@ class MainActivity : AppCompatActivity() {
             startActivityProperly()
         }
 
+        val refreshLayout = findViewById<SwipeRefreshLayout>(R.id.refresh_layout_main)
+        refreshLayout.setOnRefreshListener {
+            viewModel.setDataNoCategory()
+            refreshLayout.isRefreshing = false
+        }
     }
 
     override fun onResume() {

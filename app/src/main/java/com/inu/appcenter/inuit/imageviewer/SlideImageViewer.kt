@@ -2,6 +2,7 @@ package com.inu.appcenter.inuit.imageviewer
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
@@ -22,7 +23,10 @@ class SlideImageViewer : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_slide_image_viewer)
 
+        window.navigationBarColor = Color.BLACK
+
         val images: List<Image>? = intent.getParcelableArrayListExtra("images")
+        val clickedIndex = intent.getIntExtra("INDEX",0)
 
         closeButton = findViewById(R.id.btn_close_viewer)
         curPage = findViewById(R.id.tv_cur_page)
@@ -31,8 +35,9 @@ class SlideImageViewer : AppCompatActivity() {
 
         val adapter = SlideImageViewerAdapter(this,images!!)
         viewPager.adapter = adapter
+        viewPager.setCurrentItem(clickedIndex,false)
 
-
+        curPage.text = (viewPager.currentItem + 1).toString()
         allPage.text = images.size.toString()
         viewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -47,9 +52,10 @@ class SlideImageViewer : AppCompatActivity() {
     }
 
     companion object {
-        fun start(context: Context, images: List<Image?>?) {
+        fun start(context: Context, images: List<Image?>?, index:Int = 0) {
             val intent = Intent(context, SlideImageViewer::class.java)
             intent.putParcelableArrayListExtra("images", images as ArrayList<out Parcelable?>?)
+            intent.putExtra("INDEX",index)
             context.startActivity(intent)
         }
     }

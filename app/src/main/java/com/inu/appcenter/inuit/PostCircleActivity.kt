@@ -18,8 +18,10 @@ import com.esafirm.imagepicker.features.ImagePickerSavePath
 import com.esafirm.imagepicker.features.registerImagePicker
 import com.esafirm.imagepicker.model.Image
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.inu.appcenter.inuit.imageviewer.SlideImageViewer
 import com.inu.appcenter.inuit.login.App
-import com.inu.appcenter.inuit.recycler.ImagePreviewAdapter
+import com.inu.appcenter.inuit.recycler.OnPreviewImageClick
+import com.inu.appcenter.inuit.recycler.PreviewImageAdapter
 import com.inu.appcenter.inuit.retrofit.dto.CirclePostBody
 import com.inu.appcenter.inuit.util.LoadingDialog
 import com.inu.appcenter.inuit.util.Utility
@@ -36,7 +38,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class PostCircleActivity : AppCompatActivity() {
+class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
     private val viewModel by viewModels<PostCircleViewModel>()
     private var files  = ArrayList<MultipartBody.Part>()
@@ -45,11 +47,11 @@ class PostCircleActivity : AppCompatActivity() {
     private val posterImage = arrayListOf<Image>()
 
     private lateinit var profileRecyclerView: RecyclerView
-    private lateinit var profileImageAdapter : ImagePreviewAdapter
+    private lateinit var profileImageAdapter : PreviewImageAdapter
     private lateinit var addProfileImage : TextView
 
     private lateinit var posterRecyclerView: RecyclerView
-    private lateinit var posterImageAdapter : ImagePreviewAdapter
+    private lateinit var posterImageAdapter : PreviewImageAdapter
     private lateinit var addPosterImage : TextView
 
     private lateinit var setRecruitSchedule : TextView
@@ -128,7 +130,7 @@ class PostCircleActivity : AppCompatActivity() {
         }
 
         profileRecyclerView.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        profileImageAdapter = ImagePreviewAdapter()
+        profileImageAdapter = PreviewImageAdapter(0,this)
         profileRecyclerView.adapter = profileImageAdapter
 
         addProfileImage.setOnClickListener {
@@ -140,7 +142,7 @@ class PostCircleActivity : AppCompatActivity() {
         }
 
         posterRecyclerView.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
-        posterImageAdapter = ImagePreviewAdapter()
+        posterImageAdapter = PreviewImageAdapter(1,this)
         posterRecyclerView.adapter = posterImageAdapter
 
 
@@ -379,4 +381,16 @@ class PostCircleActivity : AppCompatActivity() {
     private fun getRecruit():Boolean = setRecruitSchedule.text != "모집마감"
 
     fun showToastMsg(msg:String){ Toast.makeText(this,msg, Toast.LENGTH_SHORT).show() }
+
+    override fun startProfileSlideImageViewer(curIndex:Int) { //0은 프로필 1은 포스터 및 추가 이미지
+        SlideImageViewer.start(this, profileImage)
+    }
+
+    override fun startPosterSlideImageViewer(curIndex: Int) {
+        SlideImageViewer.start(this,posterImage,curIndex)
+    }
+
+    override fun deletePosterImage(position: Int) {
+        posterImage.removeAt(position)
+    }
 }

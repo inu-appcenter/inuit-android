@@ -1,6 +1,5 @@
 package com.inu.appcenter.inuit.recycler
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.imageviewer.SlideImageViewer
 import com.inu.appcenter.inuit.recycler.item.ImageItem
 
-class ImagePreviewAdapter() : RecyclerView.Adapter<ImagePreviewAdapter.ImagePreviewViewHolder>(){
+class PreviewImageAdapter(val mode:Int, val clickListener:OnPreviewImageClick) : RecyclerView.Adapter<PreviewImageAdapter.ImagePreviewViewHolder>(){
 
     private val items = mutableListOf<ImageItem>()
 
@@ -41,19 +40,27 @@ class ImagePreviewAdapter() : RecyclerView.Adapter<ImagePreviewAdapter.ImagePrev
         val imagePreview  = view.findViewById<ImageView>(R.id.iv_preview)
         val deleteButton = view.findViewById<ImageButton>(R.id.ibtn_delete_pre_image)
         fun bind(data:ImageItem){
+
             Glide.with(itemView.context)
                 .load(data.image.uri)
                 .centerCrop()
                 .into(imagePreview)
 
+            val itemPosition = adapterPosition
+
             imagePreview.setOnClickListener {
-                SlideImageViewer.start(itemView.context, arrayListOf(data.image))
+                if (mode == 0){
+                    clickListener.startProfileSlideImageViewer(itemPosition)
+                }else if(mode == 1){
+                    clickListener.startPosterSlideImageViewer(itemPosition)
+                }
+                //SlideImageViewer.start(itemView.context, arrayListOf(data.image))
             }
 
             deleteButton.setOnClickListener {
-                val itemPosition = adapterPosition
                 items.removeAt(itemPosition)
                 notifyItemRemoved(itemPosition)
+                clickListener.deletePosterImage(itemPosition)
             }
         }
     }
