@@ -96,7 +96,8 @@ class MultiTypeAdapter(val clickListener : OnCircleClick): RecyclerView.Adapter<
             }
             itemView.setOnClickListener {
                 //Toast.makeText(itemView.context,"Selected id = $id",Toast.LENGTH_SHORT).show()
-                clickListener.startCircleDetail(item.id,item.name)
+                clickListener.startCircleDetail(item.id,item.name,item.recruit,item.location,item.scheduleInfo,item.phone,
+                                                item.owner,item.division,item.category,item.detailDescription)
             }
         }
 
@@ -119,19 +120,19 @@ class MultiTypeAdapter(val clickListener : OnCircleClick): RecyclerView.Adapter<
         //this.notifyDataSetChanged()
     }
 
-    fun setSampleData() {
-        addItem(TitleItem("모집 중"))
-        addItem(ClubItem(0,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.profile_sample))
-        addItem(ClubItem(1,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItem(ClubItem(2,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItem(TitleItem("모집 마감"))
-        addItem(ClubItem(3,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItem(ClubItem(4,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItem(ClubItem(5,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItem(ClubItem(6,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItem(ClubItem(7,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-        addItem(ClubItem(8,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
-    }
+//    fun setSampleData() {
+//        addItem(TitleItem("모집 중"))
+//        addItem(ClubItem(0,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.profile_sample))
+//        addItem(ClubItem(1,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+//        addItem(ClubItem(2,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+//        addItem(TitleItem("모집 마감"))
+//        addItem(ClubItem(3,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+//        addItem(ClubItem(4,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+//        addItem(ClubItem(5,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+//        addItem(ClubItem(6,"인유공방","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+//        addItem(ClubItem(7,"인스디스","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+//        addItem(ClubItem(8,"퍼펙트","다람쥐 헌쳇바퀴에 타고파",R.drawable.ic_launcher_foreground))
+//    }
 
     fun addListToItems(list:List<Circle>?){
 
@@ -151,7 +152,8 @@ class MultiTypeAdapter(val clickListener : OnCircleClick): RecyclerView.Adapter<
             }
 
             list?.forEach {
-                if(it.recruit) addItem(ClubItem(it.id,it.name,it.oneLineIntroduce,it.photoId))
+                if(it.recruit) addItem(ClubItem(it.id,it.name,it.oneLineIntroduce,it.photoId,it.recruit,it.address,it.information,
+                                                it.phone,it.nickName,it.division,it.category,it.introduce))
             }
 
             run loop@{
@@ -164,7 +166,8 @@ class MultiTypeAdapter(val clickListener : OnCircleClick): RecyclerView.Adapter<
             }
 
             list?.forEach {
-                if(!it.recruit) addItem(ClubItem(it.id, it.name,it.oneLineIntroduce,it.photoId))
+                if(!it.recruit) addItem(ClubItem(it.id, it.name,it.oneLineIntroduce,it.photoId,it.recruit,it.address,it.information,
+                                                    it.phone,it.nickName,it.division,it.category,it.introduce))
             }
         }
         notifyDataSetChanged()

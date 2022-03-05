@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.airbnb.lottie.LottieAnimationView
 import com.inu.appcenter.inuit.CategoryActivity
 import com.inu.appcenter.inuit.CircleDetailActivity
@@ -54,8 +55,9 @@ class AllClubListFragment : Fragment() , OnCircleClick {
             })
     }
 
-    override fun startCircleDetail(id: Int,name:String) {
-        val intent = CircleDetailActivity.newIntent(requireActivity(),id,name)
+    override fun startCircleDetail(id: Int,name:String,recruit:Boolean,location:String?,schedule:String?,phone:String?,owner:String?,
+                                   division:String, category:String, description:String) {
+        val intent = CircleDetailActivity.newIntent(requireActivity(),id,name,recruit,location,schedule,phone,owner,division,category,description)
         startActivity(intent)
     }
 }

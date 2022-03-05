@@ -409,25 +409,25 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
         var check = false
         when {
             isNameEmpty() -> {
-                showToastMsg("동아리 이름을 입력해주세요")
+                showToastMsg("동아리 이름을 입력해 주세요")
                 Utility.focusEditText(this,name)
             }
             isIntroduceEmpty() -> {
-                showToastMsg("한 줄 소개를 입력해주세요")
+                showToastMsg("한 줄 소개를 입력해 주세요")
                 Utility.focusEditText(this,oneLineIntroduce)
             }
             isDivisionEmpty() -> {
-                showToastMsg("동아리 유형을 선택해주세요")
+                showToastMsg("동아리 유형을 선택해 주세요")
             }
             isCategoryEmpty() -> {
-                showToastMsg("주제 키워드를 선택해주세요")
+                showToastMsg("주제 키워드를 선택해 주세요")
             }
             isDescriptionEmpty() -> {
-                showToastMsg("동아리 소개를 입력해주세요")
+                showToastMsg("동아리 소개를 입력해 주세요")
                 Utility.focusEditText(this,description)
             }
             isRecruitInfoEmpty() -> {
-                showToastMsg("모집 일정을 선택해주세요")
+                showToastMsg("모집 일정을 선택해 주세요")
             }
             else -> {
                 check = true

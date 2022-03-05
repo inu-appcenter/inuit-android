@@ -9,4 +9,11 @@ data class Circle (
     @SerializedName("recruit") val recruit : Boolean,
     @SerializedName("recruitEndDate") val recruitEndDate : String,
     @SerializedName("userId") val userId : Int,
-    @SerializedName("photoId") val photoId : Int?)
+    @SerializedName("photoId") val photoId : Int?,
+    @SerializedName("introduce") val introduce : String,
+    @SerializedName("address") val address : String?,
+    @SerializedName("information") val information : String?,
+    @SerializedName("phone") val phone : String?,
+    @SerializedName("nickname") val nickName : String,
+    @SerializedName("circleCategory") val category : String,
+    @SerializedName("circleDivision") val division : String)

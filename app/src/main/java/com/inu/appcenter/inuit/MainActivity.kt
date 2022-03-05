@@ -35,15 +35,6 @@ class MainActivity : AppCompatActivity() {
         profileButton.setOnClickListener {
             startActivityProperly()
         }
-
-        val refreshLayout = findViewById<SwipeRefreshLayout>(R.id.refresh_layout_main)
-        refreshLayout.setOnRefreshListener {
-            viewModel.setDataNoCategory()
-            refreshLayout.isRefreshing = false
-        }
-
-        val intent = PostCircleActivity.newIntent(this@MainActivity)
-        startActivity(intent)
     }
 
     override fun onResume() {

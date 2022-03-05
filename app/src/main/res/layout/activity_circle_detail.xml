@@ -131,6 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
+            android:foreground="?attr/selectableItemBackground"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="@+id/textView5"
             app:layout_constraintEnd_toEndOf="parent"
@@ -162,6 +163,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:text="@string/detail_btn_kakao"
+            android:foreground="?attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView3"
@@ -173,6 +175,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:text="@string/detail_btn_site"
+            android:foreground="?attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="@+id/textView3"
             app:layout_constraintEnd_toStartOf="@+id/textView12"
             app:layout_constraintTop_toTopOf="@+id/textView3" />
@@ -206,7 +209,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -234,7 +237,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/spoqahansansneo_regular"
                 android:text="@string/mid_title_circle_introduce"
                 android:textColor="@color/font_color_black"
@@ -246,6 +249,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="100dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:textColor="@color/font_color_black"
                 android:text="@string/description_sample" />
 
         </LinearLayout>
