@@ -9,26 +9,28 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.viewModels
+import androidx.viewpager2.widget.ViewPager2
+import com.inu.appcenter.inuit.imageviewer.PosterImageViewerAdapter
+import com.inu.appcenter.inuit.imageviewer.SlideImageViewerAdapter
 import com.inu.appcenter.inuit.viewmodel.CircleDetailViewModel
 
 class CircleDetailActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<CircleDetailViewModel>()
 
-    lateinit var circleNameTitle : TextView
-    lateinit var location : TextView
-    lateinit var schedule : TextView
-    lateinit var phone : TextView
-    lateinit var owner : TextView
-    lateinit var recruitState : TextView
-    lateinit var division : TextView
-    lateinit var category : TextView
-    lateinit var description: TextView
+    private lateinit var circleNameTitle : TextView
+    private lateinit var location : TextView
+    private lateinit var schedule : TextView
+    private lateinit var phone : TextView
+    private lateinit var owner : TextView
+    private lateinit var recruitState : TextView
+    private lateinit var division : TextView
+    private lateinit var category : TextView
+    private lateinit var description: TextView
+
+    private val imagesId = arrayListOf<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,12 +77,34 @@ class CircleDetailActivity : AppCompatActivity() {
         description = findViewById(R.id.tv_detail_description)
         description.text = intent.getStringExtra("CIRCLE_DESCRIPTION")
 
+        val posterIndex = findViewById<LinearLayout>(R.id.poster_index)
+        posterIndex.visibility = View.GONE
+        val posterViewPager = findViewById<ViewPager2>(R.id.poster_viewPager)
+        val curPage = findViewById<TextView>(R.id.poster_curpage)
+        val allPage = findViewById<TextView>(R.id.poster_allpage)
+        posterViewPager.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                curPage.text = (position + 1).toString()
+            }
+        })
+
         val circleId = intent.getIntExtra("CIRCLE_ID",0)
         viewModel.requestCircleDetail(circleId)
         Log.d("requestCircleDetail실행됨", "$circleId")
         viewModel.circleContent.observe(
             this,{
                 //사진, 지원링크, 공식페이지, 카카오톡 불러오기.
+                val photos = it.photos
+                if(photos.isNotEmpty()){
+                    photos.forEach {
+                        imagesId.add(it.id)
+                    }
+                    val adapter = PosterImageViewerAdapter(this,imagesId)
+                    posterViewPager.adapter = adapter
+                    allPage.text = photos.size.toString()
+                    posterIndex.visibility = View.VISIBLE
+                }
             }
         )
 
