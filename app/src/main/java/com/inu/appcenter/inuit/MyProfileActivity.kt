@@ -89,6 +89,12 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
 
     override fun onMyCircleDescClick(id: Int) {
         //동아리 상세페이지로 이동.
+        viewModel.requestCircleContent(id)
+        viewModel.circleContent.observe(this, {
+            val intent = CircleDetailActivity.newIntent(this,it.id,it.name,it.recruit,it.address,it.information,
+            it.phoneNumber,it.nickName,it.division,it.category,it.introduce)
+            startActivity(intent)
+        })
     }
 
     override fun showDeleteDialog(id:Int) {

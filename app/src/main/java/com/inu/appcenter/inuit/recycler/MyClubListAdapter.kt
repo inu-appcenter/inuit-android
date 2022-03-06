@@ -60,11 +60,11 @@ class MyClubListAdapter(val clickListener : OnMyCircleClick) : RecyclerView.Adap
                     when(it.itemId){
                         R.id.menu_show_circle -> {
                             //동아리 상세페이지로 이동
+                            clickListener.onMyCircleDescClick(id!!)
                         }
                         R.id.menu_delete_circle -> {
                             //MyPrifile에 있는 delete 메서드 실행
                             clickListener.showDeleteDialog(id!!)
-                            //clickListener.onMyCircleDeleteClick(id!!)
                         }
                         R.id.menu_edit_circle -> {
                             //내 동아리 수정하기 메서드 실행행
