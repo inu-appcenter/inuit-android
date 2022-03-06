@@ -45,6 +45,15 @@ class SmallClubListFragment : Fragment(), OnCircleClick{
             })
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.smallClubList.observe(
+            viewLifecycleOwner,
+            {
+                adapter.addListToItems(it)
+            })
+    }
+
     override fun startCircleDetail(id: Int,name:String,recruit:Boolean,location:String?,schedule:String?,phone:String?,owner:String?,
                                    division:String, category:String, description:String) {
         val intent = CircleDetailActivity.newIntent(requireActivity(),id,name,recruit,location,schedule,phone,owner,division,category,description)

@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        viewModel.setDataNoCategory()
         if(App.nowLogin){ //로그인이 되어 있는데 멤버 정보가 없다면 멤버 정보 불러오기.
             if(App.memberInfo == null){
                 viewModel.requestMemberInfo(App.prefs.token!!)

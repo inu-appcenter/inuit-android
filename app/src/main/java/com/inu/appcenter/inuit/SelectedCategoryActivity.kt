@@ -37,6 +37,12 @@ class SelectedCategoryActivity : AppCompatActivity(){
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        val category = intent.getStringExtra("SERVER_CATEGORY").toString()
+        viewModel.setDataWithCategory(category)
+    }
+
     companion object {
         fun newIntent(context: Context, selectedCategory:String, serverCategory: String): Intent {
             return Intent(context, SelectedCategoryActivity::class.java).apply {
