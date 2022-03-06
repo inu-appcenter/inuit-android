@@ -23,7 +23,6 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
 
     private val viewModel by viewModels<MyProfileViewModel>()
     private lateinit var editResult : ActivityResultLauncher<Intent>
-    private lateinit var addResult : ActivityResultLauncher <Intent>
     private lateinit var adapter : MyClubListAdapter
 
 
@@ -43,15 +42,10 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
             finish()
         }
 
-        editResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            if(it.resultCode == RESULT_OK){
-                finish()
-            }
-        }
-
         val editMyProfile = findViewById<TextView>(R.id.change_my_profile)
         editMyProfile.setOnClickListener {
             val intent = EditProfileActivity.newIntent(this@MyProfileActivity)
+            startActivity(intent)
             editResult.launch(intent)
         }
 
@@ -66,14 +60,13 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
         val addNewClub = findViewById<TextView>(R.id.tv_add_new_club)
         addNewClub.setOnClickListener {
             val intent = PostCircleActivity.newIntent(this@MyProfileActivity)
-            addResult.launch(intent)
+            startActivity(intent)
         }
+    }
 
-        addResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            if(it.resultCode == RESULT_OK){
-                updateMemberInfo()
-            }
-        }
+    override fun onResume() {
+        super.onResume()
+        updateMemberInfo()
     }
 
     companion object {

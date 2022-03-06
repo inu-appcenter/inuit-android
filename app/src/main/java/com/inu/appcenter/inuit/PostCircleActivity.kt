@@ -400,6 +400,14 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
     }
 
     private fun postPhotos(circleId:Int){
+
+        if(profileImage.isEmpty() && posterImage.isEmpty()){
+            loadingDialog.dismiss()
+            showToastMsg("새 동아리 등록하기 성공!(사진없음)")
+            setResult(RESULT_OK)
+            finish()
+        }
+
         addImagesToFiles(profileImage)
         addImagesToFiles(posterImage)
         viewModel.postPhotos(App.prefs.token!!,circleId,files)
