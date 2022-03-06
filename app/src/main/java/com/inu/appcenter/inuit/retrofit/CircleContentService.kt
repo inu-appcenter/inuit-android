@@ -9,6 +9,4 @@ interface CircleContentService {
 
     @GET("circles/{id}")
     fun getCircleContent(@Path("id") id : Int) : Call<CircleGetBody>
-
-
 }

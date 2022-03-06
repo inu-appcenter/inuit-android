@@ -15,17 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.INUClub"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CircleDetailActivity" />
-        <activity android:name=".PostCircleActivity"
+        <activity android:name=".CircleDetailActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PostCircleActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".imageviewer.SlideImageViewer"
             android:screenOrientation="portrait"
             android:theme="@style/SlideImageViewerTheme" />
-        <activity android:name=".EditProfileActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MyProfileActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".EditProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyProfileActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SearchActivity"
             android:screenOrientation="portrait"
@@ -41,16 +45,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SignUpActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SelectedCategoryActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".CategoryActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />

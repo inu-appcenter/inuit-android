@@ -68,6 +68,7 @@ class MyClubListAdapter(val clickListener : OnMyCircleClick) : RecyclerView.Adap
                         }
                         R.id.menu_edit_circle -> {
                             //내 동아리 수정하기 메서드 실행행
+                            clickListener.onMyCircleEditClick(id!!)
                        }
                     }
                     false

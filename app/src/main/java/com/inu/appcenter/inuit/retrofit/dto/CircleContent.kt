@@ -7,6 +7,7 @@ data class CircleContent(
     @SerializedName("id") val id : Int,
     @SerializedName("name") val name : String,
     @SerializedName("nickname") val nickName : String,
+    @SerializedName("oneLineIntroduce") val oneLineIntroduce : String,
     @SerializedName("introduce") val introduce : String,
     @SerializedName("information") val information : String?,
     @SerializedName("circleCategory") val category : String,

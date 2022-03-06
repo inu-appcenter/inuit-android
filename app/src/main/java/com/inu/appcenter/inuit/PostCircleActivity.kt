@@ -71,16 +71,57 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
     private lateinit var divisionGroup : RadioGroup
     private lateinit var categoryGroup : ConstraintRadioGroup
-    var division : String? = null
-    var category : String? = null
-    var information : String? = null
+    private var division : String? = null
+    private var category : String? = null
+    private var information : String? = null
 
-    private lateinit var loadingAnimation : LottieAnimationView
     private lateinit var loadingDialog: LoadingDialog
+
+    private var isPatchMode : Boolean? = null
+    private val postedPhotos = ArrayList<Int>()
+    private var postedCircleId : Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_circle)
+
+        loadingDialog = LoadingDialog(this@PostCircleActivity)
+
+        val isPatch = intent.getBooleanExtra("PATCH_MODE",false)
+        if (isPatch){ //동아리 수정하기로 실행된 경우.
+            val titleTextView = findViewById<TextView>(R.id.tv_post_circle_title)
+            titleTextView.text = getString(R.string.top_title_patch_circle)
+
+            isPatchMode = true
+            postedCircleId = intent.getIntExtra("CIRCLE_ID",-1)
+            loadingDialog.show()
+            viewModel.getPostedCircleContent(postedCircleId!!)
+            viewModel.circleContent.observe(this,
+                {
+                    name.setText(it.name)
+                    oneLineIntroduce.setText(it.oneLineIntroduce)
+                    description.setText(it.introduce)
+                    location.setText(it.address)
+                    siteLink.setText(it.siteLink)
+                    kakaoLink.setText(it.kakaoLink)
+                    phone.setText(it.phoneNumber)
+                    applyLink.setText(it.applyLink)
+                    division = it.division
+                    category = it.category
+                    if(it.recruitStartDate != null && it.recruitEndDate != null){
+                        isoStartDate = it.recruitStartDate
+                        isoEndDate = it.recruitStartDate
+                        information = it.information
+                        setRecruitSchedule.text = information
+                    }else{
+                        information = null
+                    }
+                    it.photos.forEach {
+                        postedPhotos.add(it.id)
+                    }
+                    loadingDialog.dismiss()
+                })
+        }
 
         name = findViewById(R.id.et_post_circle_name)
         oneLineIntroduce = findViewById(R.id.et_post_circle_line_introduce)
@@ -97,9 +138,6 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
         addPosterImage = findViewById(R.id.tv_post_circle_poster_image)
         setRecruitSchedule = findViewById(R.id.tv_post_circle_recruit_schedule)
         dropDownRecruitSchedule = findViewById(R.id.ibtn_recruit_schedule)
-        loadingAnimation = findViewById(R.id.loading_post_circle)
-        Utility.pauseLoading(loadingAnimation)
-        loadingDialog = LoadingDialog(this@PostCircleActivity)
 
         divisionGroup = findViewById(R.id.rg_division)
         categoryGroup = findViewById(R.id.rg_category)
@@ -172,7 +210,12 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
         val checkButton = findViewById<ImageButton>(R.id.btn_post_circle)
         checkButton.setOnClickListener {
             if(checkBeforePost()){
-                postCircleData()
+                if (isPatch){
+                    deletePostedPhoto()
+                    patchCircleData()
+                }else{
+                    postCircleData()
+                }
             }
         }
     }
@@ -184,6 +227,13 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
     companion object {
         fun newIntent(context: Context): Intent {
             return Intent(context, PostCircleActivity::class.java)
+        }
+
+        fun newPatchIntent(context: Context, isPatchMode:Boolean?, circleId: Int): Intent{
+            return Intent(context,PostCircleActivity::class.java).apply {
+                putExtra("PATCH_MODE",isPatchMode)
+                putExtra("CIRCLE_ID",circleId)
+            }
         }
     }
 
@@ -297,8 +347,30 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
         return body
     }
 
+    private fun deletePostedPhoto(){
+        loadingDialog.show()
+        postedPhotos.forEach{
+            viewModel.deletePhoto(App.prefs.token!!, postedCircleId!!,it)
+        }
+    }
+
+    private fun patchCircleData(){
+        val body = getCirclePostBody()
+        viewModel.patchCircle(App.prefs.token!!,postedCircleId!!,body)
+        viewModel.patchedCircleId.observe(
+            this,{
+                if(it == -1){ //서버 응답 실패
+                    loadingDialog.dismiss()
+                    showToastMsg("수정 실패")
+                }else{
+                    updateMemberInfo()
+                    postPhotos(it)
+                }
+            }
+        )
+    }
+
     private fun postCircleData(){
-        //Utility.startLoading(loadingAnimation)
         loadingDialog.show()
         val body = getCirclePostBody()
         viewModel.postCircle(App.prefs.token!!,body)
@@ -349,7 +421,6 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
         viewModel.profileImageId.observe(
             this,
             {
-                //Utility.pauseLoading(loadingAnimation)
                 loadingDialog.dismiss()
                 if(photoId == it){
                     showToastMsg("새 동아리 등록하기 성공!")
@@ -379,6 +450,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             kakaoLink.text.toString(),
             phone.text.toString(),
             applyLink.text.toString())
+            Log.d("category,division","$category,$division")
     }
 
     private fun getCircleDivision() :String?{

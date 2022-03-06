@@ -88,6 +88,8 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
 
     override fun onMyCircleEditClick(id: Int) {
         //뷰모델에서 동아리 수정하기 실행
+        val intent = PostCircleActivity.newPatchIntent(this,true,id)
+        startActivity(intent)
     }
 
     override fun onMyCircleDescClick(id: Int) {

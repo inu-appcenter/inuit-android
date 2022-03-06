@@ -139,6 +139,9 @@
     <string name="post_profile_image_msg">프로필 사진은 1장만 업로드 할 수 있어요.</string>
     <string name="post_poster_image_msg">포스터 및 추가 이미지는 10장까지 업로드 할 수 있어요.</string>
 
+    <!-- post circle -->
+    <string name="top_title_patch_circle">동아리 수정하기</string>
+
     <!-- circle detail -->
     <string name="top_title_circle_name">인유공방</string>
     <string name="mid_title_circle_introduce">동아리 소개</string>
