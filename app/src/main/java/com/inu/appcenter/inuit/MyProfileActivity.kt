@@ -22,7 +22,6 @@ import com.inu.appcenter.inuit.viewmodel.MyProfileViewModel
 class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
 
     private val viewModel by viewModels<MyProfileViewModel>()
-    private lateinit var editResult : ActivityResultLauncher<Intent>
     private lateinit var adapter : MyClubListAdapter
 
 
@@ -46,7 +45,6 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
         editMyProfile.setOnClickListener {
             val intent = EditProfileActivity.newIntent(this@MyProfileActivity)
             startActivity(intent)
-            editResult.launch(intent)
         }
 
         val recycler_myclub_List = findViewById<RecyclerView>(R.id.recycler_myclub_list)
@@ -66,7 +64,11 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
 
     override fun onResume() {
         super.onResume()
-        updateMemberInfo()
+        if(App.memberInfo == null){
+            finish()
+        }else{
+            updateMemberInfo()
+        }
     }
 
     companion object {

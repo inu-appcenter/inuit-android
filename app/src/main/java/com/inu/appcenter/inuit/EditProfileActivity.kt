@@ -1,7 +1,6 @@
 package com.inu.appcenter.inuit
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -72,7 +71,7 @@ class EditProfileActivity : AppCompatActivity() {
                 .setTitle(getString(R.string.delete_profile))
                 .setMessage(getString(R.string.check_delete_profile))
                 .setPositiveButton("확인") { dialog, which ->
-                    deleteMyProfile()
+                    deleteProfileProcess()
                     dialog.dismiss()
                     Log.d("MyTag", "positive") }
                 .setNegativeButton("취소") { dialog, which ->
@@ -104,6 +103,21 @@ class EditProfileActivity : AppCompatActivity() {
                 }
             }
         )
+    }
+
+    private fun deleteProfileProcess(){
+        if(App.memberInfo?.circleId != null){
+            viewModel.deleteCircle(App.prefs.token!!,App.memberInfo?.circleId!!)
+            viewModel.deleteCircleId.observe(
+                this,
+                {
+                    if(it == App.memberInfo?.circleId){
+                        deleteMyProfile()
+                    }
+                })
+        }else{
+            deleteMyProfile()
+        }
     }
 
     private fun deleteMyProfile(){
