@@ -92,7 +92,7 @@ class MultiTypeAdapter(val clickListener : OnCircleClick): RecyclerView.Adapter<
                     .override(200,200)
                     .into(iv_img)
             }else{
-                iv_img.setImageResource(R.drawable.ic_null_profile_sample)
+                iv_img.setImageResource(R.drawable.ic_null_profile)
             }
             itemView.setOnClickListener {
                 //Toast.makeText(itemView.context,"Selected id = $id",Toast.LENGTH_SHORT).show()
