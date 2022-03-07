@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.INUClub"
         android:usesCleartextTraffic="true">
-        <activity android:name=".FindAccountActivity"/>
+        <activity android:name=".NewPasswordActivity"/>
+        <activity android:name=".FindAccountActivity" />
         <activity
             android:name=".CircleDetailActivity"
             android:screenOrientation="portrait" />
