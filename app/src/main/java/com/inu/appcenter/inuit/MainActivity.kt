@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         profileButton.setOnClickListener {
             startActivityProperly()
         }
+        
     }
 
     override fun onResume() {

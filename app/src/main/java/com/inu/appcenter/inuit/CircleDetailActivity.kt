@@ -97,6 +97,7 @@ class CircleDetailActivity : AppCompatActivity() {
                 //사진, 지원링크, 공식페이지, 카카오톡 불러오기.
                 val photos = it.photos
                 if(photos.isNotEmpty()){
+                    imagesId.clear()
                     photos.forEach {
                         imagesId.add(it.id)
                     }

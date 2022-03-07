@@ -403,7 +403,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
         if(profileImage.isEmpty() && posterImage.isEmpty()){
             loadingDialog.dismiss()
-            showToastMsg("새 동아리 등록하기 성공!(사진없음)")
+            showToastMsg("동아리 등록하기 성공!(사진없음)")
             setResult(RESULT_OK)
             finish()
         }
@@ -431,7 +431,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             {
                 loadingDialog.dismiss()
                 if(photoId == it){
-                    showToastMsg("새 동아리 등록하기 성공!")
+                    showToastMsg("동아리 등록 성공!")
                     setResult(RESULT_OK)
                     finish()
                 }else if(it == -1){ //서버 응답 실패

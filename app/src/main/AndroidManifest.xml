@@ -15,8 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.INUClub"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CircleDetailActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".FindAccountActivity"/>
+        <activity
+            android:name=".CircleDetailActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PostCircleActivity"
             android:screenOrientation="portrait" />

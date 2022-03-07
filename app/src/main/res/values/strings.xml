@@ -170,4 +170,16 @@
 활동 내용 : 그 후 여러 선각자의 손을 거쳐 현재와 같은 내용을 담게 되었는데 이 노랫말에 붙여진 1000자
     </string>
 
+    <!-- find account -->
+    <string name="top_title_find_account">계정 찾기</string>
+    <string name="find_account_email_hint">이메일을 입력해 주세요</string>
+    <string name="find_account_next">다음</string>
+    <string name="find_account_not_sign_email">가입하지 않은 이메일입니다</string>
+    <string name="find_account_code">인증번호</string>
+    <string name="find_account_code_send">입력하신 이메일로 인증번호를 전송했습니다.</string>
+    <string name="find_account_code_hint">인증번호를 입력해 주세요.</string>
+    <string name="find_account_new_password_title">새 비밀번호</string>
+    <string name="find_account_new_password_hint">새 비밀번호 (최대 20자)</string>
+    <string name="find_account_new_password_check_hint">새 비밀번호 확인</string>
+
 </resources>
