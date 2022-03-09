@@ -9,7 +9,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.airbnb.lottie.LottieAnimationView
 import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.util.LoadingDialog
 import com.inu.appcenter.inuit.util.Utility
@@ -30,9 +29,15 @@ class LoginActivity : AppCompatActivity() {
         password = findViewById(R.id.et_password)
         loadingDialog = LoadingDialog(this@LoginActivity)
 
-        val tv_signup = findViewById<TextView>(R.id.tv_signup)
-        tv_signup.setOnClickListener {
+        val signupButton= findViewById<TextView>(R.id.tv_signup)
+        signupButton.setOnClickListener {
             val intent = SignUpActivity.newIntent(this@LoginActivity)
+            startActivity(intent)
+        }
+
+        val findAccountButton = findViewById<TextView>(R.id.tv_btn_find_account_login)
+        findAccountButton.setOnClickListener {
+            val intent = FindAccountActivity.newIntent(this@LoginActivity)
             startActivity(intent)
         }
 

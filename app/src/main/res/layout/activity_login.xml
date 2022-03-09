@@ -81,18 +81,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
+    <TextView
+        android:id="@+id/tv_btn_find_account_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="23dp"
         android:layout_marginTop="4dp"
-        android:button="@drawable/checkbox_login"
-        android:checked="false"
-        android:paddingLeft="12dp"
-        android:text="@string/keep_login"
+        android:padding="1dp"
+        android:text="@string/find_account_textview_btn"
         android:textColor="@color/font_color_black"
-        android:theme="@style/checkBoxStyle"
+        android:background="?selectableItemBackgroundBorderless"
         app:layout_constraintBottom_toBottomOf="@+id/tv_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_signup" />

@@ -8,9 +8,9 @@
 
     <ImageButton
         android:id="@+id/btn_cancel"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="?selectableItemBackgroundBorderless"
         android:backgroundTint="#00FFFFFF"

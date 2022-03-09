@@ -14,6 +14,7 @@
     <string name="login_server_error">네트워크 연결이 원활하지 않습니다.</string>
     <string name="login_empty_email">이메일을 입력해주세요.</string>
     <string name="login_empty_password">비밀번호를 입력해주세요.</string>
+    <string name="find_account_textview_btn">계정찾기</string>
 
     <!-- category -->
     <string name="top_title_category">카테고리</string>
