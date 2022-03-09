@@ -153,7 +153,7 @@ class SignUpActivity : AppCompatActivity() {
 
     fun showToastMsg(msg:String){ Toast.makeText(this,msg,Toast.LENGTH_SHORT).show() }
 
-    private val emailCountDown: CountDownTimer = object : CountDownTimer(9250, 500) {
+    private val emailCountDown: CountDownTimer = object : CountDownTimer(11250, 500) {
         override fun onTick(millisUntilFinished: Long) {}
         override fun onFinish() {
             showToastMsg(getString(R.string.msg_code_not_sent))

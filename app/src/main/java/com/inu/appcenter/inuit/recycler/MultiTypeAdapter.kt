@@ -8,6 +8,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.item.ClubItem
 import com.inu.appcenter.inuit.recycler.item.Item
@@ -86,9 +88,17 @@ class MultiTypeAdapter(val clickListener : OnCircleClick): RecyclerView.Adapter<
             tv_desc.text = item.description
             iv_img.clipToOutline = true
             if(item.ImageId != null){
+
+                val requestOptions = RequestOptions()
+                requestOptions.diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .skipMemoryCache(false)
+                    .placeholder(R.drawable.ic_null_profile)
+                    .signature
+
                 Glide.with(itemView.context)
                     .load("http://da86-125-180-55-163.ngrok.io:80/circles/view/photo/${item.ImageId}")
                     .fitCenter()
+                    .apply(requestOptions)
                     .override(200,200)
                     .into(iv_img)
             }else{
