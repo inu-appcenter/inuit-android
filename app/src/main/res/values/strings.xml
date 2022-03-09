@@ -183,5 +183,6 @@
     <string name="find_account_new_password_title">새 비밀번호</string>
     <string name="find_account_new_password_hint">새 비밀번호 (최대 20자)</string>
     <string name="find_account_new_password_check_hint">새 비밀번호 확인</string>
+    <string name="find_account_new_password_success">비밀번호가 재설정되었습니다.</string>
 
 </resources>

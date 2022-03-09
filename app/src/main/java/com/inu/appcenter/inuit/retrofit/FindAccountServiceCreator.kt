@@ -3,6 +3,7 @@ package com.inu.appcenter.inuit.retrofit
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.GsonBuilder
 import com.inu.appcenter.inuit.retrofit.dto.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,9 +16,11 @@ class FindAccountServiceCreator {
     private val BASE_URL = "https://da86-125-180-55-163.ngrok.io/"
     private val client : FindAccountService
 
+    val gson = GsonBuilder().setLenient().create()
+
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
 
     init {

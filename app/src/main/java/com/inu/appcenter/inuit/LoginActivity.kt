@@ -99,7 +99,7 @@ class LoginActivity : AppCompatActivity() {
             {
                 App.memberInfo = it
                 App.nowLogin = true
-                showToastMsg("로그인 성공")
+                //showToastMsg("로그인 성공")
                 loadingDialog.dismiss()
                 finish()
             }

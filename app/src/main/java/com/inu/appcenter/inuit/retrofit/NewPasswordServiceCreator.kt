@@ -3,6 +3,7 @@ package com.inu.appcenter.inuit.retrofit
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.GsonBuilder
 import com.inu.appcenter.inuit.retrofit.dto.Member
 import com.inu.appcenter.inuit.retrofit.dto.MemberInfo
 import com.inu.appcenter.inuit.retrofit.dto.MemberPatchBody
@@ -17,6 +18,7 @@ class NewPasswordServiceCreator {
 
     private val BASE_URL = "https://da86-125-180-55-163.ngrok.io/"
     private val client : NewPasswordService
+
 
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
