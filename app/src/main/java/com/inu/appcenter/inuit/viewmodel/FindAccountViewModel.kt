@@ -9,6 +9,7 @@ class FindAccountViewModel : ViewModel() {
     val client : FindAccountServiceCreator
 
     lateinit var correctEmail : LiveData<String>
+    lateinit var token : LiveData<String>
 
     init {
         client = FindAccountServiceCreator()
@@ -18,4 +19,7 @@ class FindAccountViewModel : ViewModel() {
         correctEmail = client.requestVerifyCode(email)
     }
 
+    fun requestToken(email: String, code:String){
+        token = client.requestToken(email,code)
+    }
 }

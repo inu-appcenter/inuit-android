@@ -74,73 +74,15 @@ class FindAccountServiceCreator {
                 Log.d("요청 성공!", "onResponse is Successful!")
                 if(response.isSuccessful){
                     val body = response.body()
-                    Log.d("인증번호 일치! 이메일 인증 성공!", "onResponse is Successful!")
+                    Log.d("인증번호 일치!", "onResponse is Successful!")
                     token.value = body!!
                 }
                 else {
-                    Log.e("인증번호 불일치. 이메일 인증 실패", "response is not Successful")
+                    Log.e("인증번호 불일치.", "response is not Successful")
                     token.value = "code is incorrect"
                 }
             }
         })
         return token
-    }
-
-    fun requestMemberInfo(token:String) : LiveData<MemberInfo>{
-
-        val liveData = MutableLiveData<MemberInfo>()
-        val call = client.requestMemberInfo(token)
-
-        call.enqueue(object: Callback<Member> {
-            override fun onFailure(call: Call<Member>, t: Throwable) {
-                Log.e("error", "${t.message}")
-            }
-
-            override fun onResponse(
-                call: Call<Member>,
-                response: Response<Member>
-            ) {
-                if(response.isSuccessful){
-                    Log.d("Member 응답 성공!", "onResponse is Successful!")
-
-                    val body = response.body()
-                    liveData.value = body?.data
-                    Log.d("내 닉네임은 ", "${liveData.value?.nickname}")
-                }
-                else {
-                    Log.e("응답 실패", "response is not Successful")
-                }
-            }
-        })
-        return liveData
-    }
-
-    fun editMemberInfo(token:String,newNickname:String,newPassword:String) : LiveData<Int> {
-        val responseId = MutableLiveData<Int>()
-        val body = MemberPatchBody(newNickname,newPassword)
-        val call = client.editMemberInfo(token,body)
-
-        call.enqueue(object: Callback<MemberResponse> {
-            override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
-                Log.e("error", "${t.message}")
-            }
-
-            override fun onResponse(
-                call: Call<MemberResponse>,
-                response: Response<MemberResponse>
-            ) {
-                if(response.isSuccessful){
-                    Log.d("Member PATCH 응답 성공!", "onResponse is Successful!")
-
-                    val body = response.body()
-                    responseId.value = body?.id
-                    Log.d("수정된 id :", "${responseId.value}")
-                }
-                else {
-                    Log.e("응답 실패", "response is not Successful")
-                }
-            }
-        })
-        return responseId
     }
 }

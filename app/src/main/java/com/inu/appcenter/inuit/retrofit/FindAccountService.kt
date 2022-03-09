@@ -11,10 +11,4 @@ interface FindAccountService {
 
     @POST("verifyCode/password/{email}")
     fun requestToken(@Body jsonbody: VerifyCode, @Path("email") email: String) : Call<String>
-
-    @GET("member")
-    fun requestMemberInfo(@Header("X-AUTH-TOKEN") token : String) : Call<Member>
-
-    @PATCH("member")
-    fun editMemberInfo(@Header("X-AUTH-TOKEN") token : String, @Body jsonbody: MemberPatchBody) : Call<MemberResponse>
 }
