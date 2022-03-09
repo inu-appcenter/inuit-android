@@ -130,7 +130,7 @@ class EditProfileActivity : AppCompatActivity() {
                     App.memberInfo = null
                     App.prefs.token = null
                     setResult(RESULT_OK)
-                    Toast.makeText(this,"회원정보 삭제 성공", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this,"회원정보 삭제 성공", Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }

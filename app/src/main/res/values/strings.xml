@@ -85,8 +85,10 @@
     <string name="change_profile"><u>내 정보 수정하기</u> ></string>
     <string name="profile_my_clubs">내가 등록한 동아리</string>
     <string name="add_new_club"><u>새 동아리 등록하기</u> ></string>
+    <string name="add_new_club_forbidden">한 계정당 하나의 동아리만 등록할 수 있어요.</string>
     <string name="delete_circle_dialog_title">동아리 삭제</string>
     <string name="delete_circle_dialog_msg">정말로 삭제 하시겠습니까?</string>
+    <string name="deleted_circle">동아리가 삭제되었습니다.</string>
 
     <!-- edit profile -->
     <string name="top_title_edit_profile">내 정보 수정하기</string>

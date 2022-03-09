@@ -17,12 +17,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.recycler.MyClubListAdapter
 import com.inu.appcenter.inuit.recycler.OnMyCircleClick
+import com.inu.appcenter.inuit.util.LoadingDialog
 import com.inu.appcenter.inuit.viewmodel.MyProfileViewModel
 
 class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
 
     private val viewModel by viewModels<MyProfileViewModel>()
     private lateinit var adapter : MyClubListAdapter
+    private lateinit var loadingDialog: LoadingDialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +37,7 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
         val userEmail = findViewById<TextView>(R.id.tv_user_email)
         userNickName.text = memberInfo?.nickname
         userEmail.text = memberInfo?.email
+        loadingDialog = LoadingDialog(this)
 
         val backButton = findViewById<ImageButton>(R.id.btn_back)
         backButton.setOnClickListener {
@@ -57,8 +60,12 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
 
         val addNewClub = findViewById<TextView>(R.id.tv_add_new_club)
         addNewClub.setOnClickListener {
-            val intent = PostCircleActivity.newIntent(this@MyProfileActivity)
-            startActivity(intent)
+            if(adapter.getItemSize() == 0){
+                val intent = PostCircleActivity.newIntent(this@MyProfileActivity)
+                startActivity(intent)
+            }else{
+                Toast.makeText(this,R.string.add_new_club_forbidden,Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -89,8 +96,10 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
 
     override fun onMyCircleDescClick(id: Int) {
         //동아리 상세페이지로 이동.
+        loadingDialog.show()
         viewModel.requestCircleContent(id)
         viewModel.circleContent.observe(this, {
+            loadingDialog.dismiss()
             val intent = CircleDetailActivity.newIntent(this,it.id,it.name,it.recruit,it.address,it.information,
             it.phoneNumber,it.nickName,it.division,it.category,it.introduce)
             startActivity(intent)
@@ -128,13 +137,14 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
     }
 
     fun deleteCircle(id:Int){
+        loadingDialog.show()
         viewModel.deleteCircle(App.prefs.token!!,id)
         viewModel.deletedCircleId.observe(
             this,
             {
                 if(it == id){
-                    Toast.makeText(this,"동아리 삭제 성공",Toast.LENGTH_SHORT).show()
                     updateMemberInfo()
+                    loadingDialog.dismiss()
                 }
             }
         )

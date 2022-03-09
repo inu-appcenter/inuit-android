@@ -403,7 +403,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
         if(profileImage.isEmpty() && posterImage.isEmpty()){
             loadingDialog.dismiss()
-            showToastMsg("동아리 등록하기 성공!(사진없음)")
+            showToastMsg("동아리가 등록되었습니다.")
             setResult(RESULT_OK)
             finish()
         }
@@ -431,7 +431,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             {
                 loadingDialog.dismiss()
                 if(photoId == it){
-                    showToastMsg("동아리 등록 성공!")
+                    showToastMsg("동아리가 등록되었습니다.")
                     setResult(RESULT_OK)
                     finish()
                 }else if(it == -1){ //서버 응답 실패
@@ -520,8 +520,8 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
     fun cancelDialog(){
         AlertDialog.Builder(this)
-            .setTitle("새 동아리 등록하기 취소")
-            .setMessage("작성한 내용이 사라집니다. \n정말로 취소하시겠습니까?")
+            .setTitle("상세페이지 작성 취소")
+            .setMessage("입력한 내용이 사라집니다. \n정말로 취소하시겠습니까?")
             .setPositiveButton("확인") { dialog, which ->
                 finish()
                 super.onBackPressed()

@@ -8,7 +8,7 @@ import retrofit2.http.*
 
 interface PatchCircleService {
 
-    @DELETE("/user/circle/{circleId}/delete/photos/{photoIds}")
+    @DELETE("user/circle/{circleId}/delete/photos/{photoIds}")
     fun deletePhoto(@Header("X-AUTH-TOKEN") token : String,
                     @Path("circleId") circleId : Int,
                     @Path("photoIds") photoId:Int) : Call<Void>

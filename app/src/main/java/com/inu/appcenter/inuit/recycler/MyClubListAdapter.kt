@@ -45,6 +45,8 @@ class MyClubListAdapter(val clickListener : OnMyCircleClick) : RecyclerView.Adap
         notifyDataSetChanged()
     }
 
+    fun getItemSize() = items.size
+
     inner class MyClubViewHolder(view: View): RecyclerView.ViewHolder(view){
 
         var id : Int? = null
