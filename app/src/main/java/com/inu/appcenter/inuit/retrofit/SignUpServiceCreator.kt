@@ -32,6 +32,7 @@ class SignUpServiceCreator {
         call.enqueue(object: Callback<EmailResponse> {
             override fun onFailure(call: Call<EmailResponse>, t: Throwable) {
                 Log.e("이메일 error", "${t.message}")
+                responseEmail.value = "code not sent"
             }
 
             override fun onResponse(
