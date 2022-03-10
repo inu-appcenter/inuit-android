@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/view_dash_line"
-        android:paddingBottom="10dp"
+        android:paddingBottom="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -38,7 +38,7 @@
             android:paddingLeft="3dp"
             android:text="@string/top_title_circle_name"
             android:textColor="@color/font_color_black"
-            android:textSize="26sp"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_back"
             app:layout_constraintStart_toEndOf="@+id/btn_back"
             app:layout_constraintTop_toTopOf="@+id/btn_back"
@@ -202,7 +202,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content">
 
                 <androidx.viewpager2.widget.ViewPager2
@@ -218,6 +218,7 @@
                     android:id="@+id/poster_index"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/view_round_coner"
                     android:backgroundTint="#E2191919"

@@ -8,10 +8,10 @@
 
     <ImageButton
         android:id="@+id/btn_back"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         android:background="?selectableItemBackgroundBorderless"
         android:backgroundTint="#00FFFFFF"
         android:paddingEnd="-10dp"
