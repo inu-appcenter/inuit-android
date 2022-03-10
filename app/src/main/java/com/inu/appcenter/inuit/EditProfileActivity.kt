@@ -52,7 +52,15 @@ class EditProfileActivity : AppCompatActivity() {
 
         val checkButton = findViewById<ImageButton>(R.id.btn_edit_profile)
         checkButton.setOnClickListener {
-            editMyProfile()
+            if(newNickname.text.isEmpty()){
+                showToastMsg(getString(R.string.msg_empty_nickname))
+            }else if(newPassword.text.isEmpty()){
+                showToastMsg(getString(R.string.msg_empty_password))
+            }else if(newPassword.text.toString() != newPasswordCheck.text.toString()){
+                showToastMsg(getString(R.string.msg_incorrect_password))
+            }else{
+                editMyProfile()
+            }
         }
 
         val logout = findViewById<TextView>(R.id.tv_btn_logout)
@@ -136,4 +144,6 @@ class EditProfileActivity : AppCompatActivity() {
             }
         )
     }
+
+    fun showToastMsg(msg:String){ Toast.makeText(this,msg,Toast.LENGTH_SHORT).show() }
 }
