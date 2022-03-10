@@ -96,7 +96,7 @@ class CircleDetailActivity : AppCompatActivity() {
             this,{
                 //사진, 지원링크, 공식페이지, 카카오톡 불러오기.
                 val photos = it.photos
-                if(photos.isNotEmpty()){
+                if(photos.isNotEmpty()) {
                     imagesId.clear()
                     photos.forEach {
                         imagesId.add(it.id)
@@ -105,9 +105,11 @@ class CircleDetailActivity : AppCompatActivity() {
                     posterViewPager.adapter = adapter
                     allPage.text = photos.size.toString()
                     posterIndex.visibility = View.VISIBLE
+
+                }else if(photos.isEmpty()) {
+                    imagesId.add(-1)
                 }
-            }
-        )
+            })
 
         val officialSite = findViewById<TextView>(R.id.tv_detail_site)
         officialSite.setOnClickListener {

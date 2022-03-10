@@ -22,18 +22,22 @@ class PosterFragment(private val imageId : Int) : Fragment() {
         val view = inflater.inflate(R.layout.fragment_poster, container, false)
         val imageView = view.findViewById<ImageView>(R.id.iv_poster_imageView)
 
-        val requestOptions = RequestOptions()
-        requestOptions.diskCacheStrategy(DiskCacheStrategy.NONE)
-            .skipMemoryCache(false)
-            .placeholder(R.drawable.ic_null_profile_sample)
-            .signature
+        if(imageId == -1){
+            imageView.setImageResource(R.drawable.loading_image)
+        }else {
+            val requestOptions = RequestOptions()
+            requestOptions.diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(false)
+                .placeholder(R.drawable.loading_image)
+                .signature
 
-        Glide.with(requireContext())
-            .load("http://da86-125-180-55-163.ngrok.io:80/circles/view/photo/${imageId}")
-            .fitCenter()
-            .override(400,600)
-            .apply(requestOptions)
-            .into(imageView)
+            Glide.with(requireContext())
+                .load("http://da86-125-180-55-163.ngrok.io:80/circles/view/photo/${imageId}")
+                .fitCenter()
+                .override(400, 600)
+                .apply(requestOptions)
+                .into(imageView)
+        }
 
         Log.d("현재 이미지 id","$imageId")
         return view
