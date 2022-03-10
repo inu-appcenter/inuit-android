@@ -95,6 +95,7 @@ class MultiTypeAdapter(val clickListener : OnCircleClick): RecyclerView.Adapter<
                     .placeholder(R.drawable.ic_null_profile)
                     .signature
 
+
                 Glide.with(itemView.context)
                     .load("http://da86-125-180-55-163.ngrok.io:80/circles/view/photo/${item.ImageId}")
                     .fitCenter()

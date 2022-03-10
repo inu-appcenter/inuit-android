@@ -82,14 +82,12 @@ class SignUpActivity : AppCompatActivity() {
             showToastMsg(getString(R.string.internet_not_connected))
         }
         else if (isCorrectEmail()) {
-            emailCountDown.start()
             loadingDialog.show()
             viewModel.postEmail(email.text.toString())
             viewModel.correctEmail.observe(
                 this,
                 {
                     loadingDialog.dismiss()
-                    emailCountDown.cancel()
                     if (it == email.text.toString()){
                         Utility.focusEditText(this,certificationNum)
                         showToastMsg(getString(R.string.msg_code_send))
@@ -130,14 +128,12 @@ class SignUpActivity : AppCompatActivity() {
             Utility.focusEditText(this,email)
         }
         else{
-            singUpCountDown.start()
             loadingDialog.show()
             viewModel.verifiedEmailResponse(email.text.toString(),certificationNum.text.toString())
             viewModel.verifiedCode.observe(
                 this,
                 {
                     loadingDialog.dismiss()
-                    singUpCountDown.cancel()
                     if(it == certificationNum.text.toString()){
                         // 회원가입 성공, 닉네임, 이메일, 패스워드 데이터 전송
                         viewModel.registerMember(email.text.toString(),nickname.text.toString(),password.text.toString())
@@ -152,20 +148,4 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     fun showToastMsg(msg:String){ Toast.makeText(this,msg,Toast.LENGTH_SHORT).show() }
-
-    private val emailCountDown: CountDownTimer = object : CountDownTimer(11250, 500) {
-        override fun onTick(millisUntilFinished: Long) {}
-        override fun onFinish() {
-            showToastMsg(getString(R.string.msg_code_not_sent))
-            Utility.focusEditText(this@SignUpActivity,email)
-        }
-    }
-
-    private val singUpCountDown: CountDownTimer = object : CountDownTimer(5250, 500) {
-        override fun onTick(millisUntilFinished: Long) {}
-        override fun onFinish() {
-            showToastMsg(getString(R.string.msg_wrong_code))
-            Utility.focusEditText(this@SignUpActivity,certificationNum)
-        }
-    }
 }

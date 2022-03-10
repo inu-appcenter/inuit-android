@@ -108,6 +108,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
                     applyLink.setText(it.applyLink)
                     division = it.division
                     category = it.category
+                    setDivision(division!!)
                     if(it.recruitStartDate != null && it.recruitEndDate != null){
                         isoStartDate = it.recruitStartDate
                         isoEndDate = it.recruitStartDate
@@ -544,5 +545,13 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
     override fun deletePosterImage(position: Int) {
         posterImage.removeAt(position)
+    }
+
+    private fun setDivision(division:String){
+        when (division) {
+            getString(R.string.server_main_circle) -> divisionGroup.check(R.id.rb_main_circle)
+            getString(R.string.server_temp_circle) -> divisionGroup.check(R.id.rb_temp_circle)
+            getString(R.string.server_small_circle) ->divisionGroup.check(R.id.rb_small_circle)
+        }
     }
 }

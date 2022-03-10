@@ -108,6 +108,8 @@ class CircleDetailActivity : AppCompatActivity() {
 
                 }else if(photos.isEmpty()) {
                     imagesId.add(-1)
+                    val adapter = PosterImageViewerAdapter(this,imagesId)
+                    posterViewPager.adapter = adapter
                 }
             })
 
