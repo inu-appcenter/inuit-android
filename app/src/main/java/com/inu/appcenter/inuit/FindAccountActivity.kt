@@ -80,7 +80,7 @@ class FindAccountActivity : AppCompatActivity() {
                     emailButton.visibility = View.GONE
                     verifiedEmail = it
                 }else if(it == "code not sent"){
-                    showToastMsg(getString(R.string.find_account_not_sign_email))
+                    showToastMsg(getString(R.string.find_account_code_not_sent))
                     Utility.focusEditText(this,email)
                 }
             })

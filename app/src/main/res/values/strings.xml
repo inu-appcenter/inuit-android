@@ -180,6 +180,7 @@
     <string name="find_account_not_sign_email">가입하지 않은 이메일입니다</string>
     <string name="find_account_code">인증번호</string>
     <string name="find_account_code_send">입력하신 이메일로 인증번호를 전송했습니다.</string>
+    <string name="find_account_code_not_sent">인증번호를 전송하지 못했습니다. 이메일 주소를 다시 확인해 주세요.</string>
     <string name="find_account_code_hint">인증번호를 입력해 주세요.</string>
     <string name="find_account_new_password_top_title">비밀번호 재설정하기</string>
     <string name="find_account_new_password_title">새 비밀번호</string>

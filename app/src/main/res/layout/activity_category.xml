@@ -9,10 +9,10 @@
 
     <ImageButton
         android:id="@+id/btn_back"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
         android:background="?selectableItemBackgroundBorderless"
         android:backgroundTint="#00FFFFFF"
         android:paddingRight="-10dp"
@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
         app:layout_constraintStart_toEndOf="@+id/btn_back"
         app:layout_constraintTop_toTopOf="@+id/btn_back"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.571" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
