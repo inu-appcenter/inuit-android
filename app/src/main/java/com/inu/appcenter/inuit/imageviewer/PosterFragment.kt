@@ -27,14 +27,11 @@ class PosterFragment(private val imageId : Int) : Fragment() {
         }else {
             val requestOptions = RequestOptions()
             requestOptions.diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(false)
                 .placeholder(R.drawable.loading_image)
-                .signature
 
             Glide.with(requireContext())
                 .load("http://da86-125-180-55-163.ngrok.io:80/circles/view/photo/${imageId}")
                 .fitCenter()
-                .override(400, 600)
                 .apply(requestOptions)
                 .into(imageView)
         }

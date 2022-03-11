@@ -5,10 +5,10 @@
     android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".imageviewer.SlideImageViewer">
+    tools:context=".imageviewer.PosterSlideImageViewer">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/slide_view_pager"
+        android:id="@+id/slide_view_pager_poster"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="4dp"
@@ -16,10 +16,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_close_viewer" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_close_viewer_poster" />
 
     <TextView
-        android:id="@+id/tv_cur_page"
+        android:id="@+id/tv_cur_page_poster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -38,12 +38,12 @@
         android:text="/"
         android:textColor="@color/font_color_white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_cur_page"
-        app:layout_constraintStart_toEndOf="@+id/tv_cur_page"
-        app:layout_constraintTop_toTopOf="@+id/tv_cur_page" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_cur_page_poster"
+        app:layout_constraintStart_toEndOf="@+id/tv_cur_page_poster"
+        app:layout_constraintTop_toTopOf="@+id/tv_cur_page_poster" />
 
     <TextView
-        android:id="@+id/tv_all_page"
+        android:id="@+id/tv_all_page_poster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -55,7 +55,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv_slash" />
 
     <ImageButton
-        android:id="@+id/btn_close_viewer"
+        android:id="@+id/btn_close_viewer_poster"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="20dp"

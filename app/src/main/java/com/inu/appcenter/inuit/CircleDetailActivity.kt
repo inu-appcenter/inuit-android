@@ -12,11 +12,10 @@ import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
-import com.inu.appcenter.inuit.imageviewer.PosterImageViewerAdapter
-import com.inu.appcenter.inuit.imageviewer.SlideImageViewerAdapter
+import com.inu.appcenter.inuit.imageviewer.*
 import com.inu.appcenter.inuit.viewmodel.CircleDetailViewModel
 
-class CircleDetailActivity : AppCompatActivity() {
+class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
 
     private val viewModel by viewModels<CircleDetailViewModel>()
 
@@ -123,12 +122,12 @@ class CircleDetailActivity : AppCompatActivity() {
                     }else{
                         imagesId.add(-1)
                     }
-                    val adapter = PosterImageViewerAdapter(this,imagesId)
+                    val adapter = PosterImageViewerAdapter(this,imagesId,this)
                     posterViewPager.adapter = adapter
 
                 }else if(photos.isEmpty()) {
                     imagesId.add(-1)
-                    val adapter = PosterImageViewerAdapter(this,imagesId)
+                    val adapter = PosterImageViewerAdapter(this,imagesId,this)
                     posterViewPager.adapter = adapter
                 }
                 applyButton.isClickable = true
@@ -196,4 +195,8 @@ class CircleDetailActivity : AppCompatActivity() {
     }
 
     fun showToastMsg(msg:String){ Toast.makeText(this,msg, Toast.LENGTH_SHORT).show() }
+
+    override fun startPosterImageViewer(curIndex: Int) {
+        PosterSlideImageViewer.start(this,imagesId,curIndex)
+    }
 }
