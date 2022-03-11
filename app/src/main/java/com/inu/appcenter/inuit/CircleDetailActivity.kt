@@ -104,10 +104,14 @@ class CircleDetailActivity : AppCompatActivity() {
                             photoCnt++
                         }
                     }
+                    if(photoCnt != 0) {
+                        allPage.text = photoCnt.toString()
+                        posterIndex.visibility = View.VISIBLE
+                    }else{
+                        imagesId.add(-1)
+                    }
                     val adapter = PosterImageViewerAdapter(this,imagesId)
                     posterViewPager.adapter = adapter
-                    allPage.text = photoCnt.toString()
-                    posterIndex.visibility = View.VISIBLE
 
                 }else if(photos.isEmpty()) {
                     imagesId.add(-1)
