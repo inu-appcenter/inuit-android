@@ -57,6 +57,7 @@ class NewPasswordActivity : AppCompatActivity() {
                         }
                     })
             }else{
+                loadingDialog.dismiss()
                 showToastMsg(getString(R.string.msg_incorrect_password))
                 Utility.focusEditText(this, passwordCheck)
             }
