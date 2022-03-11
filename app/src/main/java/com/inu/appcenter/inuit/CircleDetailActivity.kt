@@ -58,6 +58,19 @@ class CircleDetailActivity : AppCompatActivity() {
         applyButton.setOnClickListener {
             openBrowser(viewModel.circleContent.value?.applyLink)
         }
+        applyButton.isClickable = false
+
+        val officialSite = findViewById<TextView>(R.id.tv_detail_site)
+        officialSite.setOnClickListener {
+            openBrowser(viewModel.circleContent.value?.siteLink)
+        }
+        officialSite.isClickable = false
+
+        val kakaoLink = findViewById<TextView>(R.id.tv_detail_kakao)
+        kakaoLink.setOnClickListener {
+            openBrowser(viewModel.circleContent.value?.kakaoLink)
+        }
+        kakaoLink.isClickable = false
 
         recruitState = findViewById(R.id.tv_detail_recruit_state)
         val recruit = intent.getBooleanExtra("CIRCLE_RECRUIT",true)
@@ -118,17 +131,11 @@ class CircleDetailActivity : AppCompatActivity() {
                     val adapter = PosterImageViewerAdapter(this,imagesId)
                     posterViewPager.adapter = adapter
                 }
+                applyButton.isClickable = true
+                officialSite.isClickable = true
+                kakaoLink.isClickable = true
             })
 
-        val officialSite = findViewById<TextView>(R.id.tv_detail_site)
-        officialSite.setOnClickListener {
-            openBrowser(viewModel.circleContent.value?.siteLink)
-        }
-
-        val kakaoLink = findViewById<TextView>(R.id.tv_detail_kakao)
-        kakaoLink.setOnClickListener {
-            openBrowser(viewModel.circleContent.value?.kakaoLink)
-        }
 
         phone.setOnClickListener {
             openCall(viewModel.circleContent.value?.phoneNumber)
