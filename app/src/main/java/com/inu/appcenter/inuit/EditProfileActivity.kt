@@ -106,7 +106,7 @@ class EditProfileActivity : AppCompatActivity() {
                     App.memberInfo = null
                     App.prefs.token = null
                     setResult(RESULT_OK)
-                    Toast.makeText(this,"회원정보 수정 성공", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,getString(R.string.profile_edit_success), Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }
@@ -138,7 +138,7 @@ class EditProfileActivity : AppCompatActivity() {
                     App.memberInfo = null
                     App.prefs.token = null
                     setResult(RESULT_OK)
-                    //Toast.makeText(this,"회원정보 삭제 성공", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,getString(R.string.profile_deleted), Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }

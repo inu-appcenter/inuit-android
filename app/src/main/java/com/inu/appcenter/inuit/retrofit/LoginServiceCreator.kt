@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginServiceCreator {
 
-    private val BASE_URL = "https://da86-125-180-55-163.ngrok.io/"
+    private val BASE_URL = "http://inuit.inuappcenter.kr:8081/"
     private val client : LoginService
 
     val gson = GsonBuilder().setLenient().create()

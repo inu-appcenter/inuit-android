@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 
 class PostCircleServiceCreator {
 
-    private val BASE_URL = "https://da86-125-180-55-163.ngrok.io/"
+    private val BASE_URL = "http://inuit.inuappcenter.kr:8081/"
     private val client : PostCircleService
 
 
@@ -87,6 +87,7 @@ class PostCircleServiceCreator {
                 else {
                     Log.e("응답 실패", "response is not Successful")
                     liveData.value = listOf(-1)
+                    Log.e("errorBody() is ", response.errorBody()!!.string())
                 }
             }
         })
@@ -114,6 +115,7 @@ class PostCircleServiceCreator {
                 }
                 else {
                     Log.e("응답 실패", "response is not Successful")
+                    Log.e("errorBody() is ", response.errorBody()!!.string())
                     liveData.value = -1
                 }
             }
