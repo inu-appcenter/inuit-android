@@ -96,14 +96,17 @@ class CircleDetailActivity : AppCompatActivity() {
             this,{
                 //사진, 지원링크, 공식페이지, 카카오톡 불러오기.
                 val photos = it.photos
+                var photoCnt = 0
                 if(photos.isNotEmpty()) {
-                    imagesId.clear()
                     photos.forEach {
-                        imagesId.add(it.id)
+                        if(it.photoType=="서브"){
+                            imagesId.add(it.id)
+                            photoCnt++
+                        }
                     }
                     val adapter = PosterImageViewerAdapter(this,imagesId)
                     posterViewPager.adapter = adapter
-                    allPage.text = photos.size.toString()
+                    allPage.text = photoCnt.toString()
                     posterIndex.visibility = View.VISIBLE
 
                 }else if(photos.isEmpty()) {
