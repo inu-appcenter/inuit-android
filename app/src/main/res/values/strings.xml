@@ -101,6 +101,8 @@
     <string name="logout"><u>로그아웃</u></string>
     <string name="delete_profile"><u>회원탈퇴</u></string>
     <string name="check_delete_profile">계정을 삭제하면 등록한 동아리 정보도 함께 사라집니다. \n정말로 삭제하시겠습니까?</string>
+    <string name="profile_edit_success">회원정보를 수정했습니다.\n다시 로그인해 주세요.</string>
+    <string name="profile_deleted">회원정보를 삭제했습니다.</string>
 
     <!-- internet -->
     <string name="internet_not_connected">인터넷 연결 상태를 확인해주세요.</string>
