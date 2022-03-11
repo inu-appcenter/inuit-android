@@ -109,6 +109,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
                     division = it.division
                     category = it.category
                     setDivision(division!!)
+                    setCategory(category!!)
                     if(it.recruitStartDate != null && it.recruitEndDate != null){
                         isoStartDate = it.recruitStartDate
                         isoEndDate = it.recruitStartDate
@@ -552,6 +553,39 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             getString(R.string.server_main_circle) -> divisionGroup.check(R.id.rb_main_circle)
             getString(R.string.server_temp_circle) -> divisionGroup.check(R.id.rb_temp_circle)
             getString(R.string.server_small_circle) ->divisionGroup.check(R.id.rb_small_circle)
+        }
+    }
+
+    private fun setCategory(category: String){
+        when(category){
+            getString(R.string.server_academic)->{
+                val radioButton = findViewById<RadioButton>(R.id.rb_academic)
+                radioButton.isChecked = true
+            }
+            getString(R.string.server_exercise)->{
+                val radioButton = findViewById<RadioButton>(R.id.rb_exercise)
+                radioButton.isChecked = true
+            }
+            getString(R.string.server_religion)->{
+                val radioButton = findViewById<RadioButton>(R.id.rb_religion)
+                radioButton.isChecked = true
+            }
+            getString(R.string.server_service)->{
+                val radioButton = findViewById<RadioButton>(R.id.rb_service)
+                radioButton.isChecked = true
+            }
+            getString(R.string.server_culture)->{
+                val radioButton = findViewById<RadioButton>(R.id.rb_culture)
+                radioButton.isChecked = true
+            }
+            getString(R.string.server_etc) -> {
+                val radioButton = findViewById<RadioButton>(R.id.rb_etc)
+                radioButton.isChecked = true
+            }
+            getString(R.string.server_hobby_exhibition) ->{
+                val radioButton = findViewById<RadioButton>(R.id.rb_hobby_exhibition)
+                radioButton.isChecked = true
+            }
         }
     }
 }
