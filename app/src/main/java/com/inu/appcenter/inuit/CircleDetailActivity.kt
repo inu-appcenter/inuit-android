@@ -197,6 +197,8 @@ class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
     fun showToastMsg(msg:String){ Toast.makeText(this,msg, Toast.LENGTH_SHORT).show() }
 
     override fun startPosterImageViewer(curIndex: Int) {
-        PosterSlideImageViewer.start(this,imagesId,curIndex)
+        if(imagesId[0] != -1){
+            PosterSlideImageViewer.start(this,imagesId,curIndex)
+        }
     }
 }
