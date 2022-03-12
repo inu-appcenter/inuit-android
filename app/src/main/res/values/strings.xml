@@ -66,7 +66,7 @@
     <!-- sign up notification -->
     <string name="msg_empty_nickname">닉네임을 입력해주세요.</string>
     <string name="msg_empty_email">이메일을 입력해주세요.</string>
-    <string name="msg_registered_email">이미 가입된 이메일입니다.</string>
+    <string name="msg_registered_email">가입된 이메일입니다.</string>
     <string name="msg_wrong_email">올바르지 않은 이메일 주소입니다.</string>
     <string name="msg_code_send">입력하신 이메일로 인증번호가 전송되었습니다.</string>
     <string name="msg_code_not_sent">인증번호를 전송하지 못했습니다.</string>

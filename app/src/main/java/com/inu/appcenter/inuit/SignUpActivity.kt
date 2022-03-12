@@ -91,7 +91,11 @@ class SignUpActivity : AppCompatActivity() {
                     if (it == email.text.toString()){
                         Utility.focusEditText(this,certificationNum)
                         showToastMsg(getString(R.string.msg_code_send))
-                    }else if(it == "code not sent"){
+                    }else if(it == "posted email"){
+                        Utility.focusEditText(this,email)
+                        showToastMsg(getString(R.string.msg_registered_email))
+                    }
+                    else if(it == "code not sent"){
                         showToastMsg(getString(R.string.msg_code_not_sent))
                         Utility.focusEditText(this,email)
                     }
@@ -136,15 +140,29 @@ class SignUpActivity : AppCompatActivity() {
                     loadingDialog.dismiss()
                     if(it == certificationNum.text.toString()){
                         // 회원가입 성공, 닉네임, 이메일, 패스워드 데이터 전송
-                        viewModel.registerMember(email.text.toString(),nickname.text.toString(),password.text.toString())
-                        showToastMsg("회원가입 성공")
-                        finish()
+                        registerMember()
                     }else if(it == "code is incorrect"){
                         showToastMsg(getString(R.string.msg_wrong_code))
                         Utility.focusEditText(this,certificationNum)
                     }
                 })
         }
+    }
+
+    private fun registerMember(){
+        viewModel.registerMember(email.text.toString(),nickname.text.toString(),password.text.toString())
+        viewModel.registerResult.observe(this,
+            {
+                if(it == -1){
+                    showToastMsg("회원정보를 서버에 전송하지 못했습니다.")
+                }else if(it == -2){
+                    showToastMsg("이미 사용중인 닉네임입니다.\n다른 닉네임을 입력해 주세요.")
+                    Utility.focusEditText(this,nickname)
+                }else{
+                    showToastMsg("회원가입을 완료하였습니다.")
+                    finish()
+                }
+            })
     }
 
     fun showToastMsg(msg:String){ Toast.makeText(this,msg,Toast.LENGTH_SHORT).show() }

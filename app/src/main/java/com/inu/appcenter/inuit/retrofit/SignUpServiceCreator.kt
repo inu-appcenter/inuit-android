@@ -15,11 +15,12 @@ class SignUpServiceCreator {
     private val BASE_URL = "https://inuit.inuappcenter.kr/"
     private val client : SignUpService
 
+    val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
     init {
-        val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
         client = retrofit.create(SignUpService::class.java)
     }
 
@@ -49,7 +50,20 @@ class SignUpServiceCreator {
                 }
                 else {
                     Log.e("이메일 인증번호 전송 실패", "response is not Successful")
-                    responseEmail.value = "code not sent"
+                    try {
+                        val errorBody = response.errorBody() //response.errorBody()는 딱 한 번만 실행되어야 한다.
+                        val loginErrorConverter = //로그인 오류(이메일, 비밀번호)
+                            retrofit.responseBodyConverter<ClientErrorBody>(ClientErrorBody::class.java,ClientErrorBody::class.java.annotations)
+                        val convertedBody = loginErrorConverter.convert(errorBody)
+                        Log.e("errorBody() message is ", "${convertedBody?.message}" )
+//
+                        if(convertedBody?.message == "이미 존제하는 이메일입니다."){
+                            responseEmail.value = "posted email"
+                        }
+                    }catch (e:Exception){
+                        responseEmail.value = "code not sent"
+                        e.printStackTrace()
+                    }
                 }
             }
         })
@@ -88,11 +102,12 @@ class SignUpServiceCreator {
         return responseCode
     }
 
-    fun registerMember(email: String, nickName: String, password: String){
+    fun registerMember(email: String, nickName: String, password: String) : LiveData<Int>{
 
+        val liveData = MutableLiveData<Int>()
         val body = MemberRegisterBody(email,nickName,password)
         val call = client.registerMember(body)
-        var id: Int? = null
+
 
         call.enqueue(object: Callback<MemberResponse>{
             override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
@@ -106,13 +121,28 @@ class SignUpServiceCreator {
                 if(response.isSuccessful){
                     Log.d("회원정보 전송 성공!", "onResponse is Successful!")
                     val body = response.body()
-                    id = body?.id
-                    Log.d("회원 ID :", id.toString())
+                    liveData.value  = body?.id
+                    Log.d("회원 ID :",liveData.value.toString())
                 }
                 else {
                     Log.e("회원정보 전송 실패", "response is not Successful")
+                    try {
+                        val errorBody = response.errorBody() //response.errorBody()는 딱 한 번만 실행되어야 한다.
+                        val loginErrorConverter = //로그인 오류(이메일, 비밀번호)
+                            retrofit.responseBodyConverter<ClientErrorBody>(ClientErrorBody::class.java,ClientErrorBody::class.java.annotations)
+                        val convertedBody = loginErrorConverter.convert(errorBody)
+                        Log.e("errorBody() message is ", "${convertedBody?.message}" )
+//
+                        if(convertedBody?.message == "이미있는 닉네임입니다"){
+                            liveData.value = -2
+                        }
+                    }catch (e:Exception){
+                        liveData.value = -1
+                        e.printStackTrace()
+                    }
                 }
             }
         })
+        return liveData
     }
 }

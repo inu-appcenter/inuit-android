@@ -9,6 +9,7 @@ class SignUpViewModel : ViewModel(){
     val client : SignUpServiceCreator
     lateinit var correctEmail : LiveData<String>
     lateinit var verifiedCode : LiveData<String>
+    lateinit var registerResult : LiveData<Int>
 
     init {
         client = SignUpServiceCreator()
@@ -22,5 +23,7 @@ class SignUpViewModel : ViewModel(){
         verifiedCode = client.isEmailVerified(email, code)
     }
 
-    fun registerMember(email: String, nickName: String, password: String) = client.registerMember(email, nickName, password)
+    fun registerMember(email: String, nickName: String, password: String) {
+        registerResult = client.registerMember(email, nickName, password)
+    }
 }
