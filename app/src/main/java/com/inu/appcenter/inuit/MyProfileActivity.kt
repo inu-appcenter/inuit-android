@@ -142,9 +142,12 @@ class MyProfileActivity : AppCompatActivity(),OnMyCircleClick {
         viewModel.deletedCircleId.observe(
             this,
             {
+                loadingDialog.dismiss()
                 if(it == id){
                     updateMemberInfo()
-                    loadingDialog.dismiss()
+                    Toast.makeText(this,"동아리를 삭제했습니다.",Toast.LENGTH_SHORT).show()
+                }else if (it == -1){
+                    Toast.makeText(this,getString(R.string.circle_delete_fail),Toast.LENGTH_SHORT).show()
                 }
             }
         )

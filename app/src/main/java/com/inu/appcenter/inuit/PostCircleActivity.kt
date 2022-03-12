@@ -123,6 +123,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
                     it.photos.forEach {
                         postedPhotos.add(it.id)
                     }
+                    showToastMsg(getString(R.string.select_photo_again))
                     loadingDialog.dismiss()
                 })
         }

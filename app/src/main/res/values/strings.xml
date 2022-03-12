@@ -103,6 +103,7 @@
     <string name="check_delete_profile">계정을 삭제하면 등록한 동아리 정보도 함께 사라집니다. \n정말로 삭제하시겠습니까?</string>
     <string name="profile_edit_success">회원정보를 수정했습니다.\n다시 로그인해 주세요.</string>
     <string name="profile_deleted">회원정보를 삭제했습니다.</string>
+    <string name="circle_delete_fail">동아리를 삭제하지 못했습니다.</string>
 
     <!-- internet -->
     <string name="internet_not_connected">인터넷 연결 상태를 확인해주세요.</string>
@@ -144,8 +145,9 @@
     <string name="post_profile_image_msg">프로필 사진은 1장만 업로드 할 수 있어요.</string>
     <string name="post_poster_image_msg">포스터 및 추가 이미지는 10장까지 업로드 할 수 있어요.</string>
 
-    <!-- post circle -->
+    <!-- edit circle -->
     <string name="top_title_patch_circle">동아리 수정하기</string>
+    <string name="select_photo_again">프로필 사진과 포스터를 다시 선택해 주세요.</string>
 
     <!-- circle detail -->
     <string name="top_title_circle_name">인유공방</string>
