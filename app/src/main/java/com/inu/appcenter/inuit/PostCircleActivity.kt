@@ -290,6 +290,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
         val dateRangePicker =
             MaterialDatePicker.Builder.dateRangePicker()
                 .setTitleText(getString(R.string.post_circle_recruit_schedule_dialog_msg))
+                .setTheme(R.style.DatePickerTheme)
                 .build()
         dateRangePicker.addOnNegativeButtonClickListener{ dateRangePicker.dismiss() }
         dateRangePicker.addOnPositiveButtonClickListener {

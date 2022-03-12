@@ -28,27 +28,6 @@ class PosterSlideFragment(private val imageId : Int) : Fragment() {
             .load("https://inuit.inuappcenter.kr/circles/view/photo/${imageId}")
             .into(imageView)
 
-//        mScaleGestureDetector = ScaleGestureDetector(context, ScaleListener())
-//
-//        view.setOnTouchListener { view, motionEvent ->
-//            mScaleGestureDetector!!.onTouchEvent(motionEvent)
-//        }
-
         return view
     }
-
-//    inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
-//        override fun onScale(scaleGestureDetector: ScaleGestureDetector): Boolean {
-//
-//            scaleFactor *= scaleGestureDetector.scaleFactor
-//
-//            // 최소 기본 사이즈, 최대 2배
-//            scaleFactor = Math.max(1f, Math.min(scaleFactor, 2f))
-//
-//            // 이미지에 적용
-//            imageView.scaleX = scaleFactor
-//            imageView.scaleY = scaleFactor
-//            return true
-//        }
-//    }
 }
