@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.retrofit.dto.MemberInfo
+import com.inu.appcenter.inuit.util.Utility
 import com.inu.appcenter.inuit.viewmodel.EditProfileViewModel
 
 class EditProfileActivity : AppCompatActivity() {
@@ -101,7 +102,12 @@ class EditProfileActivity : AppCompatActivity() {
         viewModel.responseId.observe(
             this,
             {
-                if(memberInfo?.id == it){ //회원정보 수정 성공
+                if (it == -2){
+                    Toast.makeText(this,getString(R.string.msg_registered_nickname), Toast.LENGTH_SHORT).show()
+                    Utility.focusEditText(this,newNickname)
+                }else if(it == -1){
+                    Toast.makeText(this,"회원정보를 수정하지 못했습니다.",Toast.LENGTH_SHORT).show()
+                }else if(memberInfo?.id == it){ //회원정보 수정 성공
                     App.nowLogin = false
                     App.memberInfo = null
                     App.prefs.token = null

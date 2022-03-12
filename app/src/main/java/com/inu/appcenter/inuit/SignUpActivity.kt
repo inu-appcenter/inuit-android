@@ -156,10 +156,10 @@ class SignUpActivity : AppCompatActivity() {
                 if(it == -1){
                     showToastMsg("회원정보를 서버에 전송하지 못했습니다.")
                 }else if(it == -2){
-                    showToastMsg("이미 사용중인 닉네임입니다.\n다른 닉네임을 입력해 주세요.")
+                    showToastMsg(getString(R.string.msg_registered_nickname))
                     Utility.focusEditText(this,nickname)
                 }else{
-                    showToastMsg("회원가입을 완료하였습니다.")
+                    showToastMsg("회원가입 성공")
                     finish()
                 }
             })
