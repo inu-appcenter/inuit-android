@@ -842,7 +842,7 @@
                     android:ems="10"
                     android:fontFamily="@font/spoqahansansneo_regular"
                     android:hint="@string/post_circle_phone_hint"
-                    android:inputType="number"
+                    android:inputType="textEmailAddress"
                     android:maxLength="30"
                     android:maxLines="1"
                     android:textColor="@color/font_color_black"

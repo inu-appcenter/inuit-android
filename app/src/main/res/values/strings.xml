@@ -138,8 +138,8 @@
     <string name="post_circle_site_hint">sns 페이지, 카페, 블로그, 유튜브</string>
     <string name="post_circle_kakao">카카오톡 링크</string>
     <string name="post_circle_kakao_hint">오픈 채팅방, 플러스 친구</string>
-    <string name="post_circle_phone_contact">전화번호</string>
-    <string name="post_circle_phone_hint">010-xxxx-xxxx</string>
+    <string name="post_circle_phone_contact">연락처</string>
+    <string name="post_circle_phone_hint">전화번호, 이메일</string>
     <string name="post_circle_apply_link">동아리 지원 폼 링크</string>
     <string name="post_circle_apply_hint">구글 폼, 네이버 폼</string>
     <string name="post_profile_image_msg">프로필 사진은 1장만 업로드 할 수 있어요.</string>
@@ -155,7 +155,7 @@
     <string name="detail_title_location">위치</string>
     <string name="detail_title_schedule">모집 일정</string>
     <string name="detail_title_sns_link">링크 바로가기</string>
-    <string name="detail_title_phone">전화번호</string>
+    <string name="detail_title_phone">연락처</string>
     <string name="detail_btn_site">공식 페이지</string>
     <string name="detail_btn_kakao">카카오톡</string>
     <string name="detail_title_circle_owner">작성자</string>

@@ -1,8 +1,6 @@
 package com.inu.appcenter.inuit
 
-import android.content.ClipDescription
-import android.content.Context
-import android.content.Intent
+import android.content.*
 import android.content.res.ColorStateList
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -182,15 +180,20 @@ class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
 
     private fun openCall(phoneNumber:String?){
         if(phoneNumber == null || phoneNumber.isBlank()){
-            showToastMsg("등록된 전화번호가 없습니다")
-        }else{
+            showToastMsg("등록된 연락처가 없습니다")
+        }else if(phoneNumber.contains("010") || phoneNumber.contains("032") || phoneNumber.contains("-")) {
             try {
                 val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${phoneNumber}"))
                 startActivity(intent)
             }catch (e:Exception){
                 e.printStackTrace()
-                showToastMsg("잘못된 번호 입니다")
+                showToastMsg("잘못된 연락처입니다.")
             }
+        }else{
+            val clipboard: ClipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("label", phoneNumber)
+            clipboard.setPrimaryClip(clip)
+            Toast.makeText(this, "연락처가 클립보드에 복사되었습니다.", Toast.LENGTH_SHORT).show()
         }
     }
 
