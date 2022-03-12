@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.airbnb.lottie.LottieAnimationView
 import com.esafirm.imagepicker.features.ImagePickerConfig
 import com.esafirm.imagepicker.features.ImagePickerSavePath
 import com.esafirm.imagepicker.features.registerImagePicker
@@ -45,6 +44,9 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
     private val profileImage = arrayListOf<Image>()
     private val posterImage = arrayListOf<Image>()
+
+    private val profileImageUrls = arrayListOf<String>()
+    private val posterImageUrls = arrayListOf<String>()
 
     private lateinit var profileRecyclerView: RecyclerView
     private lateinit var profileImageAdapter : PreviewImageAdapter
@@ -250,7 +252,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
     // -- 동아리 프로필 이미지피커 런쳐 --
     private val profilePickerLauncher = registerImagePicker { result: List<Image> ->
-
+        profileImageUrls.clear()
         result.forEach { image ->
             println(image)
 
@@ -408,22 +410,37 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             showToastMsg("동아리가 등록되었습니다.")
             setResult(RESULT_OK)
             finish()
-        }
-
-        addImagesToFiles(profileImage)
-        addImagesToFiles(posterImage)
-        viewModel.postPhotos(App.prefs.token!!,circleId,files)
-        viewModel.postedImagesId.observe(
-            this,
-            {
-                if(it[0] == -1){ //서버 응답 실패
-                    loadingDialog.dismiss()
-                    showToastMsg("사진 업로드 실패")
-                }else{
-                    setCircleProfile(circleId,it[0])
+        }else if(profileImage.isEmpty() && posterImage.isNotEmpty()){
+            addImagesToFiles(posterImage)
+            viewModel.postPhotos(App.prefs.token!!,circleId,files)
+            viewModel.postedImagesId.observe(
+                this,
+                {
+                    if(it[0] == -1){
+                        loadingDialog.dismiss()
+                        showToastMsg("사진을 업로드하지 못했습니다.")
+                    }else{
+                        showToastMsg("동아리가 등록되었습니다.")
+                        setResult(RESULT_OK)
+                        finish()                    }
                 }
-            }
-        )
+            )
+        }else{
+            addImagesToFiles(profileImage)
+            addImagesToFiles(posterImage)
+            viewModel.postPhotos(App.prefs.token!!,circleId,files)
+            viewModel.postedImagesId.observe(
+                this,
+                {
+                    if(it[0] == -1){ //서버 응답 실패
+                        loadingDialog.dismiss()
+                        showToastMsg("사진을 업로드하지 못했습니다.")
+                    }else{
+                        setCircleProfile(circleId,it[0])
+                    }
+                }
+            )
+        }
     }
 
     private fun setCircleProfile(circleId: Int,photoId:Int){
@@ -537,11 +554,11 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
     }
 
     override fun startProfileSlideImageViewer(curIndex:Int) { //0은 프로필 1은 포스터 및 추가 이미지
-        SlideImageViewer.start(this, profileImage)
+        SlideImageViewer.start(this, profileImageUrls)
     }
 
     override fun startPosterSlideImageViewer(curIndex: Int) {
-        SlideImageViewer.start(this,posterImage,curIndex)
+        SlideImageViewer.start(this,posterImageUrls,curIndex)
     }
 
     override fun deletePosterImage(position: Int) {
