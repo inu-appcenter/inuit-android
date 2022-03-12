@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.esafirm.imagepicker.model.Image
 
-class SlideImageViewerAdapter(fa: FragmentActivity, private val images: List<Image>) : FragmentStateAdapter(fa) {
+class SlideImageViewerAdapter(fa: FragmentActivity, private val images: List<String>) : FragmentStateAdapter(fa) {
     override fun getItemCount(): Int = images.size
 
     override fun createFragment(position: Int): Fragment {

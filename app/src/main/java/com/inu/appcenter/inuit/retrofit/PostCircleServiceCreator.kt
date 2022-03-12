@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 
 class PostCircleServiceCreator {
 
-    private val BASE_URL = "http://inuit.inuappcenter.kr:8081/"
+    private val BASE_URL = "https://inuit.inuappcenter.kr/"
     private val client : PostCircleService
 
 

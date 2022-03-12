@@ -10,11 +10,11 @@ import com.bumptech.glide.Glide
 import com.esafirm.imagepicker.model.Image
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.imageviewer.SlideImageViewer
-import com.inu.appcenter.inuit.recycler.item.ImageItem
+import com.inu.appcenter.inuit.recycler.item.ImageUrlItem
 
 class PreviewImageAdapter(val mode:Int, val clickListener:OnPreviewImageClick) : RecyclerView.Adapter<PreviewImageAdapter.ImagePreviewViewHolder>(){
 
-    private val items = mutableListOf<ImageItem>()
+    private val items = mutableListOf<ImageUrlItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagePreviewViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -30,7 +30,12 @@ class PreviewImageAdapter(val mode:Int, val clickListener:OnPreviewImageClick) :
     override fun getItemCount(): Int = items.size
 
     fun addImage(image: Image){
-        this.items.add(ImageItem(image))
+        this.items.add(ImageUrlItem(image.uri.toString()))
+        notifyDataSetChanged()
+    }
+
+    fun addImageUrl(imagePath : String){
+        this.items.add(ImageUrlItem(imagePath))
         notifyDataSetChanged()
     }
 
@@ -39,20 +44,27 @@ class PreviewImageAdapter(val mode:Int, val clickListener:OnPreviewImageClick) :
     inner class ImagePreviewViewHolder(view:View): RecyclerView.ViewHolder(view){
         val imagePreview  = view.findViewById<ImageView>(R.id.iv_preview)
         val deleteButton = view.findViewById<ImageButton>(R.id.ibtn_delete_pre_image)
-        fun bind(data:ImageItem,position: Int){
+        fun bind(data:ImageUrlItem, position: Int){
 
             Glide.with(itemView.context)
-                .load(data.image.uri)
+                .load(data.imageUrl)
                 .centerCrop()
                 .into(imagePreview)
 
-            val itemPosition = adapterPosition
-
             imagePreview.setOnClickListener {
                 if (mode == 0){
-                    SlideImageViewer.start(itemView.context, arrayListOf(data.image))
+                    val imageList = ArrayList<String>()
+                    items.forEach{
+                        imageList.add(it.imageUrl)
+                    }
+                    SlideImageViewer.start(itemView.context, imageList)
                 }else if(mode == 1){
-                    clickListener.startPosterSlideImageViewer(position)
+                    //clickListener.startPosterSlideImageViewer(position)
+                    val imageList = ArrayList<String>()
+                    items.forEach{
+                        imageList.add(it.imageUrl)
+                    }
+                    SlideImageViewer.start(itemView.context, imageList,position)
                 }
             }
 
@@ -60,7 +72,7 @@ class PreviewImageAdapter(val mode:Int, val clickListener:OnPreviewImageClick) :
                 items.removeAt(position)
                 notifyDataSetChanged()
                 if(mode == 1){
-                    clickListener.deletePosterImage(position)
+                    clickListener.deletePosterImage(position,)
                 }
             }
         }

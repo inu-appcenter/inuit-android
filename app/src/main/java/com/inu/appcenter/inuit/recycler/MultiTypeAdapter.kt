@@ -94,7 +94,7 @@ class MultiTypeAdapter(val clickListener : OnCircleClick): RecyclerView.Adapter<
                     .placeholder(R.drawable.ic_null_profile)
 
                 Glide.with(itemView.context)
-                    .load("http://inuit.inuappcenter.kr:8081/circles/view/photo/${item.ImageId}")
+                    .load("https://inuit.inuappcenter.kr/circles/view/photo/${item.ImageId}")
                     .fitCenter()
                     .apply(requestOptions)
                     .override(200,200)

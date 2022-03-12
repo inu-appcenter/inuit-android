@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
 import com.esafirm.imagepicker.model.Image
 import com.inu.appcenter.inuit.R
+import java.util.ArrayList
 
 class SlideImageViewer : AppCompatActivity() {
 
@@ -25,7 +26,7 @@ class SlideImageViewer : AppCompatActivity() {
 
         window.navigationBarColor = Color.BLACK
 
-        val images: List<Image>? = intent.getParcelableArrayListExtra("images")
+        val images: List<String>? = intent.getStringArrayListExtra("images")
         val clickedIndex = intent.getIntExtra("INDEX",0)
 
         closeButton = findViewById(R.id.btn_close_viewer)
@@ -52,9 +53,10 @@ class SlideImageViewer : AppCompatActivity() {
     }
 
     companion object {
-        fun start(context: Context, images: List<Image?>?, index:Int = 0) {
+        fun start(context: Context, images: List<String>?, index:Int = 0) {
             val intent = Intent(context, SlideImageViewer::class.java)
-            intent.putParcelableArrayListExtra("images", images as ArrayList<out Parcelable?>?)
+            //intent.putParcelableArrayListExtra("images", images as ArrayList<out Parcelable?>?)
+            intent.putStringArrayListExtra("images",images as ArrayList<String>)
             intent.putExtra("INDEX",index)
             context.startActivity(intent)
         }

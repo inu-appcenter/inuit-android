@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CirclesServiceCreator {
 
-    private val BASE_URL = "http://inuit.inuappcenter.kr:8081/"
+    private val BASE_URL = "https://inuit.inuappcenter.kr/"
     private val client : CirclesService
 
     init {

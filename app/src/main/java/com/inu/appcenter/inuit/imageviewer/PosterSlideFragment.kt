@@ -25,7 +25,7 @@ class PosterSlideFragment(private val imageId : Int) : Fragment() {
 
         imageView = view.findViewById(R.id.iv_image)
         Glide.with(this)
-            .load("http://inuit.inuappcenter.kr:8081/circles/view/photo/${imageId}")
+            .load("https://inuit.inuappcenter.kr/circles/view/photo/${imageId}")
             .into(imageView)
 
         mScaleGestureDetector = ScaleGestureDetector(context, ScaleListener())

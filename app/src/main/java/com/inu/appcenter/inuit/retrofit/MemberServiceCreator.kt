@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MemberServiceCreator {
 
-    private val BASE_URL = "http://inuit.inuappcenter.kr:8081/"
+    private val BASE_URL = "https://inuit.inuappcenter.kr/"
     private val client : MemberService
 
     val retrofit: Retrofit = Retrofit.Builder()
@@ -63,6 +63,7 @@ class MemberServiceCreator {
 
             override fun onFailure(call: Call<MemberResponse>, t: Throwable) {
                 Log.e("error", "${t.message}")
+                livedata.value = -1
             }
 
             override fun onResponse(
@@ -75,6 +76,7 @@ class MemberServiceCreator {
                     livedata.value = body?.id
                 }else{
                     Log.e("응답 실패", "response is not Successful")
+                    livedata.value = -1
                 }
             }
         })

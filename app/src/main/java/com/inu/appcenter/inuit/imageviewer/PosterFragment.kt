@@ -30,7 +30,7 @@ class PosterFragment(private val imageId : Int) : Fragment() {
                 .placeholder(R.drawable.loading_image)
 
             Glide.with(requireContext())
-                .load("http://inuit.inuappcenter.kr:8081/circles/view/photo/${imageId}")
+                .load("https://inuit.inuappcenter.kr/circles/view/photo/${imageId}")
                 .fitCenter()
                 .apply(requestOptions)
                 .into(imageView)

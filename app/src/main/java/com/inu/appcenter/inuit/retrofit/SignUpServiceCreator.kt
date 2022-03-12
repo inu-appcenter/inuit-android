@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class SignUpServiceCreator {
 
-    private val BASE_URL = "http://inuit.inuappcenter.kr:8081/"
+    private val BASE_URL = "https://inuit.inuappcenter.kr/"
     private val client : SignUpService
 
     init {
