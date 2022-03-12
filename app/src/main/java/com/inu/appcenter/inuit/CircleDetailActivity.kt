@@ -189,7 +189,13 @@ class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
                 e.printStackTrace()
                 showToastMsg("잘못된 연락처입니다.")
             }
-        }else{
+        }else if(phoneNumber.contains("@")){
+            val emailIntent = Intent(Intent.ACTION_SENDTO,Uri.fromParts("mailto", "exampleEmail@email.com", null))
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "")
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "")
+            startActivity(Intent.createChooser(emailIntent, ""))
+
+        } else{
             val clipboard: ClipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
             val clip = ClipData.newPlainText("label", phoneNumber)
             clipboard.setPrimaryClip(clip)
