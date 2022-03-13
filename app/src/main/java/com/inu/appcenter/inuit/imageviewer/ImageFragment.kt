@@ -12,12 +12,17 @@ import com.bumptech.glide.Glide
 import com.esafirm.imagepicker.model.Image
 import com.inu.appcenter.inuit.R
 
-class ImageFragment(private val image : String) : Fragment() {
+class ImageFragment() : Fragment() {
 
     private lateinit var imageView: ImageView
+    private var image = ""
 
-    private var mScaleGestureDetector: ScaleGestureDetector? = null
-    private var scaleFactor = 1.0f
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments != null){
+            image = arguments!!.getString(IMAGE).toString()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,5 +36,18 @@ class ImageFragment(private val image : String) : Fragment() {
             .into(imageView)
 
         return view
+    }
+
+    companion object{
+
+        private const val IMAGE = "image"
+
+        fun newInstance(image : String): Fragment{
+            val args = Bundle()
+            args.putString(IMAGE,image)
+            val fragment = ImageFragment()
+            fragment.arguments = args
+            return fragment
+        }
     }
 }

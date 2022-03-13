@@ -13,7 +13,16 @@ import com.bumptech.glide.request.RequestOptions
 import com.esafirm.imagepicker.model.Image
 import com.inu.appcenter.inuit.R
 
-class PosterFragment(private val imageId : Int) : Fragment() {
+class PosterFragment() : Fragment() {
+
+    var imageId : Int? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments != null){
+            imageId = arguments!!.getInt(IMAGE_ID)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,5 +47,18 @@ class PosterFragment(private val imageId : Int) : Fragment() {
 
         Log.d("현재 이미지 id","$imageId")
         return view
+    }
+
+    companion object{
+
+        private const val IMAGE_ID = "imageId"
+
+        fun newInstance(imageId: Int): Fragment{
+            val args = Bundle()
+            args.putInt(IMAGE_ID,imageId)
+            val fragment = PosterFragment()
+            fragment.arguments = args
+            return fragment
+        }
     }
 }

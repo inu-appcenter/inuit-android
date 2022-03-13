@@ -9,6 +9,6 @@ class SlideImageViewerAdapter(fa: FragmentActivity, private val images: List<Str
     override fun getItemCount(): Int = images.size
 
     override fun createFragment(position: Int): Fragment {
-        return ImageFragment(images[position])
+        return ImageFragment.newInstance(images[position])
     }
 }

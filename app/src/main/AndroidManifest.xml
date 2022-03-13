@@ -18,18 +18,15 @@
         <activity android:name=".NewPasswordActivity"/>
         <activity android:name=".FindAccountActivity" />
         <activity
-            android:name=".CircleDetailActivity"
-            android:screenOrientation="portrait" />
+            android:name=".CircleDetailActivity" />
         <activity
             android:name=".PostCircleActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".imageviewer.SlideImageViewer"
-            android:screenOrientation="portrait"
             android:theme="@style/SlideImageViewerTheme" />
         <activity
             android:name=".imageviewer.PosterSlideImageViewer"
-            android:screenOrientation="portrait"
             android:theme="@style/SlideImageViewerTheme" />
         <activity
             android:name=".EditProfileActivity"

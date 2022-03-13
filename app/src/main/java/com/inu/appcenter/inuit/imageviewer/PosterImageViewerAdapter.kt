@@ -9,7 +9,7 @@ class PosterImageViewerAdapter(fa: FragmentActivity, private val images: List<In
     override fun getItemCount(): Int = images.size
 
     override fun createFragment(position: Int): Fragment {
-        return PosterFragment(images[position])
+        return PosterFragment.newInstance(images[position])
     }
 
     override fun onBindViewHolder(

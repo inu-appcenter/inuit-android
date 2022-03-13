@@ -10,6 +10,6 @@ class PosterSlideImageViewerAdapter(fa: FragmentActivity, private val imagesId: 
     override fun getItemCount(): Int = imagesId.size
 
     override fun createFragment(position: Int): Fragment {
-        return PosterSlideFragment(imagesId[position])
+        return PosterSlideFragment.newInstance(imagesId[position])
     }
 }

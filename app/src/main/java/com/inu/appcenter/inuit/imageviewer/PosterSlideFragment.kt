@@ -10,12 +10,17 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.inu.appcenter.inuit.R
 
-class PosterSlideFragment(private val imageId : Int) : Fragment() {
+class PosterSlideFragment() : Fragment() {
 
     private lateinit var imageView: ImageView
+    var imageId : Int? = null
 
-    private var mScaleGestureDetector: ScaleGestureDetector? = null
-    private var scaleFactor = 1.0f
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments != null){
+            imageId = arguments!!.getInt(IMAGE_ID)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,5 +34,18 @@ class PosterSlideFragment(private val imageId : Int) : Fragment() {
             .into(imageView)
 
         return view
+    }
+
+    companion object{
+
+        private const val IMAGE_ID = "imageId"
+
+        fun newInstance(imageId: Int): Fragment{
+            val args = Bundle()
+            args.putInt(IMAGE_ID,imageId)
+            val fragment = PosterSlideFragment()
+            fragment.arguments = args
+            return fragment
+        }
     }
 }
