@@ -119,7 +119,6 @@
             android:id="@+id/btn_delete_edittext"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:background="?selectableItemBackgroundBorderless"
             android:backgroundTint="#00FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

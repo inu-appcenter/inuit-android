@@ -5,7 +5,10 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Environment
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -71,6 +74,10 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
     private lateinit var phone : EditText
     private lateinit var applyLink:EditText
 
+    private lateinit var applyLinkDeleteBtn : ImageButton
+    private lateinit var siteLinkDeleteBtn : ImageButton
+    private lateinit var kakaoLinkDeleteBtn : ImageButton
+
     private lateinit var divisionGroup : RadioGroup
     private lateinit var categoryGroup : ConstraintRadioGroup
     private var division : String? = null
@@ -123,7 +130,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
                     it.photos.forEach {
                         postedPhotos.add(it.id)
                     }
-                    showToastMsg(getString(R.string.select_photo_again))
+                    Toast.makeText(this,getString(R.string.select_photo_again),Toast.LENGTH_LONG).show()
                     loadingDialog.dismiss()
                 })
         }
@@ -136,6 +143,50 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
         kakaoLink = findViewById(R.id.et_post_circle_kakao)
         phone = findViewById(R.id.et_post_circle_phone)
         applyLink = findViewById(R.id.et_post_circle_apply_link)
+
+        applyLinkDeleteBtn = findViewById(R.id.btn_delete_apply_link)
+        siteLinkDeleteBtn = findViewById(R.id.btn_delete_circle_site)
+        kakaoLinkDeleteBtn = findViewById(R.id.btn_delete_circle_kakao)
+
+        applyLinkDeleteBtn.setOnClickListener {
+            applyLink.text.clear()
+            applyLinkDeleteBtn.visibility = View.GONE
+        }
+        siteLinkDeleteBtn.setOnClickListener {
+            siteLink.text.clear()
+            siteLinkDeleteBtn.visibility = View.GONE
+        }
+        kakaoLinkDeleteBtn.setOnClickListener {
+            kakaoLink.text.clear()
+            kakaoLinkDeleteBtn.visibility = View.GONE
+        }
+
+        applyLink.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (applyLink.text.isNotEmpty())
+                    applyLinkDeleteBtn.visibility = View.VISIBLE
+            }
+        })
+
+        siteLink.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (siteLink.text.isNotEmpty())
+                    siteLinkDeleteBtn.visibility = View.VISIBLE
+            }
+        })
+
+        kakaoLink.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (kakaoLink.text.isNotEmpty())
+                    kakaoLinkDeleteBtn.visibility = View.VISIBLE
+            }
+        })
 
         profileRecyclerView = findViewById(R.id.recycler_profile_image)
         addProfileImage = findViewById(R.id.tv_post_circle_profile_image)

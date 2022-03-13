@@ -149,9 +149,10 @@
                     android:ems="10"
                     android:fontFamily="@font/spoqahansansneo_regular"
                     android:hint="@string/post_circle_line_hint"
-                    android:inputType="text"
-                    android:maxLength="30"
-                    android:maxLines="1"
+                    android:inputType="textMultiLine"
+                    android:maxLength="40"
+                    android:minLines="1"
+                    android:maxLines="2"
                     android:textColor="@color/font_color_black"
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:textSize="15sp"
@@ -633,7 +634,7 @@
                     android:id="@+id/ibtn_recruit_schedule"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="5dp"
                     android:background="?selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_drop_down"
                     android:tint="@color/line_color_gray"
@@ -679,9 +680,22 @@
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_delete_apply_link"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btn_delete_apply_link"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="1dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:paddingBottom="16dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_delete_edittext" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -716,7 +730,7 @@
                     android:fontFamily="@font/spoqahansansneo_regular"
                     android:hint="@string/post_circle_location_hint"
                     android:inputType="text"
-                    android:maxLength="30"
+                    android:maxLength="20"
                     android:maxLines="1"
                     android:textColor="@color/font_color_black"
                     android:textCursorDrawable="@drawable/edittext_cursor"
@@ -764,9 +778,22 @@
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_delete_circle_site"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btn_delete_circle_site"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="1dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:paddingBottom="16dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_delete_edittext" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -806,9 +833,22 @@
                     android:textCursorDrawable="@drawable/edittext_cursor"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_delete_circle_kakao"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btn_delete_circle_kakao"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="1dp"
+                    android:backgroundTint="#00FFFFFF"
+                    android:paddingBottom="16dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_delete_edittext" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

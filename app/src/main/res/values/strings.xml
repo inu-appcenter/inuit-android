@@ -126,7 +126,7 @@
     <string name="post_circle_poster_info">동아리 상세 페이지에 올릴 사진을 선택해 주세요. (최대 10장)</string>
     <string name="post_circle_line_introduce">한 줄 소개</string>
     <string name="post_circle_line_hint">우리 동아리를 한 줄로 소개하자면?</string>
-    <string name="post_circle_line_info">입력한 내용은 메인 화면에 간략히 노출돼요. (최대 30자)</string>
+    <string name="post_circle_line_info">입력한 내용은 메인 화면에 간략히 노출돼요. (최대 40자)</string>
     <string name="post_circle_description">동아리 소개 본문</string>
     <string name="post_circle_description_hint">하나부터 열까지, 우리 동아리의 모든 것!</string>
     <string name="post_circle_description_info">동아리 상세 페이지에 올릴 글을 작성해 주세요. (최대 3000자)</string>
@@ -140,7 +140,7 @@
     <string name="post_circle_kakao">카카오톡 링크</string>
     <string name="post_circle_kakao_hint">오픈 채팅방, 플러스 친구</string>
     <string name="post_circle_phone_contact">연락처</string>
-    <string name="post_circle_phone_hint">전화번호, 이메일</string>
+    <string name="post_circle_phone_hint">이메일, 전화번호</string>
     <string name="post_circle_apply_link">동아리 지원 폼 링크</string>
     <string name="post_circle_apply_hint">구글 폼, 네이버 폼</string>
     <string name="post_profile_image_msg">프로필 사진은 1장만 업로드 할 수 있어요.</string>
