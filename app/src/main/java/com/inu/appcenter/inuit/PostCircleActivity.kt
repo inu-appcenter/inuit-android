@@ -121,7 +121,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
                     setCategory(category!!)
                     if(it.recruitStartDate != null && it.recruitEndDate != null){
                         isoStartDate = it.recruitStartDate
-                        isoEndDate = it.recruitStartDate
+                        isoEndDate = it.recruitEndDate
                         information = it.information
                         setRecruitSchedule.text = information
                     }else{
