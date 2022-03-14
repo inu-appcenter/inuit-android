@@ -142,6 +142,33 @@ class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
         backButton.setOnClickListener {
             finish()
         }
+
+        val menuButton = findViewById<ImageButton>(R.id.ibtn_menu_circle_detail)
+        menuButton.setOnClickListener {
+            val popupMenu = PopupMenu(this, menuButton)
+            popupMenu.inflate(R.menu.menu_circle_detial)
+            popupMenu.setOnMenuItemClickListener {
+                if(it.itemId == R.id.menu_report_circle){
+                    val circleName = intent.getStringExtra("CIRCLE_NAME")
+                    val circleId = intent.getIntExtra("CIRCLE_ID",-1)
+                    val emailIntent = Intent(Intent.ACTION_VIEW).apply {
+                        data = Uri.parse("mailto:?subject=" + "<INUIT 신고 접수>" + "&body=" + "$circleName 신고(동아리 ID : $circleId)\n\n신고 사유:" + "&to=" + "2002lkw@naver.com")
+                    }
+                    try {
+                        startActivity(Intent.createChooser(emailIntent,""))
+                    } catch (ex: ActivityNotFoundException) {
+                        Toast.makeText(
+                            this,
+                            "No email clients installed.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    //startActivity(emailIntent)
+                }
+                false
+            }
+            popupMenu.show()
+        }
     }
 
     companion object{
@@ -195,7 +222,7 @@ class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
                 showToastMsg("잘못된 연락처입니다.")
             }
         }else if(phoneNumber.contains("@")){
-            val emailIntent = Intent(Intent.ACTION_SENDTO,Uri.fromParts("mailto", "exampleEmail@email.com", null))
+            val emailIntent = Intent(Intent.ACTION_SENDTO,Uri.fromParts("mailto", phoneNumber, null))
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "")
             emailIntent.putExtra(Intent.EXTRA_TEXT, "")
             startActivity(Intent.createChooser(emailIntent, ""))
