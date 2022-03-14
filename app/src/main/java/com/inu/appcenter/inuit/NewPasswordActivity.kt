@@ -63,6 +63,11 @@ class NewPasswordActivity : AppCompatActivity() {
             }
         }
 
+        val cancelButton = findViewById<ImageButton>(R.id.btn_cancel)
+        cancelButton.setOnClickListener {
+            finish()
+        }
+
     }
 
     companion object{

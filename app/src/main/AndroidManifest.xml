@@ -16,8 +16,10 @@
         android:theme="@style/Theme.INUClub"
         android:usesCleartextTraffic="true">
         <activity android:name=".WebViewActivity" />
-        <activity android:name=".NewPasswordActivity" />
-        <activity android:name=".FindAccountActivity" />
+        <activity android:name=".NewPasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".FindAccountActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".CircleDetailActivity" />
         <activity
             android:name=".PostCircleActivity"
