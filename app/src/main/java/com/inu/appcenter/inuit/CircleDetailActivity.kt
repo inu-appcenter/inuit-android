@@ -169,8 +169,13 @@ class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
             showToastMsg("등록된 URL이 없습니다")
         }else{
             try {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(targetUrl))
-                startActivity(intent)
+                if(targetUrl.contains("forms.gle")){
+                    val intent = WebViewActivity.newIntent(this,targetUrl)
+                    startActivity(intent)
+                }else{
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(targetUrl))
+                    startActivity(intent)
+                }
             }catch (e:Exception){
                 e.printStackTrace()
                 showToastMsg("잘못된 URL 입니다")
