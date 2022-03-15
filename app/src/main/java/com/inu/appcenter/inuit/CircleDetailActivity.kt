@@ -18,6 +18,7 @@ class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
     private val viewModel by viewModels<CircleDetailViewModel>()
 
     private lateinit var circleNameTitle : TextView
+    private lateinit var circleIntrodueTitle : TextView
     private lateinit var location : TextView
     private lateinit var schedule : TextView
     private lateinit var phone : TextView
@@ -33,8 +34,13 @@ class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_circle_detail)
 
+        val circleName = intent.getStringExtra("CIRCLE_NAME")
+
         circleNameTitle = findViewById(R.id.tv_top_title_circle_name)
-        circleNameTitle.text = intent.getStringExtra("CIRCLE_NAME")
+        circleNameTitle.text = circleName
+
+        circleIntrodueTitle = findViewById(R.id.tv_mid_title_circle_introduce)
+        circleIntrodueTitle.text = "$circleName 소개"
 
         location = findViewById(R.id.tv_detail_location)
         location.text = intent.getStringExtra("CIRCLE_LOCATION")
