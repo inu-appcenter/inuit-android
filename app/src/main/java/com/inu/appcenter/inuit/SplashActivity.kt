@@ -1,12 +1,9 @@
 package com.inu.appcenter.inuit
 
 import android.content.Intent
-import android.net.ConnectivityManager
-import android.net.Network
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class SplashActivity : AppCompatActivity() {
 

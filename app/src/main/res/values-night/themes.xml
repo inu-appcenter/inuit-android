@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.INUClub" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/brand_color_yellow</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
@@ -16,5 +16,68 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
     </style>
+
+    <!-- TapLayout textSize -->
+    <style name="tab_text" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!-- checkBox(로그인 유지) -->
+    <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
+        <item name="colorAccent">@color/brand_color_sky_blue</item>
+        <item name="android:textColorSecondary">@color/brand_color_sky_blue</item>
+    </style>
+
+    <!-- Splash(로딩화면) -->
+    <style name="SplashTheme" parent="Theme.INUClub">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <!-- SlideImageViewer -->
+    <style name="SlideImageViewerTheme" parent="Theme.INUClub">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- DateRangePicker -->
+    <style name="AppThemeMaterial" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/brand_color_blue</item>
+        <item name="colorPrimaryDark">@color/brand_color_blue</item>
+        <item name="colorAccent">@color/brand_color_yellow</item>
+        <item name="android:labelTextSize">15sp</item>
+    </style>
+
+    <style name="DatePickerTheme" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <!-- 색상 변환 -->
+        <item name="colorPrimary">@color/brand_color_blue</item>
+        <item name="colorPrimaryDark">@color/brand_color_blue</item>
+        <item name="colorAccent">@color/brand_color_blue</item>
+        <!-- 폰트 변환 -->
+        <item name="fontFamily">@font/spoqahansansneo_regular</item>
+        <!-- 직접 입력 버튼 숨김 -->
+        <item name="materialCalendarHeaderToggleButton">@style/CalendarToggleButton</item>
+    </style>
+
+    <style name="CalendarToggleButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <!-- AlertDialogTheme -->
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+        <item name="fontFamily">@font/spoqahansansneo_regular</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/font_color_black</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/font_color_black</item>
+        <item name="fontFamily">@font/spoqahansansneo_regular</item>
+    </style>
+
 </resources>

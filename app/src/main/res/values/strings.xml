@@ -57,7 +57,7 @@
     <string name="email_hint_signup">이메일 (@inu.ac.kr)</string>
     <string name="email_message_signup">인천대학교 포털 웹메일(@inu.ac.kr)만 사용 가능해요.</string>
     <string name="send_certification_signup"><u>인증 메일 보내기</u>></string>
-    <string name="certification_hint_singup">인증 번호 입력</string>
+    <string name="certification_hint_singup">\'-\'을 포함한 인증 번호를 입력해 주세요</string>
     <string name="password">비밀번호</string>
     <string name="password_hint">비밀번호 (최대 20자)</string>
     <string name="password_check_hint">비밀번호 확인</string>
