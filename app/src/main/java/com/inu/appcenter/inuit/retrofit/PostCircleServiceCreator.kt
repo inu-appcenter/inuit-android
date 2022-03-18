@@ -3,7 +3,7 @@ package com.inu.appcenter.inuit.retrofit
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.inu.appcenter.inuit.retrofit.dto.CirclePostBody
+import com.inu.appcenter.inuit.retrofit.dto.CircleDetailBody
 import com.inu.appcenter.inuit.retrofit.dto.MemberResponse
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
@@ -36,7 +36,7 @@ class PostCircleServiceCreator {
         client = retrofit.create(PostCircleService::class.java)
     }
 
-    fun postCircle(token:String, circleBody:CirclePostBody) : LiveData<Int>{
+    fun postCircle(token:String, circleBody:CircleDetailBody) : LiveData<Int>{
         val liveData = MutableLiveData<Int>()
         val call = client.postCircle(token,circleBody)
 

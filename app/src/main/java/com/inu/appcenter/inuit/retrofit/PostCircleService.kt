@@ -1,6 +1,6 @@
 package com.inu.appcenter.inuit.retrofit
 
-import com.inu.appcenter.inuit.retrofit.dto.CirclePostBody
+import com.inu.appcenter.inuit.retrofit.dto.CircleDetailBody
 import com.inu.appcenter.inuit.retrofit.dto.MemberResponse
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -9,7 +9,7 @@ import retrofit2.http.*
 interface PostCircleService {
 
     @POST("circle")
-    fun postCircle(@Header("X-AUTH-TOKEN") token : String, @Body jsonbody:CirclePostBody) : Call<MemberResponse>
+    fun postCircle(@Header("X-AUTH-TOKEN") token : String, @Body jsonbody: CircleDetailBody) : Call<MemberResponse>
 
     @Multipart
     @POST("user/circle/{id}/photos")

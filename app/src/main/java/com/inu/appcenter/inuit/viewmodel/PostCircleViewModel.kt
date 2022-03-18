@@ -7,6 +7,7 @@ import com.inu.appcenter.inuit.retrofit.MemberServiceCreator
 import com.inu.appcenter.inuit.retrofit.PatchCircleServiceCreator
 import com.inu.appcenter.inuit.retrofit.PostCircleServiceCreator
 import com.inu.appcenter.inuit.retrofit.dto.CircleContent
+import com.inu.appcenter.inuit.retrofit.dto.CircleDetailBody
 import com.inu.appcenter.inuit.retrofit.dto.CirclePostBody
 import com.inu.appcenter.inuit.retrofit.dto.MemberInfo
 import okhttp3.MultipartBody
@@ -35,7 +36,7 @@ class PostCircleViewModel : ViewModel() {
         patchClient = PatchCircleServiceCreator()
     }
 
-    fun postCircle(token:String, circleBody:CirclePostBody){
+    fun postCircle(token:String, circleBody: CircleDetailBody){
         postedCircleId = client.postCircle(token, circleBody)
     }
 

@@ -25,6 +25,7 @@ import com.inu.appcenter.inuit.imageviewer.SlideImageViewer
 import com.inu.appcenter.inuit.login.App
 import com.inu.appcenter.inuit.recycler.OnPreviewImageClick
 import com.inu.appcenter.inuit.recycler.PreviewImageAdapter
+import com.inu.appcenter.inuit.retrofit.dto.CircleDetailBody
 import com.inu.appcenter.inuit.retrofit.dto.CirclePostBody
 import com.inu.appcenter.inuit.util.LoadingDialog
 import com.inu.appcenter.inuit.util.Utility
@@ -70,7 +71,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
     private lateinit var description : EditText
     private lateinit var location : EditText
     private lateinit var siteLink : EditText
-    private lateinit var kakaoLink : EditText
+    private lateinit var openkakaoLink : EditText
     private lateinit var phone : EditText
     private lateinit var applyLink:EditText
 
@@ -112,7 +113,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
                     description.setText(it.introduce)
                     location.setText(it.address)
                     siteLink.setText(it.siteLink)
-                    kakaoLink.setText(it.kakaoLink)
+                    openkakaoLink.setText(it.kakaoLink)
                     phone.setText(it.phoneNumber)
                     applyLink.setText(it.applyLink)
                     division = it.division
@@ -140,7 +141,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
         description = findViewById(R.id.et_post_circle_description)
         location = findViewById(R.id.et_post_circle_location)
         siteLink = findViewById(R.id.et_post_circle_site)
-        kakaoLink = findViewById(R.id.et_post_circle_kakao)
+        openkakaoLink = findViewById(R.id.et_post_circle_kakao)
         phone = findViewById(R.id.et_post_circle_phone)
         applyLink = findViewById(R.id.et_post_circle_apply_link)
 
@@ -157,7 +158,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             siteLinkDeleteBtn.visibility = View.GONE
         }
         kakaoLinkDeleteBtn.setOnClickListener {
-            kakaoLink.text.clear()
+            openkakaoLink.text.clear()
             kakaoLinkDeleteBtn.visibility = View.GONE
         }
 
@@ -179,11 +180,11 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             }
         })
 
-        kakaoLink.addTextChangedListener(object : TextWatcher {
+        openkakaoLink.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                if (kakaoLink.text.isNotEmpty())
+                if (openkakaoLink.text.isNotEmpty())
                     kakaoLinkDeleteBtn.visibility = View.VISIBLE
             }
         })
@@ -429,7 +430,7 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
 
     private fun postCircleData(){
         loadingDialog.show()
-        val body = getCirclePostBody()
+        val body = getCircleDetailBody()
         viewModel.postCircle(App.prefs.token!!,body)
         viewModel.postedCircleId.observe(
             this,
@@ -513,6 +514,24 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
         )
     }
 
+    private fun getCircleDetailBody() :CircleDetailBody{
+        return CircleDetailBody(
+            name.text.toString(),
+            division!!,
+            category!!,
+            oneLineIntroduce.text.toString(),
+            description.text.toString(),
+            getRecruit(),
+            setRecruitSchedule.text.toString(),
+            isoStartDate,
+            isoEndDate,
+            location.text.toString(),
+            siteLink.text.toString(),
+            openkakaoLink.text.toString(),
+            phone.text.toString(),
+            applyLink.text.toString())
+    }
+
 
     private fun getCirclePostBody(): CirclePostBody {
         return CirclePostBody(
@@ -527,10 +546,9 @@ class PostCircleActivity : AppCompatActivity(), OnPreviewImageClick {
             isoEndDate,
             location.text.toString(),
             siteLink.text.toString(),
-            kakaoLink.text.toString(),
+            openkakaoLink.text.toString(),
             phone.text.toString(),
             applyLink.text.toString())
-            Log.d("category,division","$category,$division")
     }
 
     private fun getCircleDivision() :String?{
