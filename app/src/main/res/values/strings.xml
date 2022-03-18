@@ -143,6 +143,7 @@
     <string name="post_circle_phone_hint">이메일, 전화번호</string>
     <string name="post_circle_apply_link">동아리 지원 폼 링크</string>
     <string name="post_circle_apply_hint">구글 폼, 네이버 폼</string>
+    <string name="post_circle_apply_info">\'지원하기\' 버튼을 누르면 연결될 링크에요.</string>
     <string name="post_profile_image_msg">프로필 사진은 1장만 업로드 할 수 있어요.</string>
     <string name="post_poster_image_msg">포스터 및 추가 이미지는 10장까지 업로드 할 수 있어요.</string>
 

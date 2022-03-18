@@ -700,6 +700,17 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
+                android:id="@+id/tv_title_apply_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/spoqahansansneo_regular"
+                android:text="@string/post_circle_apply_info"
+                android:textColor="@color/font_color_gray"
+                android:textSize="12sp" />
+
+            <TextView
                 android:id="@+id/tv_title_circle_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -877,6 +888,7 @@
                     android:id="@+id/et_post_circle_phone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:background="@null"
                     android:cursorVisible="true"
                     android:ems="10"

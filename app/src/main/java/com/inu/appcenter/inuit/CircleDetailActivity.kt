@@ -1,16 +1,17 @@
 package com.inu.appcenter.inuit
 
 import android.content.*
-import android.content.res.ColorStateList
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.inu.appcenter.inuit.imageviewer.*
+import com.inu.appcenter.inuit.imageviewer.OnPosterClick
+import com.inu.appcenter.inuit.imageviewer.PosterImageViewerAdapter
+import com.inu.appcenter.inuit.imageviewer.PosterSlideImageViewer
 import com.inu.appcenter.inuit.viewmodel.CircleDetailViewModel
 
 class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
@@ -199,7 +200,7 @@ class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
     private fun openBrowser(targetUrl : String?){
 
         if(targetUrl == null || targetUrl.isBlank()){
-            showToastMsg("등록된 URL이 없습니다")
+            showToastMsg("등록된 링크가 없어요")
         }else{
             try {
                 if(targetUrl.contains("forms.gle")){
@@ -211,7 +212,7 @@ class CircleDetailActivity : AppCompatActivity() ,OnPosterClick{
                 }
             }catch (e:Exception){
                 e.printStackTrace()
-                showToastMsg("잘못된 URL 입니다")
+                showToastMsg("잘못된 링크입니다")
             }
         }
     }
