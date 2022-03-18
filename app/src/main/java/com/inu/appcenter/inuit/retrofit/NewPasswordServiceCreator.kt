@@ -3,7 +3,6 @@ package com.inu.appcenter.inuit.retrofit
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.gson.GsonBuilder
 import com.inu.appcenter.inuit.retrofit.dto.Member
 import com.inu.appcenter.inuit.retrofit.dto.MemberInfo
 import com.inu.appcenter.inuit.retrofit.dto.MemberPatchBody

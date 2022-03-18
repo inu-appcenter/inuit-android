@@ -2,10 +2,9 @@ package com.inu.appcenter.inuit.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.inu.appcenter.inuit.retrofit.dto.Circle
 import com.inu.appcenter.inuit.retrofit.CirclesServiceCreator
 import com.inu.appcenter.inuit.retrofit.MemberServiceCreator
-import com.inu.appcenter.inuit.retrofit.dto.CircleContent
+import com.inu.appcenter.inuit.retrofit.dto.Circle
 import com.inu.appcenter.inuit.retrofit.dto.MemberInfo
 
 class ClubListViewModel : ViewModel() {

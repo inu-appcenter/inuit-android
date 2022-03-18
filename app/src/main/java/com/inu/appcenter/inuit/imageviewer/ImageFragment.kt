@@ -1,15 +1,12 @@
 package com.inu.appcenter.inuit.imageviewer
 
-import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.ScaleGestureDetector
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.esafirm.imagepicker.model.Image
 import com.inu.appcenter.inuit.R
 
 class ImageFragment() : Fragment() {

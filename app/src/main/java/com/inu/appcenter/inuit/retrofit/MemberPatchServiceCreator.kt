@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.inu.appcenter.inuit.retrofit.dto.ClientErrorBody
-import com.inu.appcenter.inuit.retrofit.dto.Member
 import com.inu.appcenter.inuit.retrofit.dto.MemberPatchBody
 import com.inu.appcenter.inuit.retrofit.dto.MemberResponse
 import retrofit2.Call

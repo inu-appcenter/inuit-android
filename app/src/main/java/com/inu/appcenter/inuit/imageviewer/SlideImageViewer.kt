@@ -3,15 +3,13 @@ package com.inu.appcenter.inuit.imageviewer
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.esafirm.imagepicker.model.Image
 import com.inu.appcenter.inuit.R
-import java.util.ArrayList
+import java.util.*
 
 class SlideImageViewer : AppCompatActivity() {
 

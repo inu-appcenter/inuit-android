@@ -1,22 +1,19 @@
 package com.inu.appcenter.inuit.fragment
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.airbnb.lottie.LottieAnimationView
-import com.inu.appcenter.inuit.CategoryActivity
 import com.inu.appcenter.inuit.CircleDetailActivity
-import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
 import com.inu.appcenter.inuit.R
 import com.inu.appcenter.inuit.recycler.MultiTypeAdapter
 import com.inu.appcenter.inuit.recycler.OnCircleClick
+import com.inu.appcenter.inuit.viewmodel.ClubListViewModel
 
 class AllClubListFragment : Fragment() , OnCircleClick {
 
