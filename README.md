@@ -1,5 +1,5 @@
 # inuit-android
-INU 동아리/소모임 홍보 플랫폼 안드로이드입니다.
+인천대학교 동아리/소모임 홍보 플랫폼 안드로이드입니다.
 
 [INUIT 구글 플레이스토어 바로가기](https://play.google.com/store/apps/details?id=com.inu.appcenter.inuit)
 
